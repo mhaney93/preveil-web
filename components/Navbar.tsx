@@ -33,6 +33,9 @@ export default function Navbar() {
           <Link href="/shop" className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Shop
           </Link>
+          <Link href="/about" className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+            About
+          </Link>
           <Link href="/account" className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Account
           </Link>
@@ -75,6 +78,9 @@ export default function Navbar() {
         <nav className="sm:hidden border-t border-[var(--border)] px-6 py-4 flex flex-col gap-4">
           <Link href="/shop" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Shop
+          </Link>
+          <Link href="/about" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+            About
           </Link>
           <Link href="/account" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Account

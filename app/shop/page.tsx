@@ -2,7 +2,7 @@ import Link from "next/link";
 import { createServerClient } from "@/lib/supabase/server";
 
 export default async function ShopPage() {
-  const supabase = createServerClient();
+  const supabase = await createServerClient();
   const { data: products } = await supabase
     .from("products")
     .select("id, name, slug, price_from, images, category")

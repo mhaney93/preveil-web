@@ -4,7 +4,7 @@ import AddToCartButton from "@/components/AddToCartButton";
 
 export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
   const { slug } = await props.params;
-  const supabase = createServerClient();
+  const supabase = await createServerClient();
 
   const { data: product } = await supabase
     .from("products")

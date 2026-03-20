@@ -1,6 +1,24 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase/server";
 import AddToCartButton from "@/components/AddToCartButton";
+
+export async function generateMetadata(props: PageProps<"/shop/[slug]">): Promise<Metadata> {
+  const { slug } = await props.params;
+  const supabase = await createServerClient();
+  const { data: product } = await supabase
+    .from("products")
+    .select("name, description")
+    .eq("slug", slug)
+    .single();
+
+  if (!product) return {};
+
+  return {
+    title: product.name,
+    description: product.description ?? `Shop ${product.name} from Preveil.`,
+  };
+}
 
 export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
   const { slug } = await props.params;

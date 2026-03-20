@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Preveil — Re-enchant your world",
+  description: "Preveil is a lifestyle brand for those drawn to wonder, mystery, and the sacred. Shop high-quality apparel, home goods, wall art, and more.",
+};
 
 export default function Home() {
   return (

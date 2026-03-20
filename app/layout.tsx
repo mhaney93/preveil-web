@@ -17,8 +17,15 @@ const body = EB_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Preveil",
-  description: "Re-enchant your world.",
+  title: {
+    default: "Preveil",
+    template: "%s | Preveil",
+  },
+  description: "Goods for those who remember the enchantment of the world. High-quality print-on-demand apparel, home goods, and art inspired by re-enchantment.",
+  openGraph: {
+    siteName: "Preveil",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

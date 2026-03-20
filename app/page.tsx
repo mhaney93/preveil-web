@@ -10,11 +10,11 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center text-center px-6 py-40 border-b border-[var(--border)]">
+      <section className="flex flex-col items-center justify-center text-center px-6 py-24 md:py-40 border-b border-[var(--border)]">
         <p className="text-sm tracking-[0.4em] uppercase text-[var(--accent-gold)] mb-6">
           Re-enchant your world
         </p>
-        <h1 className="font-[family-name:var(--font-heading)] text-6xl md:text-8xl font-light tracking-wider text-[var(--foreground)] mb-8">
+        <h1 className="font-[family-name:var(--font-heading)] text-5xl md:text-8xl font-light tracking-wider text-[var(--foreground)] mb-8">
           Preveil
         </h1>
         <p className="max-w-md text-lg text-[var(--muted)] leading-relaxed mb-12">

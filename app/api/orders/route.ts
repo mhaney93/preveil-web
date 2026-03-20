@@ -1,8 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { createServerClient } from "@/lib/supabase/server";
+import { createClient } from "@supabase/supabase-js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
+// Admin client bypasses RLS for server-side order management
+function createAdminClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SECRET_KEY!
+  );
+}
 
 export async function POST(req: NextRequest) {
   const { paymentIntentId } = await req.json();
@@ -21,7 +29,7 @@ export async function POST(req: NextRequest) {
   const shipping = JSON.parse(paymentIntent.metadata.shipping ?? "{}");
   const total = paymentIntent.amount / 100;
 
-  const supabase = await createServerClient();
+  const supabase = createAdminClient();
 
   // Check for duplicate order
   const { data: existing } = await supabase

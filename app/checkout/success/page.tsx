@@ -51,12 +51,22 @@ function SuccessContent() {
             Your order has been received and is being prepared. You will receive
             a confirmation email shortly.
           </p>
-          <Link
-            href="/shop"
-            className="px-10 py-3 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-sm tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors"
-          >
-            Continue Shopping
-          </Link>
+          <div className="flex flex-col items-center gap-4">
+            <Link
+              href="/shop"
+              className="px-10 py-3 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-sm tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors"
+            >
+              Continue Shopping
+            </Link>
+            <a
+              href="https://discord.gg/K4gjdFMD4P"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-10 py-3 border border-[var(--border)] text-[var(--muted)] text-sm tracking-widest uppercase hover:border-[var(--foreground)] hover:text-[var(--foreground)] transition-colors"
+            >
+              Join the Community
+            </a>
+          </div>
         </>
       )}
 

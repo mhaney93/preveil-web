@@ -69,6 +69,7 @@ export default function AuthForm() {
           required
           type="email"
           placeholder="Email"
+          autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className={inputClass}
@@ -77,6 +78,7 @@ export default function AuthForm() {
           required
           type="password"
           placeholder="Password"
+          autoComplete={mode === "signup" ? "new-password" : "current-password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className={inputClass}

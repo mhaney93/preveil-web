@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
 import AuthForm from "@/components/AuthForm";
 import LogoutButton from "@/components/LogoutButton";
+import DeleteAccountButton from "@/components/DeleteAccountButton";
 
 function createAdminClient() {
   return createClient(
@@ -99,15 +100,7 @@ export default async function AccountPage() {
         <h2 className="text-xs tracking-widest uppercase text-[var(--muted)] mb-6">
           Danger Zone
         </h2>
-        <form action={deleteAccount}>
-          <button
-            type="submit"
-            className="px-6 py-2 border border-red-800 text-red-800 text-xs tracking-widest uppercase hover:bg-red-800 hover:text-white transition-colors"
-          >
-            Delete Account
-          </button>
-          <p className="text-xs text-[var(--muted)] mt-3">This cannot be undone.</p>
-        </form>
+        <DeleteAccountButton action={deleteAccount} />
       </div>
     </div>
   );

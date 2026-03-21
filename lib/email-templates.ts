@@ -1,4 +1,4 @@
-const BASE_URL = "https://preveil.shop";
+export const BASE_URL = "https://preveil.shop";
 const DISCORD_URL = "https://discord.gg/K4gjdFMD4P";
 
 const wrapper = (content: string) => `
@@ -143,6 +143,39 @@ export function postPurchaseEmail({
     </p>
     <p style="font-size:13px;line-height:1.9;color:#888;text-align:center;margin:16px 0 0;">
       Join the community on <a href="${DISCORD_URL}" style="color:#c8a45a;text-decoration:none;">Discord</a>
+    </p>
+  `;
+
+  return wrapper(content);
+}
+
+export function abandonedCartEmail(items: { name: string; variantName: string; quantity: number; price: number }[]) {
+  const itemRows = items.map((item) => `
+    <tr>
+      <td style="padding:10px 0;font-family:Georgia,serif;font-size:14px;color:#444;border-bottom:1px solid #f0ebe3;">
+        ${item.name} <span style="color:#9a8f82;">— ${item.variantName} × ${item.quantity}</span>
+      </td>
+      <td style="padding:10px 0;font-family:Georgia,serif;font-size:14px;color:#c8a45a;text-align:right;border-bottom:1px solid #f0ebe3;">
+        $${(item.price * item.quantity).toFixed(2)}
+      </td>
+    </tr>
+  `).join("");
+
+  const content = `
+    <h2 style="font-size:26px;font-weight:300;letter-spacing:0.1em;margin:0 0 8px;">Something left behind.</h2>
+    <p style="line-height:1.9;color:#444;margin:0 0 32px;">
+      You left a few things in your cart. They're still waiting for you.
+    </p>
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px;">
+      ${itemRows}
+    </table>
+
+    ${goldButton(`${BASE_URL}/cart`, "Return to Cart")}
+    ${divider}
+
+    <p style="font-size:13px;line-height:1.9;color:#888;text-align:center;margin:0;">
+      Questions? Reach us at <a href="mailto:preveil.llc@gmail.com" style="color:#c8a45a;text-decoration:none;">preveil.llc@gmail.com</a>
     </p>
   `;
 

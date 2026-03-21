@@ -144,6 +144,12 @@ export async function POST(req: NextRequest) {
     }
   }
 
+  // Mark abandoned cart as converted
+  if (userId) {
+    await supabase.from("abandoned_carts").update({ converted: true }).eq("user_id", userId);
+  }
+  await supabase.from("abandoned_carts").update({ converted: true }).eq("email", shipping.email);
+
   // Send post-purchase email
   const now = new Date().toISOString();
   let availablePoints = 0;

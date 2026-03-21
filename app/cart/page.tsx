@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { createClient } from "@/lib/supabase/client";
 
 interface CartItem {
   productId: string;
@@ -16,11 +17,29 @@ interface CartItem {
 export default function CartPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [loaded, setLoaded] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart") ?? "[]"));
+    const stored = JSON.parse(localStorage.getItem("cart") ?? "[]");
+    setCart(stored);
     setLoaded(true);
+
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user) {
+        setUserId(user.id);
+        syncCart(user.id, stored);
+      }
+    });
   }, []);
+
+  function syncCart(uid: string, items: CartItem[]) {
+    fetch("/api/cart", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: uid, items }),
+    });
+  }
 
   function updateQuantity(variantId: string, quantity: number) {
     const updated = cart
@@ -30,12 +49,14 @@ export default function CartPage() {
       .filter((item) => item.quantity > 0);
     setCart(updated);
     localStorage.setItem("cart", JSON.stringify(updated));
+    if (userId) syncCart(userId, updated);
   }
 
   function removeItem(variantId: string) {
     const updated = cart.filter((item) => item.variantId !== variantId);
     setCart(updated);
     localStorage.setItem("cart", JSON.stringify(updated));
+    if (userId) syncCart(userId, updated);
   }
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);

@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { createClient } from "@supabase/supabase-js";
+import { Resend } from "resend";
+import { postPurchaseEmail } from "@/lib/email-templates";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -139,6 +143,43 @@ export async function POST(req: NextRequest) {
         .eq("id", order.id);
     }
   }
+
+  // Send post-purchase email
+  const now = new Date().toISOString();
+  let availablePoints = 0;
+  if (userId) {
+    const { data: pointsRows } = await supabase
+      .from("points_ledger")
+      .select("amount, available_at")
+      .eq("user_id", userId);
+    availablePoints = pointsRows
+      ? pointsRows.filter((r) => r.available_at <= now).reduce((sum: number, r: { amount: number }) => sum + r.amount, 0)
+      : 0;
+  }
+
+  const pointsDiscount = pointsRedeemed / 100;
+  const chargedTotal = Math.max(total - pointsDiscount, 0);
+  const pointsEarned = Math.floor(chargedTotal * 10);
+
+  const emailItems = items.map((item: { name: string; variantName: string; quantity: number; price: number }) => ({
+    name: item.name,
+    variantName: item.variantName ?? "",
+    quantity: item.quantity,
+    price: item.price,
+  }));
+
+  await resend.emails.send({
+    from: "Preveil <noreply@preveil.shop>",
+    to: shipping.email,
+    subject: "Your Preveil order is confirmed",
+    html: postPurchaseEmail({
+      items: emailItems,
+      total,
+      pointsRedeemed,
+      pointsEarned,
+      availablePoints,
+    }),
+  });
 
   return NextResponse.json({ orderId: order.id });
 }

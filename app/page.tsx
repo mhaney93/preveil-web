@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { createServerClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Preveil — Re-enchant your world",
   description: "Preveil is a lifestyle brand for those drawn to wonder, mystery, and the sacred. Shop high-quality apparel, home goods, wall art, and more.",
 };
 
-export default function Home() {
+export default async function Home() {
+  const supabase = await createServerClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
   return (
     <div className="flex flex-col">
       {/* Hero */}
@@ -28,6 +32,27 @@ export default function Home() {
           Shop Now
         </Link>
       </section>
+
+      {/* Signup bonus banner — guests only */}
+      {!user && (
+        <section className="border-b border-[var(--border)] px-6 py-10 text-center bg-[var(--card)]">
+          <p className="text-xs tracking-[0.3em] uppercase text-[var(--accent-gold)] mb-2">
+            Join the community
+          </p>
+          <p className="font-[family-name:var(--font-heading)] text-2xl font-light text-[var(--foreground)] mb-4">
+            Earn 150 points just for signing up
+          </p>
+          <p className="text-sm text-[var(--muted)] mb-6">
+            Create a free account and receive 150 reward points — worth $1.50 off your first order. Earn more with every purchase.
+          </p>
+          <Link
+            href="/account"
+            className="px-8 py-2 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-xs tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors"
+          >
+            Create Account
+          </Link>
+        </section>
+      )}
 
       {/* Categories */}
       <section className="max-w-6xl mx-auto w-full px-6 py-24">

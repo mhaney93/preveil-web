@@ -67,6 +67,8 @@ export default function AuthForm() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           required
+          id="email"
+          name="email"
           type="email"
           placeholder="Email"
           autoComplete="email"
@@ -76,6 +78,8 @@ export default function AuthForm() {
         />
         <input
           required
+          id="password"
+          name="password"
           type="password"
           placeholder="Password"
           autoComplete={mode === "signup" ? "new-password" : "current-password"}

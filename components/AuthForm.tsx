@@ -32,7 +32,7 @@ export default function AuthForm() {
       const { error } = await supabase.auth.signUp({
         email,
         password,
-        options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+        options: { emailRedirectTo: "https://preveil.shop/auth/callback" },
       });
       if (error) {
         setError(error.message);

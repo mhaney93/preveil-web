@@ -77,6 +77,7 @@ export default function AuthForm() {
           className={inputClass}
         />
         <input
+          key={mode}
           required
           id="password"
           name="password"

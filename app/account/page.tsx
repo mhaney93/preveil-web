@@ -83,7 +83,7 @@ export default async function AccountPage() {
               {availablePoints}
             </p>
             <p className="text-xs text-[var(--muted)] mt-1">
-              available · ${(availablePoints / 100).toFixed(2)} off your next order
+              available · ${(availablePoints / 100).toFixed(2)} to redeem at checkout
             </p>
           </div>
           {pendingPoints > 0 && (

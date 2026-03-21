@@ -8,6 +8,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
+import { createClient } from "@/lib/supabase/client";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -109,19 +110,46 @@ export default function CheckoutPage() {
     state: "",
     zip: "",
   });
+  const [userId, setUserId] = useState<string | null>(null);
+  const [availablePoints, setAvailablePoints] = useState(0);
+  const [redeemPoints, setRedeemPoints] = useState(false);
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart") ?? "[]"));
+
+    const supabase = createClient();
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
+      if (!user) return;
+      setUserId(user.id);
+
+      const now = new Date().toISOString();
+      const { data } = await supabase
+        .from("points_ledger")
+        .select("amount")
+        .lte("available_at", now);
+
+      if (data && data.length > 0) {
+        const balance = data.reduce((sum, row) => sum + row.amount, 0);
+        if (balance > 0) setAvailablePoints(balance);
+      }
+    });
   }, []);
 
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const pointsDiscount = redeemPoints ? availablePoints / 100 : 0;
+  const total = Math.max(subtotal - pointsDiscount, 0);
 
   async function handleShippingSubmit(e: React.FormEvent) {
     e.preventDefault();
     const res = await fetch("/api/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: cart, shipping }),
+      body: JSON.stringify({
+        items: cart,
+        shipping,
+        userId,
+        pointsToRedeem: redeemPoints ? availablePoints : 0,
+      }),
     });
     const data = await res.json();
     setClientSecret(data.clientSecret);
@@ -217,6 +245,33 @@ export default function CheckoutPage() {
                 </span>
               </div>
             ))}
+
+            {availablePoints > 0 && step === "shipping" && (
+              <div className="border-t border-[var(--border)] pt-4">
+                <label className="flex items-center justify-between gap-4 cursor-pointer">
+                  <span className="text-sm text-[var(--foreground)]">
+                    Use {availablePoints} points{" "}
+                    <span className="text-[var(--muted)]">
+                      (${(availablePoints / 100).toFixed(2)} off)
+                    </span>
+                  </span>
+                  <input
+                    type="checkbox"
+                    checked={redeemPoints}
+                    onChange={(e) => setRedeemPoints(e.target.checked)}
+                    className="accent-[var(--accent-gold)] w-4 h-4"
+                  />
+                </label>
+              </div>
+            )}
+
+            {redeemPoints && (
+              <div className="flex justify-between text-sm">
+                <span className="text-[var(--muted)] tracking-widest uppercase text-xs">Points discount</span>
+                <span className="text-[var(--accent-gold)]">-${pointsDiscount.toFixed(2)}</span>
+              </div>
+            )}
+
             <div className="border-t border-[var(--border)] pt-4 flex justify-between">
               <span className="text-xs tracking-widest uppercase text-[var(--muted)]">
                 Total

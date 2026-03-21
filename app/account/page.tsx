@@ -39,6 +39,18 @@ export default async function AccountPage() {
     .eq("user_id", user.id)
     .order("created_at", { ascending: false });
 
+  const now = new Date().toISOString();
+  const { data: pointsRows } = await supabase
+    .from("points_ledger")
+    .select("amount, available_at");
+
+  const availablePoints = pointsRows
+    ? pointsRows.filter((r) => r.available_at <= now).reduce((sum, r) => sum + r.amount, 0)
+    : 0;
+  const pendingPoints = pointsRows
+    ? pointsRows.filter((r) => r.available_at > now).reduce((sum, r) => sum + r.amount, 0)
+    : 0;
+
   async function deleteAccount() {
     "use server";
     const supabase = await createServerClient();
@@ -59,6 +71,31 @@ export default async function AccountPage() {
       </div>
 
       <p className="text-sm text-[var(--muted)] mb-12">{user.email}</p>
+
+      {/* Points Balance */}
+      <div className="border border-[var(--border)] p-6 mb-12">
+        <h2 className="text-xs tracking-widest uppercase text-[var(--muted)] mb-4">
+          Reward Points
+        </h2>
+        <div className="flex items-end gap-6">
+          <div>
+            <p className="font-[family-name:var(--font-heading)] text-4xl font-light text-[var(--accent-gold)]">
+              {availablePoints}
+            </p>
+            <p className="text-xs text-[var(--muted)] mt-1">
+              available · ${(availablePoints / 100).toFixed(2)} off your next order
+            </p>
+          </div>
+          {pendingPoints > 0 && (
+            <div>
+              <p className="font-[family-name:var(--font-heading)] text-2xl font-light text-[var(--muted)]">
+                +{pendingPoints}
+              </p>
+              <p className="text-xs text-[var(--muted)] mt-1">pending · available in 14 days</p>
+            </div>
+          )}
+        </div>
+      </div>
 
       <h2 className="text-xs tracking-widest uppercase text-[var(--muted)] mb-6">
         Order History

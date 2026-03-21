@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { createServerClient } from "@/lib/supabase/server";
 import { createClient } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
+import { Resend } from "resend";
+import { accountDeletedEmail } from "@/lib/email-templates";
 import AuthForm from "@/components/AuthForm";
 import LogoutButton from "@/components/LogoutButton";
 import DeleteAccountButton from "@/components/DeleteAccountButton";
@@ -56,8 +58,18 @@ export default async function AccountPage() {
     const supabase = await createServerClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
+    const email = user.email;
     const admin = createAdminClient();
     await admin.auth.admin.deleteUser(user.id);
+    if (email) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      await resend.emails.send({
+        from: "Preveil <noreply@preveil.shop>",
+        to: email,
+        subject: "Your Preveil account has been deleted",
+        html: accountDeletedEmail(),
+      });
+    }
     redirect("/");
   }
 

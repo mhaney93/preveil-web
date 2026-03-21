@@ -149,6 +149,24 @@ export function postPurchaseEmail({
   return wrapper(content);
 }
 
+export function accountDeletedEmail() {
+  const content = `
+    <h2 style="font-size:26px;font-weight:300;letter-spacing:0.1em;margin:0 0 24px;">Your account has been deleted.</h2>
+    <p style="line-height:1.9;color:#444;margin:0 0 20px;">
+      Your Preveil account and all associated data have been permanently removed as requested.
+    </p>
+    <p style="line-height:1.9;color:#444;margin:0 0 32px;">
+      If you didn't request this, please contact us immediately at <a href="mailto:preveil.llc@gmail.com" style="color:#c8a45a;text-decoration:none;">preveil.llc@gmail.com</a>.
+    </p>
+    ${divider}
+    <p style="font-size:13px;line-height:1.9;color:#888;text-align:center;margin:0;">
+      You're always welcome back. <a href="${BASE_URL}/account" style="color:#c8a45a;text-decoration:none;">Create a new account</a>
+    </p>
+  `;
+
+  return wrapper(content);
+}
+
 export function abandonedCartEmail(items: { name: string; variantName: string; quantity: number; price: number }[]) {
   const itemRows = items.map((item) => `
     <tr>

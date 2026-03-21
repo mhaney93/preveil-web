@@ -43,7 +43,7 @@ export default async function Home() {
             Earn 150 points just for signing up
           </p>
           <p className="text-sm text-[var(--muted)] mb-6">
-            Create a free account and receive 150 reward points — worth $1.50 off your first order. Earn more with every purchase.
+            Create a free account and receive 150 reward points — worth $1.50 to redeem at checkout. Earn more with every purchase.
           </p>
           <Link
             href="/account"

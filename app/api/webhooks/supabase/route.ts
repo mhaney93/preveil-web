@@ -14,6 +14,8 @@ function createAdminClient() {
 
 export async function POST(req: NextRequest) {
   const authHeader = req.headers.get("authorization");
+  console.log("AUTH_HEADER:", JSON.stringify(authHeader));
+  console.log("EXPECTED:", JSON.stringify(`Bearer ${process.env.SUPABASE_WEBHOOK_SECRET}`));
   if (authHeader !== `Bearer ${process.env.SUPABASE_WEBHOOK_SECRET}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

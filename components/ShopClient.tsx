@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 const CATEGORIES = [
   { slug: "mens-clothing", label: "Men's Clothing" },
   { slug: "womens-clothing", label: "Women's Clothing" },
-  { slug: "kids-clothing", label: "Kids' & Youth" },
+  { slug: "kids-clothing", label: "Kids' & Youth Clothing" },
   { slug: "hats", label: "Hats" },
   { slug: "accessories", label: "Accessories" },
   { slug: "home-living", label: "Home & Living" },

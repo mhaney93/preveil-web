@@ -56,7 +56,7 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
         {/* Details */}
         <div className="flex flex-col justify-center">
           {product.category && (
-            <p className="text-xs tracking-widest uppercase text-[var(--muted)] mb-3">
+            <p className="text-sm tracking-widest uppercase text-[var(--muted)] mb-3">
               {product.category}
             </p>
           )}

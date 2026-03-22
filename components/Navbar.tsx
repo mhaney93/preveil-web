@@ -42,7 +42,7 @@ export default function Navbar() {
           <Link href="/cart" className="relative text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Cart
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-4 text-xs text-[var(--accent-gold)]">{cartCount}</span>
+              <span className="absolute -top-2 -right-4 text-sm text-[var(--accent-gold)]">{cartCount}</span>
             )}
           </Link>
         </nav>
@@ -52,7 +52,7 @@ export default function Navbar() {
           <Link href="/cart" className="relative text-sm tracking-widest uppercase text-[var(--muted)]">
             Cart
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-4 text-xs text-[var(--accent-gold)]">{cartCount}</span>
+              <span className="absolute -top-2 -right-4 text-sm text-[var(--accent-gold)]">{cartCount}</span>
             )}
           </Link>
           <button

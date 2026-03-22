@@ -104,7 +104,7 @@ export default function CartPage() {
                 <h2 className="font-[family-name:var(--font-heading)] text-xl font-light text-[var(--foreground)]">
                   {item.name}
                 </h2>
-                <p className="text-xs tracking-widest uppercase text-[var(--muted)] mt-1">
+                <p className="text-sm tracking-widest uppercase text-[var(--muted)] mt-1">
                   {item.variantName}
                 </p>
                 <p className="text-[var(--accent-gold)] mt-2">
@@ -133,7 +133,7 @@ export default function CartPage() {
                 </div>
                 <button
                   onClick={() => removeItem(item.variantId)}
-                  className="text-xs tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                  className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
                 >
                   Remove
                 </button>

@@ -188,7 +188,7 @@ export default function CheckoutPage() {
         <div>
           {step === "shipping" ? (
             <>
-              <h2 className="text-xs tracking-widest uppercase text-[var(--muted)] mb-6">
+              <h2 className="text-sm tracking-widest uppercase text-[var(--muted)] mb-6">
                 Shipping Information
               </h2>
               <form onSubmit={handleShippingSubmit} className="flex flex-col gap-4">
@@ -208,7 +208,7 @@ export default function CheckoutPage() {
             </>
           ) : (
             <>
-              <h2 className="text-xs tracking-widest uppercase text-[var(--muted)] mb-6">
+              <h2 className="text-sm tracking-widest uppercase text-[var(--muted)] mb-6">
                 Payment
               </h2>
               {clientSecret && (
@@ -238,7 +238,7 @@ export default function CheckoutPage() {
 
         {/* Right: Order Summary */}
         <div>
-          <h2 className="text-xs tracking-widest uppercase text-[var(--muted)] mb-6">
+          <h2 className="text-sm tracking-widest uppercase text-[var(--muted)] mb-6">
             Order Summary
           </h2>
           <div className="flex flex-col gap-4">
@@ -275,13 +275,13 @@ export default function CheckoutPage() {
 
             {redeemPoints && (
               <div className="flex justify-between text-sm">
-                <span className="text-[var(--muted)] tracking-widest uppercase text-xs">Points discount</span>
+                <span className="text-[var(--muted)] tracking-widest uppercase text-sm">Points discount</span>
                 <span className="text-[var(--accent-gold)]">-${pointsDiscount.toFixed(2)}</span>
               </div>
             )}
 
             <div className="border-t border-[var(--border)] pt-4 flex justify-between">
-              <span className="text-xs tracking-widest uppercase text-[var(--muted)]">
+              <span className="text-sm tracking-widest uppercase text-[var(--muted)]">
                 Total
               </span>
               <span className="font-[family-name:var(--font-heading)] text-2xl font-light text-[var(--foreground)]">

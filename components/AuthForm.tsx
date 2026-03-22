@@ -116,7 +116,7 @@ export default function AuthForm() {
           <button
             type="button"
             onClick={() => { setMode("reset"); setError(null); setMessage(null); }}
-            className="text-xs text-[var(--muted)] tracking-widest uppercase hover:text-[var(--foreground)] transition-colors text-left"
+            className="text-sm text-[var(--muted)] tracking-widest uppercase hover:text-[var(--foreground)] transition-colors text-left"
           >
             Forgot password?
           </button>
@@ -125,7 +125,7 @@ export default function AuthForm() {
           <button
             type="button"
             onClick={() => { setMode("login"); setError(null); setMessage(null); }}
-            className="text-xs text-[var(--muted)] tracking-widest uppercase hover:text-[var(--foreground)] transition-colors text-left"
+            className="text-sm text-[var(--muted)] tracking-widest uppercase hover:text-[var(--foreground)] transition-colors text-left"
           >
             Back to sign in
           </button>

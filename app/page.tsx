@@ -36,7 +36,7 @@ export default async function Home() {
       {/* Signup bonus banner — guests only */}
       {!user && (
         <section className="border-b border-[var(--border)] px-6 py-10 text-center bg-[var(--card)]">
-          <p className="text-xs tracking-[0.3em] uppercase text-[var(--accent-gold)] mb-2">
+          <p className="text-sm tracking-[0.3em] uppercase text-[var(--accent-gold)] mb-2">
             Join the community
           </p>
           <p className="font-[family-name:var(--font-heading)] text-2xl font-light text-[var(--foreground)] mb-4">
@@ -47,7 +47,7 @@ export default async function Home() {
           </p>
           <Link
             href="/account"
-            className="px-8 py-2 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-xs tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors"
+            className="px-8 py-2 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-sm tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors"
           >
             Create Account
           </Link>

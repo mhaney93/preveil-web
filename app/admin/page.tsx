@@ -53,7 +53,7 @@ export default async function AdminPage() {
       <div className="flex flex-col gap-8">
         {/* Quote */}
         <div className="border border-[var(--border)] p-8">
-          <p className="text-xs tracking-widest uppercase text-[var(--muted)] mb-4">Next Quote</p>
+          <p className="text-sm tracking-widest uppercase text-[var(--muted)] mb-4">Next Quote</p>
           {quote ? (
             <>
               <p className="text-[var(--foreground)] leading-relaxed mb-8">{quote.text}</p>
@@ -61,7 +61,7 @@ export default async function AdminPage() {
                 <input type="hidden" name="id" value={quote.id} />
                 <button
                   type="submit"
-                  className="px-6 py-2 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-xs tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors"
+                  className="px-6 py-2 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-sm tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors"
                 >
                   Mark as Used
                 </button>
@@ -74,7 +74,7 @@ export default async function AdminPage() {
 
         {/* Image Prompt */}
         <div className="border border-[var(--border)] p-8">
-          <p className="text-xs tracking-widest uppercase text-[var(--muted)] mb-4">Next Image Prompt</p>
+          <p className="text-sm tracking-widest uppercase text-[var(--muted)] mb-4">Next Image Prompt</p>
           {prompt ? (
             <>
               <p className="text-[var(--foreground)] leading-relaxed mb-8">{prompt.prompt}</p>
@@ -82,7 +82,7 @@ export default async function AdminPage() {
                 <input type="hidden" name="id" value={prompt.id} />
                 <button
                   type="submit"
-                  className="px-6 py-2 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-xs tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors"
+                  className="px-6 py-2 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-sm tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors"
                 >
                   Mark as Used
                 </button>

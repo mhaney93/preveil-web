@@ -51,7 +51,7 @@ export default async function ShopPage() {
                   {product.name}
                 </h2>
                 {product.category && (
-                  <p className="text-xs tracking-widest uppercase text-[var(--muted)] mt-1">
+                  <p className="text-sm tracking-widest uppercase text-[var(--muted)] mt-1">
                     {product.category}
                   </p>
                 )}

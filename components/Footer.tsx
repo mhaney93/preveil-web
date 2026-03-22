@@ -16,7 +16,7 @@ export default function Footer() {
 
         {/* Navigation */}
         <div>
-          <p className="text-xs tracking-widest uppercase text-[var(--muted)] mb-4">
+          <p className="text-sm tracking-widest uppercase text-[var(--muted)] mb-4">
             Navigate
           </p>
           <div className="flex flex-col gap-2">
@@ -29,7 +29,7 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <p className="text-xs tracking-widest uppercase text-[var(--muted)] mb-4">
+          <p className="text-sm tracking-widest uppercase text-[var(--muted)] mb-4">
             Contact
           </p>
           <a

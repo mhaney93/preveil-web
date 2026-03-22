@@ -86,7 +86,7 @@ export default async function AccountPage() {
 
       {/* Points Balance */}
       <div className="border border-[var(--border)] p-6 mb-12">
-        <h2 className="text-xs tracking-widest uppercase text-[var(--muted)] mb-4">
+        <h2 className="text-sm tracking-widest uppercase text-[var(--muted)] mb-4">
           Reward Points
         </h2>
         <div className="flex items-end gap-6">
@@ -94,7 +94,7 @@ export default async function AccountPage() {
             <p className="font-[family-name:var(--font-heading)] text-4xl font-light text-[var(--accent-gold)]">
               {availablePoints}
             </p>
-            <p className="text-xs text-[var(--muted)] mt-1">
+            <p className="text-sm text-[var(--muted)] mt-1">
               available · ${(availablePoints / 100).toFixed(2)} to redeem at checkout
             </p>
           </div>
@@ -103,13 +103,13 @@ export default async function AccountPage() {
               <p className="font-[family-name:var(--font-heading)] text-2xl font-light text-[var(--muted)]">
                 +{pendingPoints}
               </p>
-              <p className="text-xs text-[var(--muted)] mt-1">pending · available in 14 days</p>
+              <p className="text-sm text-[var(--muted)] mt-1">pending · available in 14 days</p>
             </div>
           )}
         </div>
       </div>
 
-      <h2 className="text-xs tracking-widest uppercase text-[var(--muted)] mb-6">
+      <h2 className="text-sm tracking-widest uppercase text-[var(--muted)] mb-6">
         Order History
       </h2>
 
@@ -128,7 +128,7 @@ export default async function AccountPage() {
                 <p className="text-sm text-[var(--foreground)] font-mono">
                   #{order.id.slice(0, 8).toUpperCase()}
                 </p>
-                <p className="text-xs tracking-widest uppercase text-[var(--muted)] mt-1">
+                <p className="text-sm tracking-widest uppercase text-[var(--muted)] mt-1">
                   {new Date(order.created_at).toLocaleDateString()}
                 </p>
               </div>
@@ -136,7 +136,7 @@ export default async function AccountPage() {
                 <p className="text-[var(--accent-gold)]">
                   ${order.total.toFixed(2)}
                 </p>
-                <p className="text-xs tracking-widest uppercase text-[var(--muted)] mt-1">
+                <p className="text-sm tracking-widest uppercase text-[var(--muted)] mt-1">
                   {order.status}
                 </p>
               </div>
@@ -146,7 +146,7 @@ export default async function AccountPage() {
       )}
 
       <div className="mt-24 pt-8 border-t border-[var(--border)]">
-        <h2 className="text-xs tracking-widest uppercase text-[var(--muted)] mb-6">
+        <h2 className="text-sm tracking-widest uppercase text-[var(--muted)] mb-6">
           Danger Zone
         </h2>
         <DeleteAccountButton action={deleteAccount} />

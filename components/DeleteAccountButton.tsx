@@ -10,11 +10,11 @@ export default function DeleteAccountButton({ action }: { action: () => Promise<
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="px-6 py-2 border border-red-800 text-red-800 text-xs tracking-widest uppercase hover:bg-red-800 hover:text-white transition-colors"
+        className="px-6 py-2 border border-red-800 text-red-800 text-sm tracking-widest uppercase hover:bg-red-800 hover:text-white transition-colors"
       >
         Delete Account
       </button>
-      <p className="text-xs text-[var(--muted)] mt-3">This cannot be undone.</p>
+      <p className="text-sm text-[var(--muted)] mt-3">This cannot be undone.</p>
 
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -30,14 +30,14 @@ export default function DeleteAccountButton({ action }: { action: () => Promise<
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="flex-1 px-6 py-2 border border-[var(--border)] text-[var(--muted)] text-xs tracking-widest uppercase hover:border-[var(--foreground)] hover:text-[var(--foreground)] transition-colors"
+                className="flex-1 px-6 py-2 border border-[var(--border)] text-[var(--muted)] text-sm tracking-widest uppercase hover:border-[var(--foreground)] hover:text-[var(--foreground)] transition-colors"
               >
                 Cancel
               </button>
               <form action={action} className="flex-1">
                 <button
                   type="submit"
-                  className="w-full px-6 py-2 border border-red-800 text-red-800 text-xs tracking-widest uppercase hover:bg-red-800 hover:text-white transition-colors"
+                  className="w-full px-6 py-2 border border-red-800 text-red-800 text-sm tracking-widest uppercase hover:bg-red-800 hover:text-white transition-colors"
                 >
                   Delete
                 </button>

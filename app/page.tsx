@@ -7,7 +7,16 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const user = null;
+  let user = null;
+  try {
+    const { createServerClient } = await import("@/lib/supabase/server");
+    const supabase = await createServerClient();
+    const { data, error } = await supabase.auth.getUser();
+    if (error) console.error("[HOME] supabase.auth.getUser error:", error.message, error.status);
+    else user = data.user;
+  } catch (e) {
+    console.error("[HOME] Supabase threw:", e);
+  }
 
   return (
     <div className="flex flex-col">

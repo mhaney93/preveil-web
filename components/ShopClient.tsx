@@ -58,7 +58,6 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   "kids-clothing": [
     { slug: "t-shirts", label: "T-Shirts" },
     { slug: "all-over-shirts", label: "All-Over Shirts" },
-    { slug: "3-4-sleeve-shirts", label: "3/4 Sleeve Shirts" },
     { slug: "long-sleeve", label: "Long Sleeve Shirts" },
     { slug: "hoodies", label: "Hoodies & Sweatshirts" },
     { slug: "hats", label: "Hats" },

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { createServerClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Preveil — Re-enchant your world",
@@ -8,8 +7,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const supabase = await createServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const user = null;
 
   return (
     <div className="flex flex-col">

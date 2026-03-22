@@ -392,7 +392,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
 
       {/* Group filters (for categories that have groups) */}
       {activeCategory && hasGroups && (
-        <div className="flex overflow-x-auto gap-2 mb-4 pb-1 [&>*]:shrink-0 justify-start sm:justify-center">
+        <div className="flex overflow-x-auto gap-2 mb-4 [&>*]:shrink-0 justify-start sm:justify-center [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
           <Link
             href={`/shop?category=${activeCategory.slug}`}
             className={`text-xs tracking-widest uppercase px-3 py-1 transition-colors ${
@@ -421,7 +421,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
 
       {/* Subcategory filters — only shown when group has multiple subcategories, or category has no groups */}
       {activeCategory && (!hasGroups || (activeGroup && activeGroup.subcategories.length > 1)) && visibleSubcategories.length > 0 && (
-        <div className="flex overflow-x-auto gap-2 mb-4 pb-1 [&>*]:shrink-0 justify-start sm:justify-center">
+        <div className="flex overflow-x-auto gap-2 mb-4 [&>*]:shrink-0 justify-start sm:justify-center [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
           <Link
             href={
               activeGroup

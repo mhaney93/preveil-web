@@ -89,7 +89,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
     {
       slug: "all-shirts",
       label: "Shirts",
-      subcategories: ["t-shirts", "all-over-shirts", "3-4-sleeve-shirts", "long-sleeve", "hoodies"],
+      subcategories: ["t-shirts", "all-over-shirts", "long-sleeve", "hoodies"],
     },
     {
       slug: "hats",

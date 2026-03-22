@@ -16,13 +16,12 @@ const POINTS_PER_DOLLAR = 10;
 const HOLD_DAYS = 14;
 
 export async function POST(req: NextRequest) {
-  // Verify request is from our Printful store
-  const storeId = req.headers.get("x-printful-store-id");
-  if (storeId !== process.env.PRINTFUL_STORE_ID) {
+  const body = await req.json();
+
+  // Verify request is from our Printful store using the secret token set during webhook registration
+  if (body.token !== process.env.PRINTFUL_WEBHOOK_TOKEN) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-
-  const body = await req.json();
 
   if (body.type === "product_updated") {
     const syncProductId = body.data?.sync_product?.id;

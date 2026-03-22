@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 
 export default function AuthForm() {
   const router = useRouter();
-  const [mode, setMode] = useState<"login" | "signup">("login");
+  const [mode, setMode] = useState<"login" | "signup" | "reset">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -28,7 +28,7 @@ export default function AuthForm() {
       } else {
         router.refresh();
       }
-    } else {
+    } else if (mode === "signup") {
       const { error } = await supabase.auth.signUp({
         email,
         password,
@@ -38,6 +38,15 @@ export default function AuthForm() {
         setError(error.message);
       } else {
         setMessage("Check your email to confirm your account.");
+      }
+    } else {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: "https://preveil.shop/auth/callback?next=/account/update-password",
+      });
+      if (error) {
+        setError(error.message);
+      } else {
+        setMessage("Check your email for a password reset link.");
       }
     }
 
@@ -80,18 +89,20 @@ export default function AuthForm() {
           onChange={(e) => setEmail(e.target.value)}
           className={inputClass}
         />
-        <input
-          key={mode}
-          required
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Password"
-          autoComplete={mode === "signup" ? "new-password" : "current-password"}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className={inputClass}
-        />
+        {mode !== "reset" && (
+          <input
+            key={mode}
+            required
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            autoComplete={mode === "signup" ? "new-password" : "current-password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className={inputClass}
+          />
+        )}
         {error && <p className="text-red-400 text-sm">{error}</p>}
         {message && <p className="text-[var(--accent-gold)] text-sm">{message}</p>}
         <button
@@ -99,8 +110,26 @@ export default function AuthForm() {
           disabled={loading}
           className="mt-2 px-10 py-3 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-sm tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors disabled:opacity-50"
         >
-          {loading ? "..." : mode === "login" ? "Sign In" : "Create Account"}
+          {loading ? "..." : mode === "login" ? "Sign In" : mode === "signup" ? "Create Account" : "Send Reset Link"}
         </button>
+        {mode === "login" && (
+          <button
+            type="button"
+            onClick={() => { setMode("reset"); setError(null); setMessage(null); }}
+            className="text-xs text-[var(--muted)] tracking-widest uppercase hover:text-[var(--foreground)] transition-colors text-left"
+          >
+            Forgot password?
+          </button>
+        )}
+        {mode === "reset" && (
+          <button
+            type="button"
+            onClick={() => { setMode("login"); setError(null); setMessage(null); }}
+            className="text-xs text-[var(--muted)] tracking-widest uppercase hover:text-[var(--foreground)] transition-colors text-left"
+          >
+            Back to sign in
+          </button>
+        )}
       </form>
     </div>
   );

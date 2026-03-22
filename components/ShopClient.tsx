@@ -13,18 +13,24 @@ const CATEGORIES = [
 ];
 
 // Groups are the intermediate level between category and subcategory.
-// Categories without groups (kids-clothing, hats) show subcategories directly.
+// Single-subcategory groups (e.g. "Jackets & Vests") act as direct links — no subcategory row shown.
+// Hats has no groups and shows subcategories directly.
 const GROUPS: Record<string, { slug: string; label: string; subcategories: string[] }[]> = {
   "mens-clothing": [
     {
-      slug: "shirts",
-      label: "Shirts",
+      slug: "all-shirts",
+      label: "All Shirts",
       subcategories: ["t-shirts", "all-over-shirts", "polo-shirts", "tank-tops", "3-4-sleeve-shirts", "long-sleeve", "embroidered-shirts"],
     },
     {
-      slug: "outerwear",
-      label: "Outerwear",
-      subcategories: ["jackets-vests", "hoodies", "sweatshirts", "knitwear"],
+      slug: "jackets-vests",
+      label: "Jackets & Vests",
+      subcategories: ["jackets-vests"],
+    },
+    {
+      slug: "all-hoodies-sweatshirts",
+      label: "All Hoodies & Sweatshirts",
+      subcategories: ["hoodies", "sweatshirts", "knitwear"],
     },
     {
       slug: "bottoms",
@@ -34,46 +40,118 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
   ],
   "womens-clothing": [
     {
-      slug: "tops",
-      label: "Tops",
-      subcategories: ["t-shirts", "all-over-shirts", "polo-shirts", "tank-tops", "crop-tops", "3-4-sleeve-shirts", "long-sleeve", "embroidered-shirts"],
+      slug: "all-shirts",
+      label: "All Shirts",
+      subcategories: ["t-shirts", "polo-shirts", "all-over-shirts", "tank-tops", "crop-tops", "embroidered-shirts", "3-4-sleeve-shirts", "long-sleeve"],
     },
     {
-      slug: "dresses-skirts",
-      label: "Dresses & Skirts",
-      subcategories: ["dresses", "skirts"],
+      slug: "dresses",
+      label: "Dresses",
+      subcategories: ["dresses"],
     },
     {
-      slug: "outerwear",
-      label: "Outerwear",
-      subcategories: ["jackets-vests", "hoodies", "sweatshirts", "knitwear"],
+      slug: "knitwear",
+      label: "Knitwear",
+      subcategories: ["knitwear"],
+    },
+    {
+      slug: "jackets-vests",
+      label: "Jackets & Vests",
+      subcategories: ["jackets-vests"],
+    },
+    {
+      slug: "all-hoodies-sweatshirts",
+      label: "All Hoodies & Sweatshirts",
+      subcategories: ["hoodies", "sweatshirts"],
     },
     {
       slug: "bottoms",
       label: "Bottoms",
-      subcategories: ["joggers", "leggings", "shorts", "pants"],
+      subcategories: ["joggers", "leggings", "skirts", "shorts", "pants"],
     },
     {
-      slug: "activewear",
-      label: "Activewear & More",
-      subcategories: ["sports-bras", "swimwear", "sleepwear"],
+      slug: "sports-bras",
+      label: "Sports Bras",
+      subcategories: ["sports-bras"],
+    },
+    {
+      slug: "swimwear",
+      label: "Swimwear",
+      subcategories: ["swimwear"],
+    },
+    {
+      slug: "sleepwear",
+      label: "Sleepwear",
+      subcategories: ["sleepwear"],
+    },
+  ],
+  "kids-clothing": [
+    {
+      slug: "all-shirts",
+      label: "All Shirts",
+      subcategories: ["t-shirts", "all-over-shirts", "3-4-sleeve-shirts", "long-sleeve", "hoodies"],
+    },
+    {
+      slug: "hats",
+      label: "Hats",
+      subcategories: ["hats"],
+    },
+    {
+      slug: "leggings",
+      label: "Leggings",
+      subcategories: ["leggings"],
+    },
+    {
+      slug: "baby-bodysuits",
+      label: "Baby Bodysuits",
+      subcategories: ["baby-bodysuits"],
+    },
+    {
+      slug: "swimwear",
+      label: "Swimwear",
+      subcategories: ["swimwear"],
     },
   ],
   "accessories": [
+    {
+      slug: "patches",
+      label: "Patches",
+      subcategories: ["patches"],
+    },
+    {
+      slug: "pins",
+      label: "Pins",
+      subcategories: ["pins"],
+    },
     {
       slug: "bags",
       label: "Bags",
       subcategories: ["tote-bags", "duffle-bags", "drawstring-bags", "fanny-packs", "backpacks", "handbags"],
     },
     {
-      slug: "wearables",
-      label: "Wearables",
-      subcategories: ["patches", "pins", "hair-accessories", "sports-accessories", "flip-flops", "shoes", "socks", "face-masks"],
+      slug: "hair-accessories",
+      label: "Hair Accessories",
+      subcategories: ["hair-accessories"],
     },
     {
-      slug: "tech",
+      slug: "sports-accessories",
+      label: "Sports Accessories",
+      subcategories: ["sports-accessories"],
+    },
+    {
+      slug: "footwear",
+      label: "Footwear",
+      subcategories: ["flip-flops", "shoes", "socks"],
+    },
+    {
+      slug: "tech-accessories",
       label: "Tech Accessories",
       subcategories: ["phone-cases", "earphone-cases", "laptop-cases", "mouse-pads"],
+    },
+    {
+      slug: "face-masks",
+      label: "Face Masks",
+      subcategories: ["face-masks"],
     },
   ],
   "home-living": [
@@ -83,24 +161,44 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
       subcategories: ["posters", "framed-posters", "canvas-prints", "metal-prints"],
     },
     {
-      slug: "drinkware",
-      label: "Drinkware",
-      subcategories: ["mugs", "tumblers", "water-bottles", "glassware", "coasters"],
+      slug: "home-decor",
+      label: "Home Decor",
+      subcategories: ["holiday-decor", "blankets", "candles", "pillows", "magnets", "tableware", "flags-signs"],
     },
     {
-      slug: "home-textiles",
-      label: "Home Textiles",
-      subcategories: ["blankets", "pillows", "towels", "aprons", "tableware"],
+      slug: "drinkware-coasters",
+      label: "Drinkware & Coasters",
+      subcategories: ["water-bottles", "mugs", "tumblers", "coasters", "glassware"],
     },
     {
       slug: "stationery",
       label: "Stationery",
-      subcategories: ["postcards", "notebooks", "stickers", "greeting-cards", "flags-signs", "magnets"],
+      subcategories: ["postcards", "notebooks", "stickers", "greeting-cards"],
     },
     {
-      slug: "lifestyle",
-      label: "Lifestyle",
-      subcategories: ["candles", "holiday-decor", "toys-games", "pet-products", "beauty"],
+      slug: "aprons",
+      label: "Aprons",
+      subcategories: ["aprons"],
+    },
+    {
+      slug: "towels",
+      label: "Towels",
+      subcategories: ["towels"],
+    },
+    {
+      slug: "toys-games",
+      label: "Toys & Games",
+      subcategories: ["toys-games"],
+    },
+    {
+      slug: "pet-products",
+      label: "Pet Products",
+      subcategories: ["pet-products"],
+    },
+    {
+      slug: "beauty",
+      label: "Beauty",
+      subcategories: ["beauty"],
     },
   ],
 };
@@ -151,6 +249,7 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   "kids-clothing": [
     { slug: "t-shirts", label: "T-Shirts" },
     { slug: "all-over-shirts", label: "All-Over Shirts" },
+    { slug: "3-4-sleeve-shirts", label: "3/4 Sleeve Shirts" },
     { slug: "long-sleeve", label: "Long Sleeve Shirts" },
     { slug: "hoodies", label: "Hoodies & Sweatshirts" },
     { slug: "hats", label: "Hats" },
@@ -320,8 +419,8 @@ export default function ShopClient({ products }: { products: Product[] }) {
         </div>
       )}
 
-      {/* Subcategory filters */}
-      {activeCategory && (!hasGroups || activeGroup) && visibleSubcategories.length > 0 && (
+      {/* Subcategory filters — only shown when group has multiple subcategories, or category has no groups */}
+      {activeCategory && (!hasGroups || (activeGroup && activeGroup.subcategories.length > 1)) && visibleSubcategories.length > 0 && (
         <div className="flex flex-wrap justify-center gap-2 mb-4">
           <Link
             href={

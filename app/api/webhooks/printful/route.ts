@@ -24,6 +24,26 @@ export async function POST(req: NextRequest) {
 
   const body = await req.json();
 
+  if (body.type === "product_updated") {
+    const syncProductId = body.data?.sync_product?.id;
+    if (!syncProductId) {
+      return NextResponse.json({ message: "No sync_product id" });
+    }
+
+    const syncVariants: { availability_status?: string }[] = body.data?.sync_variants ?? [];
+    const allUnavailable =
+      syncVariants.length > 0 &&
+      syncVariants.every((v) => v.availability_status !== "active");
+
+    const supabase = createAdminClient();
+    await supabase
+      .from("products")
+      .update({ published: !allUnavailable })
+      .eq("printful_sync_product_id", String(syncProductId));
+
+    return NextResponse.json({ message: allUnavailable ? "Product unpublished" : "Product published" });
+  }
+
   if (body.type !== "package_shipped") {
     return NextResponse.json({ message: "Event ignored" });
   }

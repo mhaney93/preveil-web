@@ -25,17 +25,18 @@ export default async function ShopPage({
   const activeCategory = CATEGORIES.find((c) => c.slug === categorySlug) ?? null;
 
   const supabase = await createServerClient();
-  let query = supabase
-    .from("products")
-    .select("id, name, slug, price_from, images, category")
-    .eq("published", true)
-    .order("created_at", { ascending: false });
-
-  if (activeCategory) {
-    query = query.eq("category", activeCategory.label);
-  }
-
-  const { data: products } = await query;
+  const { data: products } = await (activeCategory
+    ? supabase
+        .from("products")
+        .select("id, name, slug, price_from, images, category")
+        .eq("published", true)
+        .eq("category", activeCategory.label)
+        .order("created_at", { ascending: false })
+    : supabase
+        .from("products")
+        .select("id, name, slug, price_from, images, category")
+        .eq("published", true)
+        .order("created_at", { ascending: false }));
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">

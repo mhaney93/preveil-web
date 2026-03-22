@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { createServerClient } from "@/lib/supabase/server";
 import ShopClient from "@/components/ShopClient";
 
 export const metadata: Metadata = {
@@ -9,20 +8,13 @@ export const metadata: Metadata = {
 };
 
 export default async function ShopPage() {
-  const supabase = await createServerClient();
-  const { data: products } = await supabase
-    .from("products")
-    .select("id, name, slug, price_from, images, category")
-    .eq("published", true)
-    .order("created_at", { ascending: false });
-
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
       <h1 className="font-[family-name:var(--font-heading)] text-4xl font-light tracking-widest uppercase text-center mb-12 text-[var(--foreground)]">
         Shop
       </h1>
       <Suspense>
-        <ShopClient products={products ?? []} />
+        <ShopClient products={[]} />
       </Suspense>
     </div>
   );

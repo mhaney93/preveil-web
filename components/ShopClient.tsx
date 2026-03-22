@@ -19,7 +19,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
   "mens-clothing": [
     {
       slug: "all-shirts",
-      label: "All Shirts",
+      label: "Shirts",
       subcategories: ["t-shirts", "all-over-shirts", "polo-shirts", "tank-tops", "3-4-sleeve-shirts", "long-sleeve", "embroidered-shirts"],
     },
     {
@@ -29,7 +29,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
     },
     {
       slug: "all-hoodies-sweatshirts",
-      label: "All Hoodies & Sweatshirts",
+      label: "Hoodies & Sweatshirts",
       subcategories: ["hoodies", "sweatshirts", "knitwear"],
     },
     {
@@ -41,7 +41,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
   "womens-clothing": [
     {
       slug: "all-shirts",
-      label: "All Shirts",
+      label: "Shirts",
       subcategories: ["t-shirts", "polo-shirts", "all-over-shirts", "tank-tops", "crop-tops", "embroidered-shirts", "3-4-sleeve-shirts", "long-sleeve"],
     },
     {
@@ -61,7 +61,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
     },
     {
       slug: "all-hoodies-sweatshirts",
-      label: "All Hoodies & Sweatshirts",
+      label: "Hoodies & Sweatshirts",
       subcategories: ["hoodies", "sweatshirts"],
     },
     {
@@ -88,7 +88,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
   "kids-clothing": [
     {
       slug: "all-shirts",
-      label: "All Shirts",
+      label: "Shirts",
       subcategories: ["t-shirts", "all-over-shirts", "3-4-sleeve-shirts", "long-sleeve", "hoodies"],
     },
     {
@@ -392,7 +392,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
 
       {/* Group filters (for categories that have groups) */}
       {activeCategory && hasGroups && (
-        <div className="flex flex-wrap justify-center gap-2 mb-4">
+        <div className="flex overflow-x-auto gap-2 mb-4 pb-1 [&>*]:shrink-0 justify-start sm:justify-center">
           <Link
             href={`/shop?category=${activeCategory.slug}`}
             className={`text-xs tracking-widest uppercase px-3 py-1 transition-colors ${
@@ -421,7 +421,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
 
       {/* Subcategory filters — only shown when group has multiple subcategories, or category has no groups */}
       {activeCategory && (!hasGroups || (activeGroup && activeGroup.subcategories.length > 1)) && visibleSubcategories.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-2 mb-4">
+        <div className="flex overflow-x-auto gap-2 mb-4 pb-1 [&>*]:shrink-0 justify-start sm:justify-center">
           <Link
             href={
               activeGroup

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { createServerClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Preveil — Re-enchant your world",
@@ -7,16 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  let user = null;
-  try {
-    const { createServerClient } = await import("@/lib/supabase/server");
-    const supabase = await createServerClient();
-    const { data, error } = await supabase.auth.getUser();
-    if (error) console.error("[HOME] supabase.auth.getUser error:", error.message, error.status);
-    else user = data.user;
-  } catch (e) {
-    console.error("[HOME] Supabase threw:", e);
-  }
+  const supabase = await createServerClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
   return (
     <div className="flex flex-col">

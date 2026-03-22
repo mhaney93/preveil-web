@@ -167,6 +167,41 @@ export function accountDeletedEmail() {
   return wrapper(content);
 }
 
+export function shippingNotificationEmail({
+  carrier,
+  trackingNumber,
+  trackingUrl,
+}: {
+  carrier: string;
+  trackingNumber: string;
+  trackingUrl: string | null;
+}) {
+  const trackingButton = trackingUrl
+    ? goldButton(trackingUrl, "Track Your Order")
+    : `<p style="line-height:1.9;color:#444;margin:0 0 32px;">Tracking number: <strong style="color:#1a1208;">${trackingNumber}</strong> via ${carrier}</p>`;
+
+  const content = `
+    <h2 style="font-size:26px;font-weight:300;letter-spacing:0.1em;margin:0 0 8px;">Your order is on its way.</h2>
+    <p style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#9a8f82;margin:0 0 36px;">Shipped via ${carrier}</p>
+
+    <p style="line-height:1.9;color:#444;margin:0 0 20px;">
+      Tracking number: <strong style="color:#1a1208;">${trackingNumber}</strong>
+    </p>
+
+    ${trackingButton}
+    ${divider}
+
+    <p style="font-size:13px;line-height:1.9;color:#888;text-align:center;margin:0;">
+      Questions? Reach us at <a href="mailto:preveil.llc@gmail.com" style="color:#c8a45a;text-decoration:none;">preveil.llc@gmail.com</a>
+    </p>
+    <p style="font-size:13px;line-height:1.9;color:#888;text-align:center;margin:16px 0 0;">
+      Join the community on <a href="${DISCORD_URL}" style="color:#c8a45a;text-decoration:none;">Discord</a>
+    </p>
+  `;
+
+  return wrapper(content);
+}
+
 export function abandonedCartEmail(items: { name: string; variantName: string; quantity: number; price: number }[]) {
   const itemRows = items.map((item) => `
     <tr>

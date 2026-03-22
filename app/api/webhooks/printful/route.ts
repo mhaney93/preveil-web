@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { Resend } from "resend";
+import { shippingNotificationEmail } from "@/lib/email-templates";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 function createAdminClient() {
   return createClient(
@@ -33,21 +37,42 @@ export async function POST(req: NextRequest) {
 
   const { data: order } = await supabase
     .from("orders")
-    .select("id, user_id, total, points_redeemed")
+    .select("id, user_id, total, points_redeemed, shipping_address")
     .eq("id", externalId)
     .single();
 
-  if (!order?.user_id) {
-    return NextResponse.json({ message: "Order not found or no user" });
+  if (!order) {
+    return NextResponse.json({ message: "Order not found" });
   }
 
-  // Award points on the amount actually charged (after redemption)
+  const shipment = body.data?.shipment;
+  const customerEmail = order.shipping_address?.email;
+
+  // Send shipping notification email
+  if (customerEmail && shipment?.tracking_number) {
+    await resend.emails.send({
+      from: "Preveil <noreply@preveil.shop>",
+      to: customerEmail,
+      subject: "Your Preveil order has shipped",
+      html: shippingNotificationEmail({
+        carrier: shipment.carrier ?? "your carrier",
+        trackingNumber: shipment.tracking_number,
+        trackingUrl: shipment.tracking_url ?? null,
+      }),
+    });
+  }
+
+  // Award points (only for logged-in users)
+  if (!order.user_id) {
+    return NextResponse.json({ message: "Shipping email sent, no user for points" });
+  }
+
   const pointsDiscountValue = order.points_redeemed / 100;
   const chargedTotal = Math.max(order.total - pointsDiscountValue, 0);
   const pointsEarned = Math.floor(chargedTotal * POINTS_PER_DOLLAR);
 
   if (pointsEarned <= 0) {
-    return NextResponse.json({ message: "No points to award" });
+    return NextResponse.json({ message: "Shipping email sent, no points to award" });
   }
 
   const availableAt = new Date();
@@ -61,5 +86,5 @@ export async function POST(req: NextRequest) {
     available_at: availableAt.toISOString(),
   });
 
-  return NextResponse.json({ message: "Points awarded", points: pointsEarned });
+  return NextResponse.json({ message: "Shipping email sent, points awarded", points: pointsEarned });
 }

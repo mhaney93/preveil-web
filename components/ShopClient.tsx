@@ -15,6 +15,7 @@ const CATEGORIES = [
 const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   "mens-clothing": [
     { slug: "t-shirts", label: "T-Shirts" },
+    { slug: "all-over-shirts", label: "All-Over Shirts" },
     { slug: "long-sleeve", label: "Long Sleeve" },
     { slug: "hoodies", label: "Hoodies" },
     { slug: "sweatshirts", label: "Sweatshirts" },
@@ -24,6 +25,7 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   ],
   "womens-clothing": [
     { slug: "t-shirts", label: "T-Shirts" },
+    { slug: "all-over-shirts", label: "All-Over Shirts" },
     { slug: "crop-tops", label: "Crop Tops" },
     { slug: "long-sleeve", label: "Long Sleeve" },
     { slug: "hoodies", label: "Hoodies" },

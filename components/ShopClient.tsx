@@ -12,6 +12,99 @@ const CATEGORIES = [
   { slug: "home-living", label: "Home & Living" },
 ];
 
+// Groups are the intermediate level between category and subcategory.
+// Categories without groups (kids-clothing, hats) show subcategories directly.
+const GROUPS: Record<string, { slug: string; label: string; subcategories: string[] }[]> = {
+  "mens-clothing": [
+    {
+      slug: "shirts",
+      label: "Shirts",
+      subcategories: ["t-shirts", "all-over-shirts", "polo-shirts", "tank-tops", "3-4-sleeve-shirts", "long-sleeve", "embroidered-shirts"],
+    },
+    {
+      slug: "outerwear",
+      label: "Outerwear",
+      subcategories: ["jackets-vests", "hoodies", "sweatshirts", "knitwear"],
+    },
+    {
+      slug: "bottoms",
+      label: "Bottoms",
+      subcategories: ["joggers", "underwear", "leggings", "shorts", "pants", "swimwear"],
+    },
+  ],
+  "womens-clothing": [
+    {
+      slug: "tops",
+      label: "Tops",
+      subcategories: ["t-shirts", "all-over-shirts", "polo-shirts", "tank-tops", "crop-tops", "3-4-sleeve-shirts", "long-sleeve", "embroidered-shirts"],
+    },
+    {
+      slug: "dresses-skirts",
+      label: "Dresses & Skirts",
+      subcategories: ["dresses", "skirts"],
+    },
+    {
+      slug: "outerwear",
+      label: "Outerwear",
+      subcategories: ["jackets-vests", "hoodies", "sweatshirts", "knitwear"],
+    },
+    {
+      slug: "bottoms",
+      label: "Bottoms",
+      subcategories: ["joggers", "leggings", "shorts", "pants"],
+    },
+    {
+      slug: "activewear",
+      label: "Activewear & More",
+      subcategories: ["sports-bras", "swimwear", "sleepwear"],
+    },
+  ],
+  "accessories": [
+    {
+      slug: "bags",
+      label: "Bags",
+      subcategories: ["tote-bags", "duffle-bags", "drawstring-bags", "fanny-packs", "backpacks", "handbags"],
+    },
+    {
+      slug: "wearables",
+      label: "Wearables",
+      subcategories: ["patches", "pins", "hair-accessories", "sports-accessories", "flip-flops", "shoes", "socks", "face-masks"],
+    },
+    {
+      slug: "tech",
+      label: "Tech Accessories",
+      subcategories: ["phone-cases", "earphone-cases", "laptop-cases", "mouse-pads"],
+    },
+  ],
+  "home-living": [
+    {
+      slug: "wall-art",
+      label: "Wall Art",
+      subcategories: ["posters", "framed-posters", "canvas-prints", "metal-prints"],
+    },
+    {
+      slug: "drinkware",
+      label: "Drinkware",
+      subcategories: ["mugs", "tumblers", "water-bottles", "glassware", "coasters"],
+    },
+    {
+      slug: "home-textiles",
+      label: "Home Textiles",
+      subcategories: ["blankets", "pillows", "towels", "aprons", "tableware"],
+    },
+    {
+      slug: "stationery",
+      label: "Stationery",
+      subcategories: ["postcards", "notebooks", "stickers", "greeting-cards", "flags-signs", "magnets"],
+    },
+    {
+      slug: "lifestyle",
+      label: "Lifestyle",
+      subcategories: ["candles", "holiday-decor", "toys-games", "pet-products", "beauty"],
+    },
+  ],
+};
+
 const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   "mens-clothing": [
     { slug: "t-shirts", label: "T-Shirts" },
@@ -137,15 +230,35 @@ type Product = {
 export default function ShopClient({ products }: { products: Product[] }) {
   const searchParams = useSearchParams();
   const categorySlug = searchParams.get("category");
+  const groupSlug = searchParams.get("group");
   const subcategorySlug = searchParams.get("subcategory");
 
   const activeCategory = CATEGORIES.find((c) => c.slug === categorySlug) ?? null;
+  const groupList = activeCategory ? (GROUPS[activeCategory.slug] ?? []) : [];
+  const hasGroups = groupList.length > 0;
+  const activeGroup = groupList.find((g) => g.slug === groupSlug) ?? null;
+
   const subcategoryList = activeCategory ? (SUBCATEGORIES[activeCategory.slug] ?? []) : [];
-  const activeSubcategory = subcategoryList.find((s) => s.slug === subcategorySlug) ?? null;
+  // When a group is active, only show that group's subcategories in the sub-nav
+  const visibleSubcategories = activeGroup
+    ? subcategoryList.filter((s) => activeGroup.subcategories.includes(s.slug))
+    : subcategoryList;
+  const activeSubcategory = visibleSubcategories.find((s) => s.slug === subcategorySlug) ?? null;
+
+  // Labels of subcategories in the active group (for filtering products)
+  const activeGroupSubcategoryLabels = activeGroup
+    ? activeGroup.subcategories
+        .map((slug) => subcategoryList.find((s) => s.slug === slug)?.label)
+        .filter((label): label is string => !!label)
+    : null;
 
   const filtered = products.filter((p) => {
     if (activeCategory && p.category !== activeCategory.label) return false;
-    if (activeSubcategory && p.subcategory !== activeSubcategory.label) return false;
+    if (activeSubcategory) {
+      if (p.subcategory !== activeSubcategory.label) return false;
+    } else if (activeGroupSubcategoryLabels) {
+      if (!p.subcategory || !activeGroupSubcategoryLabels.includes(p.subcategory)) return false;
+    }
     return true;
   });
 
@@ -178,11 +291,44 @@ export default function ShopClient({ products }: { products: Product[] }) {
         ))}
       </div>
 
-      {/* Subcategory filters */}
-      {activeCategory && subcategoryList.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+      {/* Group filters (for categories that have groups) */}
+      {activeCategory && hasGroups && (
+        <div className="flex flex-wrap justify-center gap-2 mb-4">
           <Link
             href={`/shop?category=${activeCategory.slug}`}
+            className={`text-xs tracking-widest uppercase px-3 py-1 transition-colors ${
+              !activeGroup
+                ? "text-[var(--foreground)]"
+                : "text-[var(--muted)] hover:text-[var(--foreground)]"
+            }`}
+          >
+            All
+          </Link>
+          {groupList.map((grp) => (
+            <Link
+              key={grp.slug}
+              href={`/shop?category=${activeCategory.slug}&group=${grp.slug}`}
+              className={`text-xs tracking-widest uppercase px-3 py-1 transition-colors ${
+                activeGroup?.slug === grp.slug
+                  ? "text-[var(--foreground)]"
+                  : "text-[var(--muted)] hover:text-[var(--foreground)]"
+              }`}
+            >
+              {grp.label}
+            </Link>
+          ))}
+        </div>
+      )}
+
+      {/* Subcategory filters */}
+      {activeCategory && (!hasGroups || activeGroup) && visibleSubcategories.length > 0 && (
+        <div className="flex flex-wrap justify-center gap-2 mb-4">
+          <Link
+            href={
+              activeGroup
+                ? `/shop?category=${activeCategory.slug}&group=${activeGroup.slug}`
+                : `/shop?category=${activeCategory.slug}`
+            }
             className={`text-xs tracking-widest uppercase px-3 py-1 transition-colors ${
               !activeSubcategory
                 ? "text-[var(--foreground)]"
@@ -191,10 +337,14 @@ export default function ShopClient({ products }: { products: Product[] }) {
           >
             All
           </Link>
-          {subcategoryList.map((sub) => (
+          {visibleSubcategories.map((sub) => (
             <Link
               key={sub.slug}
-              href={`/shop?category=${activeCategory.slug}&subcategory=${sub.slug}`}
+              href={
+                activeGroup
+                  ? `/shop?category=${activeCategory.slug}&group=${activeGroup.slug}&subcategory=${sub.slug}`
+                  : `/shop?category=${activeCategory.slug}&subcategory=${sub.slug}`
+              }
               className={`text-xs tracking-widest uppercase px-3 py-1 transition-colors ${
                 activeSubcategory?.slug === sub.slug
                   ? "text-[var(--foreground)]"
@@ -207,7 +357,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
         </div>
       )}
 
-      {!activeCategory && <div className="mb-10" />}
+      <div className="mb-8" />
 
       {filtered.length === 0 ? (
         <p className="text-center text-[var(--muted)] tracking-widest uppercase text-sm">

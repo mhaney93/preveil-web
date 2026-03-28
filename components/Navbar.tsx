@@ -36,7 +36,7 @@ export default function Navbar() {
           <Link href="/about" className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             About
           </Link>
-          <a href="https://matthew-haney.com" target="_blank" rel="noopener noreferrer" className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <a href="https://preveil.online" target="_blank" rel="noopener noreferrer" className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Knowledge Map
           </a>
           <Link href="/account" className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
@@ -85,7 +85,7 @@ export default function Navbar() {
           <Link href="/about" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             About
           </Link>
-          <a href="https://matthew-haney.com" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <a href="https://preveil.online" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Knowledge Map
           </a>
           <Link href="/account" onClick={() => setMenuOpen(false)} className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">

@@ -47,7 +47,9 @@ export default function AboutPage() {
           realization by proxy — the map rehearsed so thoroughly it begins to
           resemble the territory. The language model is, in this sense, the
           meaning crisis made legible: a system that has all the patterns and
-          none of the presence.
+          none of the presence. This is also why LLMs are poor scientific
+          models of general intelligence — studying them reveals the sediment
+          of human cognition, not the underlying machinery that laid it down.
         </p>
         <p>
           <em>Re-enchantment</em> is not nostalgia. It is not a retreat from

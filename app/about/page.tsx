@@ -37,6 +37,19 @@ export default function AboutPage() {
           measurement for the thing measured.
         </p>
         <p>
+          The large language model makes this vivid. Trained on the accumulated
+          record of human expression, it inherits — at second hand — the
+          relevance structures sedimented into language over millennia. It
+          anticipates linguistic patterns with uncanny fidelity. But it does
+          this without the embodied stakes that, in creatures like us,
+          originally made certain things matter. No hunger. No predator. No
+          mortality pressing against every judgment. This is relevance
+          realization by proxy — the map rehearsed so thoroughly it begins to
+          resemble the territory. The language model is, in this sense, the
+          meaning crisis made legible: a system that has all the patterns and
+          none of the presence.
+        </p>
+        <p>
           <em>Re-enchantment</em> is not nostalgia. It is not a retreat from
           reason or a return to superstition. It is the recognition that pattern,
           meaning, and presence are not projected onto a neutral world — they are

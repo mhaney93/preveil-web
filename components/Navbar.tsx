@@ -22,7 +22,7 @@ export default function Navbar() {
     <header className="border-b border-[var(--border)] bg-[var(--background)]">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" onClick={() => setMenuOpen(false)}>
-          <Image src="/logo.svg" alt="Preveil" width={120} height={40} priority style={{ filter: "brightness(0) invert(1)" }} />
+          <Image src="/logo.svg" alt="Preveil" width={120} height={40} priority style={{ filter: "none" }} />
         </Link>
 
         {/* Desktop nav */}

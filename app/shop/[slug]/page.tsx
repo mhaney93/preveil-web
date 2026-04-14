@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase/server";
 import AddToCartButton from "@/components/AddToCartButton";
+import ProductImages from "@/components/ProductImages";
 
 export async function generateMetadata(props: PageProps<"/shop/[slug]">): Promise<Metadata> {
   const { slug } = await props.params;
@@ -38,20 +39,8 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-        {/* Image */}
-        <div className="aspect-square bg-[var(--card)] border border-[var(--border)] flex items-center justify-center">
-          {product.images?.[0] ? (
-            <img
-              src={product.images[0]}
-              alt={product.name}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <span className="text-[var(--muted)] text-sm tracking-widest uppercase">
-              No image
-            </span>
-          )}
-        </div>
+        {/* Image gallery */}
+        <ProductImages images={product.images ?? []} name={product.name} />
 
         {/* Details */}
         <div className="flex flex-col justify-center">

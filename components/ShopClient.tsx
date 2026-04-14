@@ -316,6 +316,13 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   ],
 };
 
+// Slugs shown in the default "All" view (no category selected)
+const FEATURED_SLUGS = [
+  "preveil-crew-neck-sweatshirt",
+  "preveil-mug",
+  "preveil-art-print",
+];
+
 type Product = {
   id: string;
   name: string;
@@ -352,7 +359,8 @@ export default function ShopClient({ products }: { products: Product[] }) {
     : null;
 
   const filtered = products.filter((p) => {
-    if (activeCategory && p.category !== activeCategory.label) return false;
+    if (!activeCategory) return FEATURED_SLUGS.includes(p.slug);
+    if (p.category !== activeCategory.label) return false;
     if (activeSubcategory) {
       if (p.subcategory !== activeSubcategory.label) return false;
     } else if (activeGroupSubcategoryLabels) {

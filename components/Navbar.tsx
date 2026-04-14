@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
@@ -20,12 +21,8 @@ export default function Navbar() {
   return (
     <header className="border-b border-[var(--border)] bg-[var(--background)]">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link
-          href="/"
-          onClick={() => setMenuOpen(false)}
-          className="font-[family-name:var(--font-heading)] text-2xl font-light tracking-[0.2em] text-[var(--foreground)] uppercase"
-        >
-          Preveil
+        <Link href="/" onClick={() => setMenuOpen(false)}>
+          <Image src="/logo.svg" alt="Preveil" width={120} height={40} priority />
         </Link>
 
         {/* Desktop nav */}

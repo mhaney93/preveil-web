@@ -38,6 +38,9 @@ export default function RootLayout({
       lang="en"
       className={`${heading.variable} ${body.variable} h-full antialiased`}
     >
+      <head>
+        <meta name="darkreader-lock" />
+      </head>
       <body className="min-h-full flex flex-col">
         <Navbar />
         <main className="flex-1">{children}</main>

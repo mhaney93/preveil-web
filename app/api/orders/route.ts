@@ -115,7 +115,7 @@ export async function POST(req: NextRequest) {
         "X-PF-Store-Id": process.env.PRINTFUL_STORE_ID!,
       },
       body: JSON.stringify({
-        external_id: order.id,
+        external_id: order.id.replace(/-/g, ""),
         recipient: {
           name: shipping.name,
           email: shipping.email,

@@ -47,10 +47,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "Event ignored" });
   }
 
-  const externalId = body.data?.order?.external_id;
-  if (!externalId) {
+  const rawExternalId = body.data?.order?.external_id;
+  if (!rawExternalId) {
     return NextResponse.json({ message: "No external_id" });
   }
+  // Restore UUID hyphens (we strip them before sending to Printful)
+  const externalId = rawExternalId.replace(
+    /^([0-9a-f]{8})([0-9a-f]{4})([0-9a-f]{4})([0-9a-f]{4})([0-9a-f]{12})$/i,
+    "$1-$2-$3-$4-$5"
+  );
 
   const supabase = createAdminClient();
 

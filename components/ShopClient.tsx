@@ -316,15 +316,11 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   ],
 };
 
-// Priority order for the "All" view — one product per category, in this order.
-// The first published product found in each category is shown, up to 3 total.
-const ALL_VIEW_CATEGORY_PRIORITY = [
-  "Men's Clothing",
-  "Home & Living",
-  "Accessories",
-  "Women's Clothing",
-  "Kids' & Youth Clothing",
-  "Hats",
+// Slugs shown in the default "All" view. Update when adding products in new categories.
+const FEATURED_SLUGS = [
+  "preveil-crew-neck-sweatshirt",
+  "preveil-art-print",
+  "preveil-mug",
 ];
 
 type Product = {
@@ -362,27 +358,16 @@ export default function ShopClient({ products }: { products: Product[] }) {
         .filter((label): label is string => !!label)
     : null;
 
-  const allViewProducts = (() => {
-    const result: typeof products = [];
-    for (const category of ALL_VIEW_CATEGORY_PRIORITY) {
-      if (result.length >= 3) break;
-      const match = products.find((p) => p.category === category);
-      if (match) result.push(match);
+  const filtered = products.filter((p) => {
+    if (!activeCategory) return FEATURED_SLUGS.includes(p.slug);
+    if (p.category !== activeCategory.label) return false;
+    if (activeSubcategory) {
+      if (p.subcategory !== activeSubcategory.label) return false;
+    } else if (activeGroupSubcategoryLabels) {
+      if (!p.subcategory || !activeGroupSubcategoryLabels.includes(p.subcategory)) return false;
     }
-    return result;
-  })();
-
-  const filtered = activeCategory
-    ? products.filter((p) => {
-        if (p.category !== activeCategory.label) return false;
-        if (activeSubcategory) {
-          if (p.subcategory !== activeSubcategory.label) return false;
-        } else if (activeGroupSubcategoryLabels) {
-          if (!p.subcategory || !activeGroupSubcategoryLabels.includes(p.subcategory)) return false;
-        }
-        return true;
-      })
-    : allViewProducts;
+    return true;
+  });
 
   return (
     <>

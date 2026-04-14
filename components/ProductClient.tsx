@@ -89,7 +89,13 @@ export default function ProductClient({
             product={product}
             variants={variants}
             onColorChange={handleColorChange}
-            onVariantChange={(v) => setSelectedVariantPrice(v ? v.price : null)}
+            onVariantChange={(v) => {
+            setSelectedVariantPrice(v ? v.price : null);
+            if (v && !hasColorSize) {
+              const idx = availableVariants.findIndex((av) => av.id === v.id);
+              if (idx >= 0 && idx < images.length) setSelectedImageIndex(idx);
+            }
+          }}
           />
         )}
       </div>

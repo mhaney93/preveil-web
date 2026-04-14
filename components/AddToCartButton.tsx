@@ -49,7 +49,7 @@ export default function AddToCartButton({
     if (!hasColorSize) return [];
     return availableVariants
       .filter((v) => v.name.startsWith(selectedColor + " / "))
-      .map((v) => v.name.split(" / ")[1]);
+      .map((v) => ({ size: v.name.split(" / ")[1], price: v.price }));
   }, [availableVariants, selectedColor, hasColorSize]);
 
   function handleColorChange(color: string) {
@@ -65,6 +65,7 @@ export default function AddToCartButton({
       (v) => v.name === `${selectedColor} / ${size}`
     );
     setSelectedVariant(match ?? null);
+    onVariantChange?.(match ?? null);
   }
 
   function addToCart() {
@@ -136,9 +137,9 @@ export default function AddToCartButton({
               className="bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] px-4 py-2 text-sm tracking-wide focus:outline-none focus:border-[var(--accent-gold)]"
             >
               <option value="">Select a size</option>
-              {sizesForColor.map((size) => (
+              {sizesForColor.map(({ size, price }) => (
                 <option key={size} value={size}>
-                  {size}
+                  {size} — ${price}
                 </option>
               ))}
             </select>

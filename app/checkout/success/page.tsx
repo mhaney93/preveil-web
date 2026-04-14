@@ -23,6 +23,7 @@ function SuccessContent() {
       .then((res) => {
         if (res.ok) {
           localStorage.removeItem("cart");
+          window.dispatchEvent(new Event("cart-updated"));
           setStatus("done");
         } else {
           setStatus("error");

@@ -134,6 +134,17 @@ export async function POST(req: NextRequest) {
       const printfulData = await printfulRes.json();
       const printfulOrderId = printfulData?.result?.id ? String(printfulData.result.id) : null;
 
+      // Auto-confirm so order goes straight into production
+      if (printfulOrderId) {
+        await fetch(`https://api.printful.com/orders/${printfulOrderId}/confirm`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${process.env.PRINTFUL_API_TOKEN}`,
+            "X-PF-Store-Id": process.env.PRINTFUL_STORE_ID!,
+          },
+        });
+      }
+
       await supabase
         .from("orders")
         .update({

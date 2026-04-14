@@ -50,6 +50,14 @@ export default function ProductClient({
   );
   const [selectedVariantPrice, setSelectedVariantPrice] = useState<number | null>(null);
 
+  const priceLabel = useMemo(() => {
+    if (selectedVariantPrice !== null) return `$${selectedVariantPrice.toFixed(2)}`;
+    const prices = availableVariants.map((v) => v.price);
+    const min = Math.min(...prices);
+    const max = Math.max(...prices);
+    return min === max ? `$${min.toFixed(2)}` : `$${min.toFixed(2)} – $${max.toFixed(2)}`;
+  }, [selectedVariantPrice, availableVariants]);
+
   function handleColorChange(color: string) {
     setSelectedImageIndex(findImageForColor(images, color));
   }
@@ -75,9 +83,7 @@ export default function ProductClient({
           {product.name}
         </h1>
         <p className="text-[var(--accent-gold)] tracking-wide mb-6">
-          {selectedVariantPrice !== null
-            ? `$${selectedVariantPrice.toFixed(2)}`
-            : `From $${product.price_from.toFixed(2)}`}
+          {priceLabel}
         </p>
         {product.description && (
           <p className="text-[var(--muted)] leading-relaxed mb-8">

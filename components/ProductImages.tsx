@@ -2,8 +2,26 @@
 
 import { useState } from "react";
 
-export default function ProductImages({ images, name }: { images: string[]; name: string }) {
-  const [selected, setSelected] = useState(0);
+interface Props {
+  images: string[];
+  name: string;
+  selectedIndex?: number;
+  onSelect?: (index: number) => void;
+}
+
+export default function ProductImages({ images, name, selectedIndex, onSelect }: Props) {
+  const [internalIndex, setInternalIndex] = useState(0);
+
+  const controlled = selectedIndex !== undefined;
+  const active = controlled ? selectedIndex : internalIndex;
+
+  function handleSelect(i: number) {
+    if (controlled) {
+      onSelect?.(i);
+    } else {
+      setInternalIndex(i);
+    }
+  }
 
   if (!images || images.length === 0) {
     return (
@@ -18,7 +36,7 @@ export default function ProductImages({ images, name }: { images: string[]; name
       {/* Main image */}
       <div className="aspect-square bg-[var(--card)] border border-[var(--border)] overflow-hidden">
         <img
-          src={images[selected]}
+          src={images[active]}
           alt={name}
           className="w-full h-full object-cover"
         />
@@ -30,9 +48,9 @@ export default function ProductImages({ images, name }: { images: string[]; name
           {images.map((img, i) => (
             <button
               key={i}
-              onClick={() => setSelected(i)}
+              onClick={() => handleSelect(i)}
               className={`w-16 h-16 border overflow-hidden flex-shrink-0 transition-colors ${
-                selected === i
+                active === i
                   ? "border-[var(--accent-gold)]"
                   : "border-[var(--border)] hover:border-[var(--foreground)]"
               }`}

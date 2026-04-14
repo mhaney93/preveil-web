@@ -19,9 +19,11 @@ interface Product {
 export default function AddToCartButton({
   product,
   variants,
+  onColorChange,
 }: {
   product: Product;
   variants: Variant[];
+  onColorChange?: (color: string) => void;
 }) {
   const availableVariants = variants.filter((v) => v.available);
 
@@ -52,6 +54,7 @@ export default function AddToCartButton({
     setSelectedColor(color);
     setSelectedSize("");
     setSelectedVariant(null);
+    onColorChange?.(color);
   }
 
   function handleSizeChange(size: string) {

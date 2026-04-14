@@ -11,6 +11,7 @@ interface Variant {
   available: boolean;
 }
 
+
 interface Product {
   id: string;
   name: string;
@@ -47,6 +48,7 @@ export default function ProductClient({
   const [selectedImageIndex, setSelectedImageIndex] = useState(
     hasColorSize ? findImageForColor(images, initialColor) : 0
   );
+  const [selectedVariantPrice, setSelectedVariantPrice] = useState<number | null>(null);
 
   function handleColorChange(color: string) {
     setSelectedImageIndex(findImageForColor(images, color));
@@ -73,7 +75,9 @@ export default function ProductClient({
           {product.name}
         </h1>
         <p className="text-[var(--accent-gold)] tracking-wide mb-6">
-          From ${product.price_from.toFixed(2)}
+          {selectedVariantPrice !== null
+            ? `$${selectedVariantPrice.toFixed(2)}`
+            : `From $${product.price_from.toFixed(2)}`}
         </p>
         {product.description && (
           <p className="text-[var(--muted)] leading-relaxed mb-8">
@@ -85,6 +89,7 @@ export default function ProductClient({
             product={product}
             variants={variants}
             onColorChange={handleColorChange}
+            onVariantChange={(v) => setSelectedVariantPrice(v ? v.price : null)}
           />
         )}
       </div>

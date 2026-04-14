@@ -20,10 +20,12 @@ export default function AddToCartButton({
   product,
   variants,
   onColorChange,
+  onVariantChange,
 }: {
   product: Product;
   variants: Variant[];
   onColorChange?: (color: string) => void;
+  onVariantChange?: (variant: Variant | null) => void;
 }) {
   const availableVariants = variants.filter((v) => v.available);
 
@@ -147,14 +149,17 @@ export default function AddToCartButton({
           {availableVariants.map((variant) => (
             <button
               key={variant.id}
-              onClick={() => setSelectedVariant(variant)}
+              onClick={() => {
+                setSelectedVariant(variant);
+                onVariantChange?.(variant);
+              }}
               className={`px-4 py-2 text-sm tracking-wide border transition-colors ${
                 selectedVariant?.id === variant.id
                   ? "border-[var(--accent-gold)] text-[var(--accent-gold)]"
                   : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--foreground)]"
               }`}
             >
-              {variant.name}
+              {variant.name} — ${variant.price.toFixed(2)}
             </button>
           ))}
         </div>

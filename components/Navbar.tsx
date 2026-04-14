@@ -15,7 +15,11 @@ export default function Navbar() {
     }
     updateCount();
     window.addEventListener("storage", updateCount);
-    return () => window.removeEventListener("storage", updateCount);
+    window.addEventListener("cart-updated", updateCount);
+    return () => {
+      window.removeEventListener("storage", updateCount);
+      window.removeEventListener("cart-updated", updateCount);
+    };
   }, []);
 
   return (
@@ -39,20 +43,32 @@ export default function Navbar() {
           <Link href="/account" className="text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Account
           </Link>
-          <Link href="/cart" className="relative text-sm tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
-            Cart
+          <Link href="/cart" className="relative text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-4 text-sm text-[var(--accent-gold)]">{cartCount}</span>
+              <span className="absolute -top-2 -right-2 bg-[var(--accent-gold)] text-[var(--background)] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+                {cartCount}
+              </span>
             )}
           </Link>
         </nav>
 
         {/* Mobile: cart count + hamburger */}
         <div className="flex sm:hidden items-center gap-4">
-          <Link href="/cart" className="relative text-sm tracking-widest uppercase text-[var(--muted)]">
-            Cart
+          <Link href="/cart" className="relative text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-4 text-sm text-[var(--accent-gold)]">{cartCount}</span>
+              <span className="absolute -top-2 -right-2 bg-[var(--accent-gold)] text-[var(--background)] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+                {cartCount}
+              </span>
             )}
           </Link>
           <button

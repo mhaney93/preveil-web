@@ -90,6 +90,7 @@ export default function AddToCartButton({
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
+    window.dispatchEvent(new Event("cart-updated"));
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   }

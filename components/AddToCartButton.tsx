@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 interface Variant {
   id: string;
@@ -24,11 +24,43 @@ export default function AddToCartButton({
   variants: Variant[];
 }) {
   const availableVariants = variants.filter((v) => v.available);
+
+  // Parse "Color / Size" names — fall back to flat list if no slash
+  const hasColorSize = availableVariants.some((v) => v.name.includes(" / "));
+
+  const colors = useMemo(() => {
+    if (!hasColorSize) return [];
+    return [...new Set(availableVariants.map((v) => v.name.split(" / ")[0]))];
+  }, [availableVariants, hasColorSize]);
+
+  const [selectedColor, setSelectedColor] = useState(colors[0] ?? "");
+  const [selectedSize, setSelectedSize] = useState("");
   const [selectedVariant, setSelectedVariant] = useState(
-    availableVariants[0] ?? null
+    hasColorSize ? null : (availableVariants[0] ?? null)
   );
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+
+  const sizesForColor = useMemo(() => {
+    if (!hasColorSize) return [];
+    return availableVariants
+      .filter((v) => v.name.startsWith(selectedColor + " / "))
+      .map((v) => v.name.split(" / ")[1]);
+  }, [availableVariants, selectedColor, hasColorSize]);
+
+  function handleColorChange(color: string) {
+    setSelectedColor(color);
+    setSelectedSize("");
+    setSelectedVariant(null);
+  }
+
+  function handleSizeChange(size: string) {
+    setSelectedSize(size);
+    const match = availableVariants.find(
+      (v) => v.name === `${selectedColor} / ${size}`
+    );
+    setSelectedVariant(match ?? null);
+  }
 
   function addToCart() {
     if (!selectedVariant) return;
@@ -67,22 +99,63 @@ export default function AddToCartButton({
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Variant selector */}
-      <div className="flex flex-wrap gap-2">
-        {availableVariants.map((variant) => (
-          <button
-            key={variant.id}
-            onClick={() => setSelectedVariant(variant)}
-            className={`px-4 py-2 text-sm tracking-wide border transition-colors ${
-              selectedVariant?.id === variant.id
-                ? "border-[var(--accent-gold)] text-[var(--accent-gold)]"
-                : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--foreground)]"
-            }`}
-          >
-            {variant.name}
-          </button>
-        ))}
-      </div>
+      {hasColorSize ? (
+        <>
+          {/* Color dropdown */}
+          <div className="flex flex-col gap-2">
+            <label className="text-sm tracking-widest uppercase text-[var(--muted)]">
+              Color
+            </label>
+            <select
+              value={selectedColor}
+              onChange={(e) => handleColorChange(e.target.value)}
+              className="bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] px-4 py-2 text-sm tracking-wide focus:outline-none focus:border-[var(--accent-gold)]"
+            >
+              {colors.map((color) => (
+                <option key={color} value={color}>
+                  {color}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Size dropdown */}
+          <div className="flex flex-col gap-2">
+            <label className="text-sm tracking-widest uppercase text-[var(--muted)]">
+              Size
+            </label>
+            <select
+              value={selectedSize}
+              onChange={(e) => handleSizeChange(e.target.value)}
+              className="bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] px-4 py-2 text-sm tracking-wide focus:outline-none focus:border-[var(--accent-gold)]"
+            >
+              <option value="">Select a size</option>
+              {sizesForColor.map((size) => (
+                <option key={size} value={size}>
+                  {size}
+                </option>
+              ))}
+            </select>
+          </div>
+        </>
+      ) : (
+        /* Flat variant buttons for products without color/size structure */
+        <div className="flex flex-wrap gap-2">
+          {availableVariants.map((variant) => (
+            <button
+              key={variant.id}
+              onClick={() => setSelectedVariant(variant)}
+              className={`px-4 py-2 text-sm tracking-wide border transition-colors ${
+                selectedVariant?.id === variant.id
+                  ? "border-[var(--accent-gold)] text-[var(--accent-gold)]"
+                  : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--foreground)]"
+              }`}
+            >
+              {variant.name}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Quantity */}
       <div className="flex items-center gap-4">
@@ -104,7 +177,8 @@ export default function AddToCartButton({
       {/* Add to cart */}
       <button
         onClick={addToCart}
-        className="px-10 py-3 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-sm tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors"
+        disabled={!selectedVariant}
+        className="px-10 py-3 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-sm tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
       >
         {added ? "Added to Cart" : "Add to Cart"}
       </button>

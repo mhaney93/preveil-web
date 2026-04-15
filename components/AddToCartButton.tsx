@@ -123,23 +123,25 @@ export default function AddToCartButton({
     <div className="flex flex-col gap-4">
       {hasColorSize ? (
         <>
-          {/* Color dropdown */}
-          <div className="flex flex-col gap-2">
-            <label className="text-sm tracking-widest uppercase text-[var(--muted)]">
-              Color
-            </label>
-            <select
-              value={selectedColor}
-              onChange={(e) => handleColorChange(e.target.value)}
-              className="bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] px-4 py-2 text-sm tracking-wide focus:outline-none focus:border-[var(--accent-gold)]"
-            >
-              {colors.map((color) => (
-                <option key={color} value={color}>
-                  {color}
-                </option>
-              ))}
-            </select>
-          </div>
+          {/* Color dropdown — hidden when only one color */}
+          {colors.length > 1 && (
+            <div className="flex flex-col gap-2">
+              <label className="text-sm tracking-widest uppercase text-[var(--muted)]">
+                Color
+              </label>
+              <select
+                value={selectedColor}
+                onChange={(e) => handleColorChange(e.target.value)}
+                className="bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] px-4 py-2 text-sm tracking-wide focus:outline-none focus:border-[var(--accent-gold)]"
+              >
+                {colors.map((color) => (
+                  <option key={color} value={color}>
+                    {color}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           {/* Size dropdown */}
           <div className="flex flex-col gap-2">

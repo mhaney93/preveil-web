@@ -3,6 +3,8 @@ import { Suspense } from "react";
 import { createServerClient } from "@/lib/supabase/server";
 import ShopClient from "@/components/ShopClient";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Shop",
   description: "Browse Preveil's full collection — apparel, home goods, wall art, and more. Each piece inspired by re-enchantment.",

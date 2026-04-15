@@ -53,11 +53,18 @@ export default function AddToCartButton({
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
 
+  const SIZE_ORDER = ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"];
+
   const sizesForColor = useMemo(() => {
     if (!hasColorSize) return [];
     return availableVariants
       .filter((v) => v.name.startsWith(selectedColor + " / "))
-      .map((v) => ({ size: v.name.split(" / ")[1], price: v.price }));
+      .map((v) => ({ size: v.name.split(" / ")[1], price: v.price }))
+      .sort((a, b) => {
+        const ai = SIZE_ORDER.indexOf(a.size);
+        const bi = SIZE_ORDER.indexOf(b.size);
+        return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi);
+      });
   }, [availableVariants, selectedColor, hasColorSize]);
 
   function handleColorChange(color: string) {

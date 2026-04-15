@@ -32,12 +32,15 @@ export default function AddToCartButton({
   // Parse "Color / Size" names — fall back to flat list if no slash
   const hasColorSize = availableVariants.some((v) => v.name.includes(" / "));
 
+  const COLOR_PRIORITY = ["Black", "Forest Green", "Maroon", "Navy", "Natural"];
+
   const colors = useMemo(() => {
     if (!hasColorSize) return [];
     return [...new Set(availableVariants.map((v) => v.name.split(" / ")[0]))];
   }, [availableVariants, hasColorSize]);
 
-  const [selectedColor, setSelectedColor] = useState(colors[0] ?? "");
+  const initialColor = COLOR_PRIORITY.find((c) => colors.includes(c)) ?? colors[0] ?? "";
+  const [selectedColor, setSelectedColor] = useState(initialColor);
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedVariant, setSelectedVariant] = useState(
     hasColorSize ? null : (availableVariants[0] ?? null)

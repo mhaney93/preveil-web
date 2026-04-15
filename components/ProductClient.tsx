@@ -34,7 +34,7 @@ interface Product {
 }
 
 function findImageForColor(images: string[], color: string): number {
-  const key = color.toLowerCase().replace(/\s+/g, "-");
+  const key = color.toLowerCase().replace(/[\s/]+/g, "-");
   const idx = images.findIndex((img) => img.toLowerCase().includes(key));
   return idx >= 0 ? idx : 0;
 }

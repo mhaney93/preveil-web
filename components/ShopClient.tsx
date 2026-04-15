@@ -384,8 +384,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
     }
 
     if (activeGroupSubcategoryLabels) {
-      const inGroup = inCategory.filter((p) => inSubs(p, activeGroupSubcategoryLabels));
-      return onePerSubcategory(inGroup);
+      return inCategory.filter((p) => inSubs(p, activeGroupSubcategoryLabels));
     }
 
     // Category-level "All" — one per subcategory, max 3

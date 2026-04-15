@@ -113,6 +113,7 @@ export default function CheckoutPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [availablePoints, setAvailablePoints] = useState(0);
   const [redeemPoints, setRedeemPoints] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart") ?? "[]"));
@@ -161,7 +162,7 @@ export default function CheckoutPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      alert("Checkout error: " + (data.error ?? "Unknown error"));
+      setCheckoutError(data.error ?? "Something went wrong. Please try again.");
       return;
     }
     setClientSecret(data.clientSecret);
@@ -205,6 +206,9 @@ export default function CheckoutPage() {
                   <input required placeholder="State" value={shipping.state} onChange={(e) => setShipping({ ...shipping, state: e.target.value })} className={inputClass} />
                 </div>
                 <input required placeholder="ZIP Code" value={shipping.zip} onChange={(e) => setShipping({ ...shipping, zip: e.target.value })} className={inputClass} />
+                {checkoutError && (
+                  <p className="text-red-400 text-sm">{checkoutError}</p>
+                )}
                 <button type="submit" className="mt-2 px-10 py-3 border border-[var(--accent-gold)] text-[var(--accent-gold)] text-sm tracking-widest uppercase hover:bg-[var(--accent-gold)] hover:text-[var(--background)] transition-colors">
                   Continue to Payment
                 </button>

@@ -12,7 +12,7 @@ export default async function ShopPage() {
   const supabase = await createServerClient();
   const { data: products } = await supabase
     .from("products")
-    .select("id, name, slug, price_from, images, category, subcategory")
+    .select("id, name, slug, price_from, images, category, subcategory, subcategories")
     .eq("published", true)
     .order("created_at", { ascending: false });
 

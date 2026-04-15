@@ -331,6 +331,7 @@ type Product = {
   images: string[] | null;
   category: string | null;
   subcategory: string | null;
+  subcategories: string[] | null;
 };
 
 export default function ShopClient({ products }: { products: Product[] }) {
@@ -375,15 +376,16 @@ export default function ShopClient({ products }: { products: Product[] }) {
 
     const inCategory = products.filter((p) => p.category === activeCategory.label);
 
+    const inSubs = (p: Product, labels: string[]) =>
+      (p.subcategories ?? (p.subcategory ? [p.subcategory] : [])).some((s) => labels.includes(s));
+
     if (activeSubcategory) {
-      return inCategory.filter((p) => p.subcategory === activeSubcategory.label);
+      return inCategory.filter((p) => inSubs(p, [activeSubcategory.label]));
     }
 
     if (activeGroupSubcategoryLabels) {
-      const inGroup = inCategory.filter(
-        (p) => p.subcategory && activeGroupSubcategoryLabels.includes(p.subcategory)
-      );
-      return activeSubcategory ? inGroup : onePerSubcategory(inGroup);
+      const inGroup = inCategory.filter((p) => inSubs(p, activeGroupSubcategoryLabels));
+      return onePerSubcategory(inGroup);
     }
 
     // Category-level "All" — one per subcategory, max 3

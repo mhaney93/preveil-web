@@ -160,6 +160,10 @@ export default function CheckoutPage() {
       }),
     });
     const data = await res.json();
+    if (!res.ok) {
+      alert("Checkout error: " + (data.error ?? "Unknown error"));
+      return;
+    }
     setClientSecret(data.clientSecret);
     setStep("payment");
   }

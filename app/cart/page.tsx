@@ -49,6 +49,7 @@ export default function CartPage() {
       .filter((item) => item.quantity > 0);
     setCart(updated);
     localStorage.setItem("cart", JSON.stringify(updated));
+    window.dispatchEvent(new Event("cart-updated"));
     if (userId) syncCart(userId, updated);
   }
 
@@ -56,6 +57,7 @@ export default function CartPage() {
     const updated = cart.filter((item) => item.variantId !== variantId);
     setCart(updated);
     localStorage.setItem("cart", JSON.stringify(updated));
+    window.dispatchEvent(new Event("cart-updated"));
     if (userId) syncCart(userId, updated);
   }
 

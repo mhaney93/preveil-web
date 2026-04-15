@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
 // Sell at this multiple of Printful's base cost, rounded to the nearest dollar.
-// e.g. base cost $18.35 × 3.0 = $55
-const MARKUP_MULTIPLIER = 3.0;
+// e.g. base cost $18.35 × 2.5 = $46
+const MARKUP_MULTIPLIER = 2.5;
 
 function createAdminClient() {
   return createClient(

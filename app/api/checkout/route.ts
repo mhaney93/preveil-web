@@ -19,17 +19,24 @@ export async function POST(req: NextRequest) {
   const pointsDiscount = pointsToRedeem ? pointsToRedeem / 100 : 0;
   const total = Math.max(subtotal - pointsDiscount, 0.5); // Stripe minimum $0.50
 
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: Math.round(total * 100),
-    currency: "usd",
-    automatic_payment_methods: { enabled: true },
-    metadata: {
-      items: JSON.stringify(items),
-      shipping: JSON.stringify(shipping),
-      user_id: userId ?? "",
-      points_redeemed: pointsToRedeem ? String(pointsToRedeem) : "0",
-    },
-  });
+  let paymentIntent;
+  try {
+    paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(total * 100),
+      currency: "usd",
+      automatic_payment_methods: { enabled: true },
+      metadata: {
+        items: JSON.stringify(items),
+        shipping: JSON.stringify(shipping),
+        user_id: userId ?? "",
+        points_redeemed: pointsToRedeem ? String(pointsToRedeem) : "0",
+      },
+    });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Stripe error";
+    console.error("Stripe PaymentIntent error:", message);
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
 
   return NextResponse.json({ clientSecret: paymentIntent.client_secret });
 }

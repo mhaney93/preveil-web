@@ -40,9 +40,12 @@ export default function ProductClient({
   const availableVariants = variants.filter((v) => v.available);
   const hasColorSize = availableVariants.some((v) => v.name.includes(" / "));
 
+  const COLOR_PRIORITY = ["Black", "Forest Green", "Maroon", "Navy", "Natural"];
+
   const initialColor = useMemo(() => {
     if (!hasColorSize) return "";
-    return availableVariants[0]?.name.split(" / ")[0] ?? "";
+    const colors = [...new Set(availableVariants.map((v) => v.name.split(" / ")[0]))];
+    return COLOR_PRIORITY.find((c) => colors.includes(c)) ?? colors[0] ?? "";
   }, [availableVariants, hasColorSize]);
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(

@@ -50,13 +50,17 @@ export default function ProductClient({
   const availableVariants = variants.filter((v) => v.available);
   const hasColorSize = availableVariants.some((v) => v.name.includes(" / "));
 
-  const COLOR_PRIORITY = ["Black", "Forest Green", "Maroon", "Navy", "Natural"];
-
   const initialColor = useMemo(() => {
     if (!hasColorSize) return "";
-    const colors = [...new Set(availableVariants.map((v) => v.name.split(" / ")[0]))];
-    return COLOR_PRIORITY.find((c) => colors.includes(c)) ?? colors[0] ?? "";
-  }, [availableVariants, hasColorSize]);
+    const unique = [...new Set(availableVariants.map((v) => v.name.split(" / ")[0]))];
+    const toKey = (c: string) => c.toLowerCase().replace(/[\s/]+/g, "-");
+    const sorted = unique.sort((a, b) => {
+      const idxA = images.findIndex((img) => img.toLowerCase().includes(toKey(a)));
+      const idxB = images.findIndex((img) => img.toLowerCase().includes(toKey(b)));
+      return (idxA < 0 ? 999 : idxA) - (idxB < 0 ? 999 : idxB);
+    });
+    return sorted[0] ?? "";
+  }, [availableVariants, hasColorSize, images]);
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(
     hasColorSize ? findImageForColor(images, initialColor) : 0

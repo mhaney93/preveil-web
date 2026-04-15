@@ -1,8 +1,18 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import ProductImages from "./ProductImages";
 import AddToCartButton from "./AddToCartButton";
+
+const CATEGORY_SLUGS: Record<string, string> = {
+  "Men's Clothing": "mens-clothing",
+  "Women's Clothing": "womens-clothing",
+  "Kids' & Youth Clothing": "kids-clothing",
+  "Hats": "hats",
+  "Accessories": "accessories",
+  "Home & Living": "home-living",
+};
 
 interface Variant {
   id: string;
@@ -78,9 +88,18 @@ export default function ProductClient({
       {/* Details */}
       <div className="flex flex-col justify-center">
         {product.category && (
-          <p className="text-sm tracking-widest uppercase text-[var(--muted)] mb-3">
-            {product.category}
-          </p>
+          CATEGORY_SLUGS[product.category] ? (
+            <Link
+              href={`/shop?category=${CATEGORY_SLUGS[product.category]}`}
+              className="text-sm tracking-widest uppercase text-[var(--muted)] mb-3 hover:text-[var(--accent-gold)] transition-colors"
+            >
+              {product.category}
+            </Link>
+          ) : (
+            <p className="text-sm tracking-widest uppercase text-[var(--muted)] mb-3">
+              {product.category}
+            </p>
+          )
         )}
         <h1 className="font-[family-name:var(--font-heading)] text-4xl font-light tracking-wide text-[var(--foreground)] mb-4">
           {product.name}

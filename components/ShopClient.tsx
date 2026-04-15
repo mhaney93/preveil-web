@@ -358,16 +358,37 @@ export default function ShopClient({ products }: { products: Product[] }) {
         .filter((label): label is string => !!label)
     : null;
 
-  const filtered = products.filter((p) => {
-    if (!activeCategory) return FEATURED_SLUGS.includes(p.slug);
-    if (p.category !== activeCategory.label) return false;
-    if (activeSubcategory) {
-      if (p.subcategory !== activeSubcategory.label) return false;
-    } else if (activeGroupSubcategoryLabels) {
-      if (!p.subcategory || !activeGroupSubcategoryLabels.includes(p.subcategory)) return false;
+  // Pick one product per subcategory (up to 3) for any "All" view
+  function onePerSubcategory(pool: typeof products): typeof products {
+    const seen = new Set<string>();
+    const result: typeof products = [];
+    for (const p of pool) {
+      const key = p.subcategory ?? p.category ?? "";
+      if (!seen.has(key)) { seen.add(key); result.push(p); }
+      if (result.length >= 3) break;
     }
-    return true;
-  });
+    return result;
+  }
+
+  const filtered = (() => {
+    if (!activeCategory) return products.filter((p) => FEATURED_SLUGS.includes(p.slug));
+
+    const inCategory = products.filter((p) => p.category === activeCategory.label);
+
+    if (activeSubcategory) {
+      return inCategory.filter((p) => p.subcategory === activeSubcategory.label);
+    }
+
+    if (activeGroupSubcategoryLabels) {
+      const inGroup = inCategory.filter(
+        (p) => p.subcategory && activeGroupSubcategoryLabels.includes(p.subcategory)
+      );
+      return activeSubcategory ? inGroup : onePerSubcategory(inGroup);
+    }
+
+    // Category-level "All" — one per subcategory, max 3
+    return onePerSubcategory(inCategory);
+  })();
 
   return (
     <>

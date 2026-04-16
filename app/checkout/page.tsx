@@ -114,26 +114,54 @@ export default function CheckoutPage() {
   const [availablePoints, setAvailablePoints] = useState(0);
   const [redeemPoints, setRedeemPoints] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
+  const [priceChanged, setPriceChanged] = useState(false);
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart") ?? "[]"));
+    const storedCart: CartItem[] = JSON.parse(localStorage.getItem("cart") ?? "[]");
+    setCart(storedCart);
 
-    const supabase = createClient();
-    supabase.auth.getUser().then(async ({ data: { user } }) => {
-      if (!user) return;
-      setUserId(user.id);
+    if (storedCart.length > 0) {
+      // Re-fetch current prices — cart prices may be stale if stored for days
+      const supabase = createClient();
+      const variantIds = storedCart.map((i) => i.variantId);
+      supabase
+        .from("product_variants")
+        .select("id, price")
+        .in("id", variantIds)
+        .then(({ data }) => {
+          if (!data) return;
+          const map = Object.fromEntries(data.map((v) => [v.id, v.price as number]));
+          let changed = false;
+          const updated = storedCart.map((item) => {
+            const currentPrice = map[item.variantId];
+            if (currentPrice !== undefined && currentPrice !== item.price) {
+              changed = true;
+              return { ...item, price: currentPrice };
+            }
+            return item;
+          });
+          if (changed) {
+            setCart(updated);
+            setPriceChanged(true);
+          }
+        });
 
-      const now = new Date().toISOString();
-      const { data } = await supabase
-        .from("points_ledger")
-        .select("amount")
-        .lte("available_at", now);
+      supabase.auth.getUser().then(async ({ data: { user } }) => {
+        if (!user) return;
+        setUserId(user.id);
 
-      if (data && data.length > 0) {
-        const balance = data.reduce((sum, row) => sum + row.amount, 0);
-        if (balance > 0) setAvailablePoints(balance);
-      }
-    });
+        const now = new Date().toISOString();
+        const { data } = await supabase
+          .from("points_ledger")
+          .select("amount")
+          .lte("available_at", now);
+
+        if (data && data.length > 0) {
+          const balance = data.reduce((sum, row) => sum + row.amount, 0);
+          if (balance > 0) setAvailablePoints(balance);
+        }
+      });
+    }
   }, []);
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -165,6 +193,8 @@ export default function CheckoutPage() {
       setCheckoutError(data.error ?? "Something went wrong. Please try again.");
       return;
     }
+    // Use server-resolved prices for the payment step display
+    if (data.resolvedItems) setCart(data.resolvedItems);
     setClientSecret(data.clientSecret);
     setStep("payment");
   }
@@ -249,6 +279,11 @@ export default function CheckoutPage() {
           <h2 className="text-sm tracking-widest uppercase text-[var(--muted)] mb-6">
             Order Summary
           </h2>
+          {priceChanged && (
+            <p className="text-xs text-[var(--muted)] border border-[var(--border)] px-4 py-3 mb-4 leading-relaxed">
+              One or more item prices have changed since you added them to your cart. The totals below reflect current pricing.
+            </p>
+          )}
           <div className="flex flex-col gap-4">
             {cart.map((item) => (
               <div key={item.variantId} className="flex justify-between text-sm">

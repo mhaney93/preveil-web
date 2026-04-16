@@ -30,6 +30,9 @@ const BOTTOM_SUBCATEGORIES = new Set([
   "Shorts",
   "Athletic Shorts",
   "Track Pants",
+  "Pants",
+  "Skirts",
+  "Swimwear",
 ]);
 
 interface Product {

@@ -325,6 +325,7 @@ type Product = {
   category: string | null;
   subcategory: string | null;
   subcategories: string[] | null;
+  product_variants?: { available: boolean }[] | null;
 };
 
 export default function ShopClient({ products }: { products: Product[] }) {
@@ -498,7 +499,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
               href={`/shop/${product.slug}`}
               className="group bg-[var(--card)] border border-[var(--border)] hover:border-[var(--accent-gold)] transition-colors"
             >
-              <div className="aspect-square bg-[var(--border)] flex items-center justify-center">
+              <div className="aspect-square bg-[var(--border)] flex items-center justify-center relative">
                 {product.images?.[0] ? (
                   <img
                     src={product.images[0]}
@@ -510,6 +511,14 @@ export default function ShopClient({ products }: { products: Product[] }) {
                     No image
                   </span>
                 )}
+                {(product.product_variants ?? []).length > 0 &&
+                  !(product.product_variants ?? []).some((v) => v.available) && (
+                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                      <span className="text-white text-xs tracking-widest uppercase border border-white px-3 py-1">
+                        Out of Stock
+                      </span>
+                    </div>
+                  )}
               </div>
               <div className="p-6">
                 <h2 className="font-[family-name:var(--font-heading)] text-xl font-light tracking-wide text-[var(--foreground)] group-hover:text-[var(--accent-gold)] transition-colors">

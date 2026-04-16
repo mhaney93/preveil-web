@@ -10,7 +10,7 @@
     },
     {
       "path": "/api/cron/reprice",
-      "schedule": "0 6 1 * *"
+      "schedule": "0 6 * * *"
     }
   ]
 }

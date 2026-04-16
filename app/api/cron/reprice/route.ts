@@ -1,97 +1,118 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-// Sell at this multiple of Printful's base cost, rounded to the nearest dollar.
-// e.g. base cost $18.35 × 2.5 = $46
-const MARKUP_MULTIPLIER = 2.5;
+const MARKUP = 2.0;
 
-function createAdminClient() {
+function adminClient() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SECRET_KEY!
   );
 }
 
-async function printfulGet(path: string) {
+async function pf(path: string) {
   const res = await fetch(`https://api.printful.com${path}`, {
     headers: { Authorization: `Bearer ${process.env.PRINTFUL_API_TOKEN}` },
   });
-  return res.json();
+  const json = await res.json();
+  return json.data;
+}
+
+function roundToHalf(n: number) {
+  return Math.round(n * 2) / 2;
 }
 
 export async function GET(req: NextRequest) {
-  const authHeader = req.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (req.headers.get("authorization") !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const dryRun = req.nextUrl.searchParams.get("dry_run") === "1";
-  const supabase = createAdminClient();
+  const supabase = adminClient();
 
-  // Fetch all products that are linked to a Printful sync product
   const { data: products, error } = await supabase
     .from("products")
     .select("id, slug, printful_sync_product_id")
-    .not("printful_sync_product_id", "is", null);
+    .not("printful_sync_product_id", "is", null)
+    .eq("published", true);
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  if (!products?.length) return NextResponse.json({ message: "No products to reprice" });
 
-  type Change = { variant: string; oldPrice: number; newPrice: number };
-  const changes: Change[] = [];
-  const priceFromByProduct: Record<string, number> = {};
+  const priceCache: Record<number, number | null> = {};
+  const availCache: Record<number, boolean> = {};
 
-  for (const product of products) {
-    const storeData = await printfulGet(`/store/products/${product.printful_sync_product_id}`);
-    const syncVariants: { id: number; name: string; variant_id: number }[] =
-      storeData.result?.sync_variants ?? [];
+  async function getBaseCost(catalogVariantId: number): Promise<number | null> {
+    if (catalogVariantId in priceCache) return priceCache[catalogVariantId];
+    const data = await pf(`/v2/catalog-variants/${catalogVariantId}/prices?selling_region_name=worldwide`);
+    const techniques: { technique_key: string; price: string }[] = data?.variant?.techniques ?? [];
+    const preferred = techniques.find((t) => t.technique_key === "dtg") ?? techniques[0];
+    const cost = preferred ? parseFloat(preferred.price) : null;
+    priceCache[catalogVariantId] = cost;
+    return cost;
+  }
+
+  async function isAvailable(catalogVariantId: number): Promise<boolean> {
+    if (catalogVariantId in availCache) return availCache[catalogVariantId];
+    const data = await pf(`/v2/catalog-variants/${catalogVariantId}/availability`);
+    const regions: { status: string }[] = data ?? [];
+    const available = Array.isArray(regions)
+      ? regions.some((r) => r.status === "in_stock" || r.status === "stocked_on_demand")
+      : true; // AOP products return differently — treat as available
+    availCache[catalogVariantId] = available;
+    return available;
+  }
+
+  const summary: Record<string, { priceFrom: number; unavailable: number }> = {};
+
+  for (const product of products ?? []) {
+    const syncVariants = await pf(
+      `/v2/sync-products/${product.printful_sync_product_id}/sync-variants?limit=100`
+    );
+    if (!Array.isArray(syncVariants)) continue;
+
+    const { data: dbVariants } = await supabase
+      .from("product_variants")
+      .select("id, pod_variant_id, price, available")
+      .eq("product_id", product.id);
+
+    const podToDb = Object.fromEntries(
+      (dbVariants ?? []).map((v) => [String(v.pod_variant_id), v])
+    );
+
+    let minPrice = Infinity;
+    let unavailableCount = 0;
 
     for (const sv of syncVariants) {
-      // Get base cost from the Printful catalog
-      const catalogData = await printfulGet(`/catalog/variants/${sv.variant_id}`);
-      const baseCost: number | undefined = catalogData.result?.variant?.price;
-      if (!baseCost) continue;
+      const dbv = podToDb[String(sv.id)];
+      if (!dbv) continue;
 
-      const newPrice = Math.round(baseCost * MARKUP_MULTIPLIER);
+      const catalogId: number = sv.catalog_variant_id;
+      const [baseCost, available] = await Promise.all([
+        getBaseCost(catalogId),
+        isAvailable(catalogId),
+      ]);
 
-      // Find the matching DB variant by its Printful sync variant ID
-      const { data: dbVariant } = await supabase
-        .from("product_variants")
-        .select("id, price")
-        .eq("pod_variant_id", String(sv.id))
-        .single();
-
-      if (!dbVariant) continue;
-
-      changes.push({ variant: sv.name, oldPrice: dbVariant.price, newPrice });
-
-      if (priceFromByProduct[product.id] === undefined || newPrice < priceFromByProduct[product.id]) {
-        priceFromByProduct[product.id] = newPrice;
-      }
+      const newPrice = baseCost ? roundToHalf(baseCost * MARKUP) : dbv.price;
+      if (newPrice < minPrice) minPrice = newPrice;
+      if (!available) unavailableCount++;
 
       if (!dryRun) {
         await supabase
           .from("product_variants")
-          .update({ price: newPrice })
-          .eq("id", dbVariant.id);
+          .update({ price: newPrice, available })
+          .eq("id", dbv.id);
       }
     }
-  }
 
-  if (!dryRun) {
-    for (const [productId, priceFrom] of Object.entries(priceFromByProduct)) {
+    if (!dryRun && minPrice < Infinity) {
       await supabase
         .from("products")
-        .update({ price_from: priceFrom })
-        .eq("id", productId);
+        .update({ price_from: minPrice })
+        .eq("id", product.id);
     }
+
+    summary[product.slug] = { priceFrom: minPrice, unavailable: unavailableCount };
   }
 
-  return NextResponse.json({
-    dryRun,
-    markup: `${MARKUP_MULTIPLIER}x`,
-    updated: dryRun ? 0 : changes.length,
-    changes,
-    priceFrom: priceFromByProduct,
-  });
+  return NextResponse.json({ dryRun, markup: `${MARKUP}x`, summary });
 }

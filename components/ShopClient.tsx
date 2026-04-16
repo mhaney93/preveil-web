@@ -319,7 +319,7 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
 // Slugs shown in the default "All" view. Update when adding products in new categories.
 const FEATURED_SLUGS = [
   "preveil-crew-neck-sweatshirt",
-  "preveil-art-print",
+  "the-wanderer-windbreaker",
   "preveil-mug",
 ];
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 interface Variant {
   id: string;
@@ -19,11 +19,13 @@ interface Product {
 export default function AddToCartButton({
   product,
   variants,
+  controlledColor,
   onColorChange,
   onVariantChange,
 }: {
   product: Product;
   variants: Variant[];
+  controlledColor?: string;
   onColorChange?: (color: string) => void;
   onVariantChange?: (variant: Variant | null) => void;
 }) {
@@ -52,6 +54,15 @@ export default function AddToCartButton({
   );
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+
+  // Sync color when parent changes it (e.g. clicking an image thumbnail)
+  useEffect(() => {
+    if (controlledColor && controlledColor !== selectedColor) {
+      setSelectedColor(controlledColor);
+      setSelectedSize("");
+      setSelectedVariant(null);
+    }
+  }, [controlledColor]);
 
   const SIZE_ORDER = ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"];
 

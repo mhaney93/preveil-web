@@ -62,10 +62,23 @@ export default function ProductClient({
     return sorted[0] ?? "";
   }, [availableVariants, hasColorSize, images]);
 
+  const [selectedColor, setSelectedColor] = useState(initialColor);
   const [selectedImageIndex, setSelectedImageIndex] = useState(
     hasColorSize ? findImageForColor(images, initialColor) : 0
   );
   const [selectedVariantPrice, setSelectedVariantPrice] = useState<number | null>(null);
+
+  // Map each image index back to whichever color it represents
+  const imageIndexToColor = useMemo(() => {
+    if (!hasColorSize) return {} as Record<number, string>;
+    const colors = [...new Set(availableVariants.map((v) => v.name.split(" / ")[0]))];
+    const map: Record<number, string> = {};
+    for (const color of colors) {
+      const idx = findImageForColor(images, color);
+      if (!(idx in map)) map[idx] = color;
+    }
+    return map;
+  }, [availableVariants, hasColorSize, images]);
 
   const priceLabel = useMemo(() => {
     if (selectedVariantPrice !== null) return `$${selectedVariantPrice.toFixed(2)}`;
@@ -75,7 +88,14 @@ export default function ProductClient({
     return min === max ? `$${min.toFixed(2)}` : `$${min.toFixed(2)} – $${max.toFixed(2)}`;
   }, [selectedVariantPrice, availableVariants]);
 
+  function handleImageSelect(i: number) {
+    setSelectedImageIndex(i);
+    const color = imageIndexToColor[i];
+    if (color) setSelectedColor(color);
+  }
+
   function handleColorChange(color: string) {
+    setSelectedColor(color);
     setSelectedImageIndex(findImageForColor(images, color));
   }
 
@@ -86,7 +106,7 @@ export default function ProductClient({
         images={images}
         name={product.name}
         selectedIndex={selectedImageIndex}
-        onSelect={setSelectedImageIndex}
+        onSelect={handleImageSelect}
       />
 
       {/* Details */}
@@ -120,6 +140,7 @@ export default function ProductClient({
           <AddToCartButton
             product={product}
             variants={variants}
+            controlledColor={selectedColor}
             onColorChange={handleColorChange}
             onVariantChange={(v) => {
             setSelectedVariantPrice(v ? v.price : null);

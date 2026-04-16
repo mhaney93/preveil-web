@@ -376,8 +376,12 @@ export default function ShopClient({ products }: { products: Product[] }) {
 
     const inCategory = products.filter((p) => p.category === activeCategory.label);
 
-    const inSubs = (p: Product, labels: string[]) =>
-      (p.subcategories ?? (p.subcategory ? [p.subcategory] : [])).some((s) => labels.includes(s));
+    const inSubs = (p: Product, labels: string[]) => {
+      const subs = p.subcategories && p.subcategories.length > 0
+        ? p.subcategories
+        : p.subcategory ? [p.subcategory] : [];
+      return subs.some((s) => labels.includes(s));
+    };
 
     if (activeSubcategory) {
       return inCategory.filter((p) => inSubs(p, [activeSubcategory.label]));

@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import ProductImages from "./ProductImages";
 import AddToCartButton from "./AddToCartButton";
+import { type SizeGuideType } from "./SizeGuideModal";
 
 const CATEGORY_SLUGS: Record<string, string> = {
   "Men's Clothing": "mens-clothing",
@@ -22,12 +23,22 @@ interface Variant {
 }
 
 
+const BOTTOM_SUBCATEGORIES = new Set([
+  "Leggings",
+  "Sweatpants & Joggers",
+  "Underwear",
+  "Shorts",
+  "Athletic Shorts",
+  "Track Pants",
+]);
+
 interface Product {
   id: string;
   name: string;
   slug: string;
   images: string[];
   category?: string;
+  subcategory?: string;
   description?: string;
   price_from: number;
   [key: string]: unknown;
@@ -49,6 +60,15 @@ export default function ProductClient({
   const images = product.images ?? [];
   const availableVariants = variants.filter((v) => v.available);
   const hasColorSize = availableVariants.some((v) => v.name.includes(" / "));
+
+  // Determine size guide type — only for clothing with actual size variants
+  const hasSizes = availableVariants.some((v) => {
+    const part = v.name.includes(" / ") ? v.name.split(" / ")[1] : v.name;
+    return ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"].includes(part);
+  });
+  const sizeGuideType: SizeGuideType | undefined = hasSizes
+    ? BOTTOM_SUBCATEGORIES.has(product.subcategory ?? "") ? "bottoms" : "tops"
+    : undefined;
 
   const initialColor = useMemo(() => {
     if (!hasColorSize) return "";
@@ -141,6 +161,7 @@ export default function ProductClient({
             product={product}
             variants={variants}
             controlledColor={selectedColor}
+            sizeGuideType={sizeGuideType}
             onColorChange={handleColorChange}
             onVariantChange={(v) => {
             setSelectedVariantPrice(v ? v.price : null);

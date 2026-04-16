@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
+import SizeGuideModal, { type SizeGuideType } from "./SizeGuideModal";
 
 interface Variant {
   id: string;
@@ -20,12 +21,14 @@ export default function AddToCartButton({
   product,
   variants,
   controlledColor,
+  sizeGuideType,
   onColorChange,
   onVariantChange,
 }: {
   product: Product;
   variants: Variant[];
   controlledColor?: string;
+  sizeGuideType?: SizeGuideType;
   onColorChange?: (color: string) => void;
   onVariantChange?: (variant: Variant | null) => void;
 }) {
@@ -66,6 +69,7 @@ export default function AddToCartButton({
   );
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
 
   // Sync color when parent changes it (e.g. clicking an image thumbnail)
   useEffect(() => {
@@ -166,9 +170,20 @@ export default function AddToCartButton({
 
           {/* Size dropdown */}
           <div className="flex flex-col gap-2">
-            <label className="text-sm tracking-widest uppercase text-[var(--muted)]">
-              Size
-            </label>
+            <div className="flex items-center justify-between">
+              <label className="text-sm tracking-widest uppercase text-[var(--muted)]">
+                Size
+              </label>
+              {sizeGuideType && (
+                <button
+                  type="button"
+                  onClick={() => setSizeGuideOpen(true)}
+                  className="text-xs tracking-widest uppercase text-[var(--muted)] hover:text-[var(--accent-gold)] transition-colors underline underline-offset-2"
+                >
+                  Size Guide
+                </button>
+              )}
+            </div>
             <select
               value={selectedSize}
               onChange={(e) => handleSizeChange(e.target.value)}
@@ -185,6 +200,18 @@ export default function AddToCartButton({
         </>
       ) : (
         /* Flat variant buttons for products without color/size structure */
+        <div className="flex flex-col gap-2">
+          {sizeGuideType && (
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={() => setSizeGuideOpen(true)}
+                className="text-xs tracking-widest uppercase text-[var(--muted)] hover:text-[var(--accent-gold)] transition-colors underline underline-offset-2"
+              >
+                Size Guide
+              </button>
+            </div>
+          )}
         <div className="flex flex-wrap gap-2">
           {availableVariants.map((variant) => (
             <button
@@ -202,6 +229,7 @@ export default function AddToCartButton({
               {variant.name} — ${variant.price.toFixed(2)}
             </button>
           ))}
+        </div>
         </div>
       )}
 
@@ -230,6 +258,10 @@ export default function AddToCartButton({
       >
         {added ? "Added to Cart" : "Add to Cart"}
       </button>
+
+      {sizeGuideOpen && sizeGuideType && (
+        <SizeGuideModal type={sizeGuideType} onClose={() => setSizeGuideOpen(false)} />
+      )}
     </div>
   );
 }

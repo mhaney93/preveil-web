@@ -29,7 +29,19 @@ export default function AddToCartButton({
   onColorChange?: (color: string) => void;
   onVariantChange?: (variant: Variant | null) => void;
 }) {
-  const availableVariants = variants.filter((v) => v.available);
+  const SIZE_ORDER = ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"];
+
+  const availableVariants = useMemo(() => {
+    const filtered = variants.filter((v) => v.available);
+    // Sort flat (size-only) variants by SIZE_ORDER
+    const hasSlash = filtered.some((v) => v.name.includes(" / "));
+    if (hasSlash) return filtered;
+    return [...filtered].sort((a, b) => {
+      const ai = SIZE_ORDER.indexOf(a.name);
+      const bi = SIZE_ORDER.indexOf(b.name);
+      return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi);
+    });
+  }, [variants]);
 
   // Parse "Color / Size" names — fall back to flat list if no slash
   const hasColorSize = availableVariants.some((v) => v.name.includes(" / "));
@@ -63,8 +75,6 @@ export default function AddToCartButton({
       setSelectedVariant(null);
     }
   }, [controlledColor]);
-
-  const SIZE_ORDER = ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"];
 
   const sizesForColor = useMemo(() => {
     if (!hasColorSize) return [];

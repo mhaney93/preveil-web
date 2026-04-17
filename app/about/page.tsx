@@ -21,8 +21,8 @@ export default function AboutPage() {
       {/* Body */}
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-lg font-[family-name:var(--font-body)]">
         <p>
-          the world did not need to be re-enchanted — it simply was. Charged,
-          storied, alive, capable of meeting you. What we are describing when
+          the world was charged with a meaning that did not need defending —
+          only inhabiting. What we are describing when
           we talk about the meaning crisis, the loneliness epidemic, the sense
           that modern life offers everything except the thing that would make
           it worth living — that is the world after. Not a personal failure.

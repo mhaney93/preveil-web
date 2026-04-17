@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const CATEGORIES = [
   { slug: "mens-clothing", label: "Men's Clothing" },
@@ -326,6 +326,7 @@ type Product = {
   category: string | null;
   subcategory: string | null;
   subcategories: string[] | null;
+  order_count: number;
   product_variants?: { available: boolean }[] | null;
 };
 
@@ -361,10 +362,23 @@ export default function ShopClient({ products }: { products: Product[] }) {
         .filter((label): label is string => !!label)
     : null;
 
-  // Pick one product per subcategory for any "All" view (no hard cap — pagination handles limiting)
-  function onePerSubcategory(pool: typeof products): typeof products {
+  // Sort by popularity descending; randomly break ties. Assigns random keys
+  // upfront so the comparator is stable within a single useMemo call.
+  function sortByPopularity(pool: Product[]): Product[] {
+    const keyed = pool.map((p) => ({ p, r: Math.random() }));
+    keyed.sort((a, b) => {
+      const diff = b.p.order_count - a.p.order_count;
+      return diff !== 0 ? diff : a.r - b.r;
+    });
+    return keyed.map(({ p }) => p);
+  }
+
+  // Pick one product per subcategory for any "All" view (no hard cap — pagination handles limiting).
+  // Because the pool is pre-sorted by popularity, the first product seen for each subcategory is
+  // automatically the most popular one, and subcategories appear in popularity order.
+  function onePerSubcategory(pool: Product[]): Product[] {
     const seen = new Set<string>();
-    const result: typeof products = [];
+    const result: Product[] = [];
     for (const p of pool) {
       const key = p.subcategory ?? p.category ?? "";
       if (!seen.has(key)) { seen.add(key); result.push(p); }
@@ -372,7 +386,9 @@ export default function ShopClient({ products }: { products: Product[] }) {
     return result;
   }
 
-  const filtered = (() => {
+  // useMemo stabilises the random tiebreaker: order stays consistent within a view
+  // but re-randomises when the user navigates to a different category/group/subcategory.
+  const filtered = useMemo(() => {
     if (!activeCategory) return products.filter((p) => FEATURED_SLUGS.includes(p.slug));
 
     const inCategory = products.filter((p) => p.category === activeCategory.label);
@@ -385,17 +401,17 @@ export default function ShopClient({ products }: { products: Product[] }) {
     };
 
     if (activeSubcategory) {
-      return inCategory.filter((p) => inSubs(p, [activeSubcategory.label]));
+      return sortByPopularity(inCategory.filter((p) => inSubs(p, [activeSubcategory.label])));
     }
 
     if (activeGroupSubcategoryLabels) {
       const inGroup = inCategory.filter((p) => inSubs(p, activeGroupSubcategoryLabels));
-      return onePerSubcategory(inGroup);
+      return onePerSubcategory(sortByPopularity(inGroup));
     }
 
-    // Category-level "All" — one per subcategory, max 3
-    return onePerSubcategory(inCategory);
-  })();
+    return onePerSubcategory(sortByPopularity(inCategory));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categorySlug, groupSlug, subcategorySlug, products]);
 
   return (
     <>

@@ -75,11 +75,37 @@ export async function processOrder(paymentIntent: Stripe.PaymentIntent): Promise
     });
   }
 
+  // Increment order_count on each purchased product
+  const variantIds = items.map((i: { variantId: string }) => i.variantId);
+  const { data: variantsForCount } = await supabase
+    .from("product_variants")
+    .select("id, product_id")
+    .in("id", variantIds);
+
+  if (variantsForCount) {
+    // Aggregate total quantity ordered per product
+    const countByProduct = new Map<string, number>();
+    for (const item of items as { variantId: string; quantity: number }[]) {
+      const variant = variantsForCount.find((v) => v.id === item.variantId);
+      if (variant?.product_id) {
+        countByProduct.set(
+          variant.product_id,
+          (countByProduct.get(variant.product_id) ?? 0) + item.quantity
+        );
+      }
+    }
+    await Promise.all(
+      Array.from(countByProduct.entries()).map(([productId, qty]) =>
+        supabase.rpc("increment_order_count", { product_id: productId, amount: qty })
+      )
+    );
+  }
+
   // Submit to Printful
   const { data: variants } = await supabase
     .from("product_variants")
     .select("id, pod_variant_id, pod_provider")
-    .in("id", items.map((i: { variantId: string }) => i.variantId));
+    .in("id", variantIds);
 
   const printfulItems = items
     .map((item: { variantId: string; quantity: number }) => {

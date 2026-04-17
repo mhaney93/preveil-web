@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 
 const CATEGORIES = [
   { slug: "mens-clothing", label: "Men's Clothing" },
@@ -346,6 +347,13 @@ export default function ShopClient({ products }: { products: Product[] }) {
     : subcategoryList;
   const activeSubcategory = visibleSubcategories.find((s) => s.slug === subcategorySlug) ?? null;
 
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  // Reset pagination whenever the view changes
+  useEffect(() => {
+    setVisibleCount(3);
+  }, [categorySlug, groupSlug, subcategorySlug]);
+
   // Labels of subcategories in the active group (for filtering products)
   const activeGroupSubcategoryLabels = activeGroup
     ? activeGroup.subcategories
@@ -353,14 +361,13 @@ export default function ShopClient({ products }: { products: Product[] }) {
         .filter((label): label is string => !!label)
     : null;
 
-  // Pick one product per subcategory (up to 3) for any "All" view
+  // Pick one product per subcategory for any "All" view (no hard cap — pagination handles limiting)
   function onePerSubcategory(pool: typeof products): typeof products {
     const seen = new Set<string>();
     const result: typeof products = [];
     for (const p of pool) {
       const key = p.subcategory ?? p.category ?? "";
       if (!seen.has(key)) { seen.add(key); result.push(p); }
-      if (result.length >= 3) break;
     }
     return result;
   }
@@ -487,13 +494,20 @@ export default function ShopClient({ products }: { products: Product[] }) {
 
       <div className="mb-8" />
 
-      {filtered.length === 0 ? (
-        <p className="text-center text-[var(--muted)] tracking-widest uppercase text-sm">
-          Coming soon
-        </p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((product) => (
+      {(() => {
+        // Paginate only in "All" views (category or group level, no specific subcategory selected)
+        const isAllView = !!activeCategory && !activeSubcategory;
+        const displayed = isAllView ? filtered.slice(0, visibleCount) : filtered;
+        const hasMore = isAllView && visibleCount < filtered.length;
+
+        return filtered.length === 0 ? (
+          <p className="text-center text-[var(--muted)] tracking-widest uppercase text-sm">
+            Coming soon
+          </p>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {displayed.map((product) => (
             <Link
               key={product.id}
               href={`/shop/${product.slug}`}
@@ -534,9 +548,21 @@ export default function ShopClient({ products }: { products: Product[] }) {
                 </p>
               </div>
             </Link>
-          ))}
-        </div>
-      )}
+              ))}
+            </div>
+            {hasMore && (
+              <div className="flex justify-center mt-10">
+                <button
+                  onClick={() => setVisibleCount((n) => n + 3)}
+                  className="text-xs tracking-widest uppercase px-10 py-3 border border-[var(--border)] text-[var(--muted)] hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-colors"
+                >
+                  More
+                </button>
+              </div>
+            )}
+          </>
+        );
+      })()}
     </>
   );
 }

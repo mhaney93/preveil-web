@@ -21,53 +21,43 @@ export default function AboutPage() {
       {/* Body */}
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-lg font-[family-name:var(--font-body)]">
         <p>
-          Something was lost — not in a day but across centuries, through a
-          shift so gradual it arrived as common sense. Before the Enlightenment,
-          experience was the self-evident ground of reality: meaning, beauty,
-          presence, and the sacred were not projections but discoveries, genuine
-          features of a world alive to be known. After it, matter became the
-          foundation and everything else was quietly demoted. Nietzsche saw what
-          removing the cornerstone would cost long before the building began to
-          lean. The meaning crisis is real. The loneliness epidemic is real.
-          These are not personal failures — they are what a civilization looks
-          like when it has been living off inherited meaning it no longer
-          believes in and has not yet found a way to replace.
+          There is a particular kind of hunger that modern life is very good
+          at ignoring. Not for things — there are more things than ever. Not
+          for information, entertainment, or comfort. A hunger for the sense
+          that any of it matters. That the world is not simply a set of
+          processes running on substrate but something you can actually be
+          in — present to, known by, met. The meaning crisis is real. The
+          loneliness epidemic is real. They are not weaknesses in individuals
+          but symptoms of a civilization that traded away something foundational
+          and has not yet reckoned with the cost.
         </p>
         <p>
-          The harder truth is that the materialist explanation was never really
-          an explanation. It has been a history of convenient analogies —
-          the mind as hydraulic pump, then telegraph, then clockwork, then
-          computer — each era borrowing its most impressive technology to model
-          reality, the map getting redrawn while the territory goes untouched.
-          Newton himself drew the line: after the Principia he was explicit that
-          he had described gravity&apos;s properties, not explained what gravity
-          is. The tradition that followed erased his caution. And there is a
-          structural reason the gap stays open: to genuinely know something
-          requires more than propositions about it. Kierkegaard understood this
-          — the radical leap of faith is the quality-not-quantity distinction
-          made existential, the moment when the accumulated map runs out and
-          the territory demands a different kind of engagement entirely.
-          No stack of description ever closes that distance.
+          Something was given up. Not in a single moment but gradually, over
+          the centuries when the Western tradition learned to explain the world
+          by taking it apart. The method was extraordinary — matter was
+          mastered, distances collapsed, lifespans doubled. But somewhere the
+          method became the metaphysic. Description became explanation. The map
+          became the territory. And the world that had been — charged, storied,
+          symbolic, alive, capable of meeting you — was replaced by a world of
+          neutral substrate onto which meaning could only ever be projected,
+          never discovered. The veil is the name for this moment. Not a wall,
+          not a window — translucent. Something still comes through. The name
+          Preveil is a gesture toward the world before it was drawn.
         </p>
         <p>
-          <em>Re-enchantment</em> is the name for what comes after seeing this
-          clearly. Not nostalgia, not superstition — the veil is translucent,
-          not opaque. The recovery Preveil points toward is a hero&apos;s
-          journey: going back to retrieve what was dropped on the way through
-          modernity and re-integrating it, without the contempt that dismissed
-          the pre-modern world wholesale, and with the scientific literacy to
-          carry it forward. At the root of the pre-modern West is a tradition
-          whose central claim is love. That is not a sectarian point — it is
-          the observation that the grace visible in a Feynman lifting a flower
-          into wonder, or a Hitchens charming a room into aliveness, is drawing
-          on a well dug long before either of them arrived. Preveil was built
-          for the people who sense all of this — who feel the weight of what
-          was lost, and who are looking for others willing to say so. The name
-          carries two meanings: to <em>prevail</em>, and <em>pre-veil</em> —
-          before the world was divided into what counts as real and what
-          doesn&apos;t. We make goods for those willing to be, as Shakespeare
-          put it, God&apos;s spies. Witnesses to something sacred in the
-          ordinary.
+          <em>Re-enchantment</em> is not a retreat from reason — it is the
+          refusal to let the map be mistaken for the territory. It is the
+          recognition that wonder, belonging, mystery, and the sacred are not
+          childish holdovers but permanent features of what it means to be
+          human, and that a culture which loses them does not become more
+          rational — it becomes less alive. Preveil was built for the honest
+          participant: the person who senses the zeitgeist is getting something
+          fundamentally wrong, who is not interested in dogma but cannot accept
+          the alternative of a world drained of meaning, and who is looking for
+          others who feel it too. The name carries two meanings — to{" "}
+          <em>prevail</em>, and <em>pre-veil</em>. We make goods for those
+          willing to be, as Shakespeare put it, God&apos;s spies. Witnesses to
+          something sacred in the ordinary.
         </p>
       </div>
 

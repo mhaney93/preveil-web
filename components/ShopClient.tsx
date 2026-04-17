@@ -220,8 +220,8 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   ],
   "womens-clothing": [
     { slug: "t-shirts", label: "T-Shirts" },
-    { slug: "all-over-shirts", label: "All-Over Shirts" },
     { slug: "polo-shirts", label: "Polo Shirts" },
+    { slug: "all-over-shirts", label: "All-Over Shirts" },
     { slug: "tank-tops", label: "Tank Tops" },
     { slug: "crop-tops", label: "Crop Tops" },
     { slug: "embroidered-shirts", label: "Embroidered Shirts" },

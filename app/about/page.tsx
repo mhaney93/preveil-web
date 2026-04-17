@@ -21,57 +21,45 @@ export default function AboutPage() {
       {/* Body */}
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-lg font-[family-name:var(--font-body)]">
         <p>
-          Something was lost. Not in one moment but over centuries — a slow
-          draining of the world's aliveness. The dominant tradition of Western
-          thought learned to understand things by taking them apart, and somewhere
-          in that process forgot that what it was examining had, before the
-          examination, been whole.
+          Something happened. Not a discovery — a shift. A slow reorganization
+          of Western common sense about what is real. Before the Enlightenment
+          and the Scientific Revolution, experience was the self-evident ground
+          of reality: the felt texture of the world, the weight of meaning, the
+          recognition that some things genuinely matter. After it, matter became
+          the foundation and experience was quietly demoted to a byproduct. Two
+          hundred years later, this arrangement is so thoroughly absorbed into
+          ordinary life that most people do not recognize it as a philosophical
+          position at all. They take it as obvious. The veil is not a metaphor.
+          It is this shift — and Preveil is named for the world before it was drawn.
         </p>
         <p>
-          The result is the world we inherited: technically extraordinary,
-          experientially hollow. The meaning crisis is real. The loneliness
-          epidemic is real. The sense that modern life offers everything except
-          the thing that would make it worth living — that is real too. These
-          are not personal failures. They are the predictable harvest of a
-          civilization that mistook the map for the territory, and the
-          measurement for the thing measured.
+          The deeper problem is that physicalism is not really an explanation.
+          It is a history of convenient analogies, periodically revised: the
+          mind as hydraulic pump, then telegraph, then clockwork, then computer.
+          Each era borrows the most impressive technology of its moment and
+          declares it the model of reality. The analogy eventually fails; the
+          map gets updated; the cycle repeats — and the revision gets mistaken
+          for progress. Newton himself understood the difference. After writing
+          the Principia, he was explicit: he had described the properties of
+          gravity, not explained what gravity is. The tradition that followed
+          forgot his caution and began treating description as explanation.
+          The hard problem of consciousness has been the same problem since
+          Descartes. The map has been redrawn dozens of times. The gap has
+          not closed.
         </p>
         <p>
-          The large language model makes this vivid. Trained on the accumulated
-          record of human expression, it inherits — at second hand — the
-          relevance structures sedimented into language over millennia. It
-          anticipates linguistic patterns with uncanny fidelity. But it does
-          this without the embodied stakes that, in creatures like us,
-          originally made certain things matter. No hunger. No predator. No
-          mortality pressing against every judgment. This is relevance
-          realization by proxy — the map rehearsed so thoroughly it begins to
-          resemble the territory. The language model is, in this sense, the
-          meaning crisis made legible: a system that has all the patterns and
-          none of the presence. This is also why LLMs are poor scientific
-          models of general intelligence — studying them reveals the sediment
-          of human cognition, not the underlying machinery that laid it down.
-        </p>
-        <p>
-          <em>Re-enchantment</em> is not nostalgia. It is not a retreat from
-          reason or a return to superstition. It is the recognition that pattern,
-          meaning, and presence are not projected onto a neutral world — they are
-          discovered within it. That the world is, in some genuine sense, more
-          alive than the dominant paradigm admits. And that recovering this
-          vision is not optional for a culture that wishes to remain human.
-        </p>
-        <p>
-          Preveil was built for the people who already sense this. The name
-          carries two meanings: to <em>prevail</em> — to persist, to endure,
-          to overcome — and <em>pre-veil</em>, a gesture toward the world as
-          it appeared before the secular veil was drawn across it. Charged.
-          Storied. Alive.
-        </p>
-        <p>
-          We make goods that carry that sensibility. Not costume, not irony —
-          but objects for those who are willing to be, as Shakespeare put it,
+          <em>Re-enchantment</em> is what comes after recognizing this. Not
+          nostalgia, not superstition — the insistence that the map serve the
+          territory rather than replace it. That quality is not reducible to
+          quantity. That experience is not a byproduct of matter but its ground.
+          Preveil was built for the people who already sense the weight of this
+          — who feel the meaning crisis not as a personal failure but as a
+          civilizational one, and who are looking for others willing to say so.
+          The name carries two meanings: to <em>prevail</em>, and{" "}
+          <em>pre-veil</em> — before the moment the world was divided into what
+          counts as real and what doesn&apos;t. We make goods that carry that
+          sensibility. Objects for those willing to be, as Shakespeare put it,
           God&apos;s spies. Witnesses to something sacred in the ordinary.
-          People who dare to say the zeitgeist is getting it wrong, and who
-          are looking for a community of others who feel it too.
         </p>
       </div>
 

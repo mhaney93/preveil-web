@@ -21,15 +21,14 @@ export default function AboutPage() {
       {/* Body */}
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-lg font-[family-name:var(--font-body)]">
         <p>
-          There is a particular kind of hunger that modern life is very good
-          at ignoring. Not for things — there are more things than ever. Not
-          for information, entertainment, or comfort. A hunger for the sense
-          that any of it matters. That the world is not simply a set of
-          processes running on substrate but something you can actually be
-          in — present to, known by, met. The meaning crisis is real. The
-          loneliness epidemic is real. They are not weaknesses in individuals
-          but symptoms of a civilization that traded away something foundational
-          and has not yet reckoned with the cost.
+          Before the veil was drawn, the world did not need to be
+          re-enchanted — it simply was. Charged, storied, alive, capable of
+          meeting you. What we are describing when we talk about the meaning
+          crisis, the loneliness epidemic, the sense that modern life offers
+          everything except the thing that would make it worth living — that
+          is the world after. Not a personal failure. What a civilization looks
+          like when it has traded away something foundational and has not yet
+          reckoned with the cost.
         </p>
         <p>
           Something was given up. Not in a single moment but gradually, over

@@ -21,14 +21,13 @@ export default function AboutPage() {
       {/* Body */}
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-lg font-[family-name:var(--font-body)]">
         <p>
-          Before the veil was drawn, the world did not need to be
-          re-enchanted — it simply was. Charged, storied, alive, capable of
-          meeting you. What we are describing when we talk about the meaning
-          crisis, the loneliness epidemic, the sense that modern life offers
-          everything except the thing that would make it worth living — that
-          is the world after. Not a personal failure. What a civilization looks
-          like when it has traded away something foundational and has not yet
-          reckoned with the cost.
+          the world did not need to be re-enchanted — it simply was. Charged,
+          storied, alive, capable of meeting you. What we are describing when
+          we talk about the meaning crisis, the loneliness epidemic, the sense
+          that modern life offers everything except the thing that would make
+          it worth living — that is the world after. Not a personal failure.
+          What a civilization looks like when it has traded away something
+          foundational and has not yet reckoned with the cost.
         </p>
         <p>
           Something was given up. Not in a single moment but gradually, over

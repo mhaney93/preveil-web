@@ -24,7 +24,7 @@ export default function Footer() {
             <Link href="/about" className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">About</Link>
             <Link href="/cart" className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">Cart</Link>
             <Link href="/account" className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">Account</Link>
-            <Link href="/policies" className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">Policies</Link>
+            <Link href="/policies" className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">Policies & Legal</Link>
           </div>
         </div>
 

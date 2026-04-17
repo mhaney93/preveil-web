@@ -21,45 +21,53 @@ export default function AboutPage() {
       {/* Body */}
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-lg font-[family-name:var(--font-body)]">
         <p>
-          Something happened. Not a discovery — a shift. A slow reorganization
-          of Western common sense about what is real. Before the Enlightenment
-          and the Scientific Revolution, experience was the self-evident ground
-          of reality: the felt texture of the world, the weight of meaning, the
-          recognition that some things genuinely matter. After it, matter became
-          the foundation and experience was quietly demoted to a byproduct. Two
-          hundred years later, this arrangement is so thoroughly absorbed into
-          ordinary life that most people do not recognize it as a philosophical
-          position at all. They take it as obvious. The veil is not a metaphor.
-          It is this shift — and Preveil is named for the world before it was drawn.
+          Something was lost — not in a day but across centuries, through a
+          shift so gradual it arrived as common sense. Before the Enlightenment,
+          experience was the self-evident ground of reality: meaning, beauty,
+          presence, and the sacred were not projections but discoveries, genuine
+          features of a world alive to be known. After it, matter became the
+          foundation and everything else was quietly demoted. Nietzsche saw what
+          removing the cornerstone would cost long before the building began to
+          lean. The meaning crisis is real. The loneliness epidemic is real.
+          These are not personal failures — they are what a civilization looks
+          like when it has been living off inherited meaning it no longer
+          believes in and has not yet found a way to replace.
         </p>
         <p>
-          The deeper problem is that physicalism is not really an explanation.
-          It is a history of convenient analogies, periodically revised: the
-          mind as hydraulic pump, then telegraph, then clockwork, then computer.
-          Each era borrows the most impressive technology of its moment and
-          declares it the model of reality. The analogy eventually fails; the
-          map gets updated; the cycle repeats — and the revision gets mistaken
-          for progress. Newton himself understood the difference. After writing
-          the Principia, he was explicit: he had described the properties of
-          gravity, not explained what gravity is. The tradition that followed
-          forgot his caution and began treating description as explanation.
-          The hard problem of consciousness has been the same problem since
-          Descartes. The map has been redrawn dozens of times. The gap has
-          not closed.
+          The harder truth is that the materialist explanation was never really
+          an explanation. It has been a history of convenient analogies —
+          the mind as hydraulic pump, then telegraph, then clockwork, then
+          computer — each era borrowing its most impressive technology to model
+          reality, the map getting redrawn while the territory goes untouched.
+          Newton himself drew the line: after the Principia he was explicit that
+          he had described gravity&apos;s properties, not explained what gravity
+          is. The tradition that followed erased his caution. And there is a
+          structural reason the gap stays open: to genuinely know something
+          requires more than propositions about it. Kierkegaard understood this
+          — the radical leap of faith is the quality-not-quantity distinction
+          made existential, the moment when the accumulated map runs out and
+          the territory demands a different kind of engagement entirely.
+          No stack of description ever closes that distance.
         </p>
         <p>
-          <em>Re-enchantment</em> is what comes after recognizing this. Not
-          nostalgia, not superstition — the insistence that the map serve the
-          territory rather than replace it. That quality is not reducible to
-          quantity. That experience is not a byproduct of matter but its ground.
-          Preveil was built for the people who already sense the weight of this
-          — who feel the meaning crisis not as a personal failure but as a
-          civilizational one, and who are looking for others willing to say so.
-          The name carries two meanings: to <em>prevail</em>, and{" "}
-          <em>pre-veil</em> — before the moment the world was divided into what
-          counts as real and what doesn&apos;t. We make goods that carry that
-          sensibility. Objects for those willing to be, as Shakespeare put it,
-          God&apos;s spies. Witnesses to something sacred in the ordinary.
+          <em>Re-enchantment</em> is the name for what comes after seeing this
+          clearly. Not nostalgia, not superstition — the veil is translucent,
+          not opaque. The recovery Preveil points toward is a hero&apos;s
+          journey: going back to retrieve what was dropped on the way through
+          modernity and re-integrating it, without the contempt that dismissed
+          the pre-modern world wholesale, and with the scientific literacy to
+          carry it forward. At the root of the pre-modern West is a tradition
+          whose central claim is love. That is not a sectarian point — it is
+          the observation that the grace visible in a Feynman lifting a flower
+          into wonder, or a Hitchens charming a room into aliveness, is drawing
+          on a well dug long before either of them arrived. Preveil was built
+          for the people who sense all of this — who feel the weight of what
+          was lost, and who are looking for others willing to say so. The name
+          carries two meanings: to <em>prevail</em>, and <em>pre-veil</em> —
+          before the world was divided into what counts as real and what
+          doesn&apos;t. We make goods for those willing to be, as Shakespeare
+          put it, God&apos;s spies. Witnesses to something sacred in the
+          ordinary.
         </p>
       </div>
 

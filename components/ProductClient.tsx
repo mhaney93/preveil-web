@@ -118,13 +118,14 @@ export default function ProductClient({
     return map;
   }, [allColors, hasColorSize, images]);
 
-  // Only show thumbnails that belong to the currently selected color
+  // Only filter thumbnails by color when there are multiple images per color (e.g. front + back)
+  const hasMultipleImagesPerColor = hasColorSize && images.length > allColors.length;
   const visibleThumbnailIndices = useMemo(() => {
-    if (!hasColorSize || !selectedColor) return images.map((_, i) => i);
+    if (!hasMultipleImagesPerColor || !selectedColor) return images.map((_, i) => i);
     return images
       .map((_, i) => i)
       .filter((i) => getColorForImage(images[i], allColors) === selectedColor);
-  }, [images, selectedColor, hasColorSize, allColors]);
+  }, [images, selectedColor, hasMultipleImagesPerColor, allColors]);
 
   const priceLabel = useMemo(() => {
     if (selectedVariantPrice !== null) return `$${selectedVariantPrice.toFixed(2)}`;

@@ -373,6 +373,10 @@ export default function ShopClient({ products }: { products: Product[] }) {
     return keyed.map(({ p }) => p);
   }
 
+  function sortByPrice(pool: Product[]): Product[] {
+    return [...pool].sort((a, b) => a.price_from - b.price_from);
+  }
+
   // Pick one product per subcategory for any "All" view (no hard cap — pagination handles limiting).
   // Because the pool is pre-sorted by popularity, the first product seen for each subcategory is
   // automatically the most popular one, and subcategories appear in popularity order.
@@ -401,7 +405,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
     };
 
     if (activeSubcategory) {
-      return sortByPopularity(inCategory.filter((p) => inSubs(p, [activeSubcategory.label])));
+      return sortByPrice(inCategory.filter((p) => inSubs(p, [activeSubcategory.label])));
     }
 
     if (activeGroupSubcategoryLabels) {

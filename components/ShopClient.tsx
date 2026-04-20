@@ -29,9 +29,9 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
       subcategories: ["jackets-vests"],
     },
     {
-      slug: "all-hoodies",
-      label: "Hoodies",
-      subcategories: ["hoodies"],
+      slug: "all-hoodies-sweatshirts",
+      label: "Hoodies & Sweatshirts",
+      subcategories: ["hoodies", "sweatshirts"],
     },
     {
       slug: "bottoms",
@@ -56,9 +56,9 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
       subcategories: ["jackets-vests"],
     },
     {
-      slug: "all-hoodies",
-      label: "Hoodies",
-      subcategories: ["hoodies"],
+      slug: "all-hoodies-sweatshirts",
+      label: "Hoodies & Sweatshirts",
+      subcategories: ["hoodies", "sweatshirts"],
     },
     {
       slug: "bottoms",
@@ -209,6 +209,7 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
     { slug: "embroidered-shirts", label: "Embroidered Shirts" },
     { slug: "jackets-vests", label: "Jackets & Vests" },
     { slug: "hoodies", label: "Hoodies" },
+    { slug: "sweatshirts", label: "Sweatshirts" },
     { slug: "joggers", label: "Sweatpants & Joggers" },
     { slug: "underwear", label: "Underwear" },
     { slug: "leggings", label: "Leggings" },
@@ -227,6 +228,7 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
     { slug: "dresses", label: "Dresses" },
     { slug: "jackets-vests", label: "Jackets & Vests" },
     { slug: "hoodies", label: "Hoodies" },
+    { slug: "sweatshirts", label: "Sweatshirts" },
     { slug: "joggers", label: "Sweatpants & Joggers" },
     { slug: "leggings", label: "Leggings" },
     { slug: "skirts", label: "Skirts" },

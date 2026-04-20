@@ -324,7 +324,6 @@ type Product = {
   price_from: number;
   images: string[] | null;
   category: string | null;
-  categories: string[] | null;
   subcategory: string | null;
   subcategories: string[] | null;
   order_count: number;
@@ -396,11 +395,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
   const filtered = useMemo(() => {
     if (!activeCategory) return products.filter((p) => FEATURED_SLUGS.includes(p.slug));
 
-    const inCategory = products.filter((p) =>
-      p.categories
-        ? p.categories.includes(activeCategory.label)
-        : p.category === activeCategory.label
-    );
+    const inCategory = products.filter((p) => p.category === activeCategory.label);
 
     const inSubs = (p: Product, labels: string[]) => {
       const subs = p.subcategories && p.subcategories.length > 0

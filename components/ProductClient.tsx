@@ -53,6 +53,17 @@ function findImageForColor(images: string[], color: string): number {
   return idx >= 0 ? idx : 0;
 }
 
+// Match the longest color key found in a filename so "Black" doesn't match "Black Camo" images.
+function getColorForImage(imageUrl: string, colors: string[]): string | null {
+  const filename = imageUrl.split("/").pop()?.toLowerCase() ?? "";
+  const sorted = [...colors].sort((a, b) => b.length - a.length);
+  for (const color of sorted) {
+    const key = color.toLowerCase().replace(/[\s/]+/g, "-");
+    if (filename.includes(`-${key}-`) || filename.includes(`-${key}.`)) return color;
+  }
+  return null;
+}
+
 export default function ProductClient({
   product,
   variants,
@@ -91,17 +102,29 @@ export default function ProductClient({
   );
   const [selectedVariantPrice, setSelectedVariantPrice] = useState<number | null>(null);
 
+  const allColors = useMemo(() => {
+    if (!hasColorSize) return [] as string[];
+    return [...new Set(availableVariants.map((v) => v.name.split(" / ")[0]))];
+  }, [availableVariants, hasColorSize]);
+
   // Map each image index back to whichever color it represents
   const imageIndexToColor = useMemo(() => {
     if (!hasColorSize) return {} as Record<number, string>;
-    const colors = [...new Set(availableVariants.map((v) => v.name.split(" / ")[0]))];
     const map: Record<number, string> = {};
-    for (const color of colors) {
+    for (const color of allColors) {
       const idx = findImageForColor(images, color);
       if (!(idx in map)) map[idx] = color;
     }
     return map;
-  }, [availableVariants, hasColorSize, images]);
+  }, [allColors, hasColorSize, images]);
+
+  // Only show thumbnails that belong to the currently selected color
+  const visibleThumbnailIndices = useMemo(() => {
+    if (!hasColorSize || !selectedColor) return images.map((_, i) => i);
+    return images
+      .map((_, i) => i)
+      .filter((i) => getColorForImage(images[i], allColors) === selectedColor);
+  }, [images, selectedColor, hasColorSize, allColors]);
 
   const priceLabel = useMemo(() => {
     if (selectedVariantPrice !== null) return `$${selectedVariantPrice.toFixed(2)}`;
@@ -129,6 +152,7 @@ export default function ProductClient({
         images={images}
         name={product.name}
         selectedIndex={selectedImageIndex}
+        visibleThumbnailIndices={visibleThumbnailIndices}
         onSelect={handleImageSelect}
       />
 

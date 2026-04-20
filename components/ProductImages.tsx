@@ -6,10 +6,11 @@ interface Props {
   images: string[];
   name: string;
   selectedIndex?: number;
+  visibleThumbnailIndices?: number[];
   onSelect?: (index: number) => void;
 }
 
-export default function ProductImages({ images, name, selectedIndex, onSelect }: Props) {
+export default function ProductImages({ images, name, selectedIndex, visibleThumbnailIndices, onSelect }: Props) {
   const [internalIndex, setInternalIndex] = useState(0);
 
   const controlled = selectedIndex !== undefined;
@@ -45,7 +46,9 @@ export default function ProductImages({ images, name, selectedIndex, onSelect }:
       {/* Thumbnails */}
       {images.length > 1 && (
         <div className="flex flex-wrap gap-2">
-          {images.map((img, i) => (
+          {(visibleThumbnailIndices ?? images.map((_, i) => i)).map((i) => {
+            const img = images[i];
+            return (
             <button
               key={i}
               onClick={() => handleSelect(i)}
@@ -57,7 +60,8 @@ export default function ProductImages({ images, name, selectedIndex, onSelect }:
             >
               <img src={img} alt={`${name} ${i + 1}`} className="w-full h-full object-cover" />
             </button>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

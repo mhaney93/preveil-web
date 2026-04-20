@@ -21,7 +21,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
     {
       slug: "all-shirts",
       label: "Shirts",
-      subcategories: ["t-shirts", "all-over-shirts", "polo-shirts", "tank-tops", "3-4-sleeve-shirts", "long-sleeve"],
+      subcategories: ["t-shirts", "polo-shirts", "tank-tops", "3-4-sleeve-shirts", "long-sleeve"],
     },
     {
       slug: "jackets-vests",
@@ -43,7 +43,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
     {
       slug: "all-shirts",
       label: "Shirts",
-      subcategories: ["t-shirts", "polo-shirts", "all-over-shirts", "tank-tops", "crop-tops", "3-4-sleeve-shirts", "long-sleeve"],
+      subcategories: ["t-shirts", "polo-shirts", "tank-tops", "crop-tops", "3-4-sleeve-shirts", "long-sleeve"],
     },
     {
       slug: "dresses",
@@ -85,7 +85,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
     {
       slug: "all-shirts",
       label: "Shirts",
-      subcategories: ["t-shirts", "all-over-shirts", "long-sleeve", "hoodies"],
+      subcategories: ["t-shirts", "long-sleeve", "hoodies"],
     },
     {
       slug: "hats",
@@ -202,7 +202,6 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
 const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   "mens-clothing": [
     { slug: "t-shirts", label: "T-Shirts" },
-    { slug: "all-over-shirts", label: "All-Over Shirts" },
     { slug: "polo-shirts", label: "Polo Shirts" },
     { slug: "tank-tops", label: "Tank Tops" },
     { slug: "3-4-sleeve-shirts", label: "3/4 Sleeve Shirts" },
@@ -221,7 +220,6 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   "womens-clothing": [
     { slug: "t-shirts", label: "T-Shirts" },
     { slug: "polo-shirts", label: "Polo Shirts" },
-    { slug: "all-over-shirts", label: "All-Over Shirts" },
     { slug: "tank-tops", label: "Tank Tops" },
     { slug: "crop-tops", label: "Crop Tops" },
     { slug: "embroidered-shirts", label: "Embroidered Shirts" },
@@ -242,7 +240,6 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   ],
   "kids-clothing": [
     { slug: "t-shirts", label: "T-Shirts" },
-    { slug: "all-over-shirts", label: "All-Over Shirts" },
     { slug: "3-4-sleeve-shirts", label: "3/4 Sleeve Shirts" },
     { slug: "long-sleeve", label: "Long Sleeve Shirts" },
     { slug: "hoodies", label: "Hoodies & Sweatshirts" },

@@ -14,7 +14,7 @@ const CATEGORIES = [
 ];
 
 // Groups are the intermediate level between category and subcategory.
-// Single-subcategory groups (e.g. "Jackets & Vests") act as direct links — no subcategory row shown.
+// Single-subcategory groups (e.g. "Jackets") act as direct links — no subcategory row shown.
 // Hats has no groups and shows subcategories directly.
 const GROUPS: Record<string, { slug: string; label: string; subcategories: string[] }[]> = {
   "mens-clothing": [
@@ -25,7 +25,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
     },
     {
       slug: "jackets-vests",
-      label: "Jackets & Vests",
+      label: "Jackets",
       subcategories: ["jackets-vests"],
     },
     {
@@ -52,7 +52,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
     },
     {
       slug: "jackets-vests",
-      label: "Jackets & Vests",
+      label: "Jackets",
       subcategories: ["jackets-vests"],
     },
     {
@@ -207,7 +207,7 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
     { slug: "3-4-sleeve-shirts", label: "3/4 Sleeve Shirts" },
     { slug: "long-sleeve", label: "Long Sleeve Shirts" },
     { slug: "embroidered-shirts", label: "Embroidered Shirts" },
-    { slug: "jackets-vests", label: "Jackets & Vests" },
+    { slug: "jackets-vests", label: "Jackets" },
     { slug: "hoodies", label: "Hoodies" },
     { slug: "sweatshirts", label: "Sweatshirts" },
     { slug: "joggers", label: "Sweatpants & Joggers" },
@@ -226,7 +226,7 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
     { slug: "3-4-sleeve-shirts", label: "3/4 Sleeve Shirts" },
     { slug: "long-sleeve", label: "Long Sleeve Shirts" },
     { slug: "dresses", label: "Dresses" },
-    { slug: "jackets-vests", label: "Jackets & Vests" },
+    { slug: "jackets-vests", label: "Jackets" },
     { slug: "hoodies", label: "Hoodies" },
     { slug: "sweatshirts", label: "Sweatshirts" },
     { slug: "joggers", label: "Sweatpants & Joggers" },

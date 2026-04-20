@@ -34,24 +34,27 @@ export default function AddToCartButton({
 }) {
   const SIZE_ORDER = ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"];
 
-  const availableVariants = useMemo(() => {
-    const filtered = variants.filter((v) => v.available);
-    // Sort flat (size-only) variants by SIZE_ORDER
-    const hasSlash = filtered.some((v) => v.name.includes(" / "));
-    if (hasSlash) return filtered;
-    return [...filtered].sort((a, b) => {
+  const allVariantsSorted = useMemo(() => {
+    const hasSlash = variants.some((v) => v.name.includes(" / "));
+    if (hasSlash) return variants;
+    return [...variants].sort((a, b) => {
       const ai = SIZE_ORDER.indexOf(a.name);
       const bi = SIZE_ORDER.indexOf(b.name);
       return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi);
     });
   }, [variants]);
 
+  const availableVariants = useMemo(
+    () => allVariantsSorted.filter((v) => v.available),
+    [allVariantsSorted]
+  );
+
   // Parse "Color / Size" names — fall back to flat list if no slash
-  const hasColorSize = availableVariants.some((v) => v.name.includes(" / "));
+  const hasColorSize = allVariantsSorted.some((v) => v.name.includes(" / "));
 
   const colors = useMemo(() => {
     if (!hasColorSize) return [];
-    const unique = [...new Set(availableVariants.map((v) => v.name.split(" / ")[0]))];
+    const unique = [...new Set(allVariantsSorted.map((v) => v.name.split(" / ")[0]))];
     // Sort by position in the images array so dropdown order matches display image order
     return unique.sort((a, b) => {
       const toKey = (c: string) => c.toLowerCase().replace(/[\s/]+/g, "-");
@@ -59,7 +62,7 @@ export default function AddToCartButton({
       const idxB = product.images.findIndex((img) => img.toLowerCase().includes(toKey(b)));
       return (idxA < 0 ? 999 : idxA) - (idxB < 0 ? 999 : idxB);
     });
-  }, [availableVariants, hasColorSize, product.images]);
+  }, [allVariantsSorted, hasColorSize, product.images]);
 
   const initialColor = colors[0] ?? "";
   const [selectedColor, setSelectedColor] = useState(initialColor);
@@ -82,15 +85,15 @@ export default function AddToCartButton({
 
   const sizesForColor = useMemo(() => {
     if (!hasColorSize) return [];
-    return availableVariants
+    return allVariantsSorted
       .filter((v) => v.name.startsWith(selectedColor + " / "))
-      .map((v) => ({ size: v.name.split(" / ")[1], price: v.price }))
+      .map((v) => ({ size: v.name.split(" / ")[1], price: v.price, available: v.available }))
       .sort((a, b) => {
         const ai = SIZE_ORDER.indexOf(a.size);
         const bi = SIZE_ORDER.indexOf(b.size);
         return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi);
       });
-  }, [availableVariants, selectedColor, hasColorSize]);
+  }, [allVariantsSorted, selectedColor, hasColorSize]);
 
   function handleColorChange(color: string) {
     setSelectedColor(color);
@@ -100,12 +103,13 @@ export default function AddToCartButton({
   }
 
   function handleSizeChange(size: string) {
-    setSelectedSize(size);
     const match = availableVariants.find(
       (v) => v.name === `${selectedColor} / ${size}`
     );
-    setSelectedVariant(match ?? null);
-    onVariantChange?.(match ?? null);
+    if (!match) return;
+    setSelectedSize(size);
+    setSelectedVariant(match);
+    onVariantChange?.(match);
   }
 
   function addToCart() {
@@ -168,7 +172,7 @@ export default function AddToCartButton({
             </div>
           )}
 
-          {/* Size dropdown */}
+          {/* Size buttons */}
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <label className="text-sm tracking-widest uppercase text-[var(--muted)]">
@@ -184,18 +188,32 @@ export default function AddToCartButton({
                 </button>
               )}
             </div>
-            <select
-              value={selectedSize}
-              onChange={(e) => handleSizeChange(e.target.value)}
-              className="bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] px-4 py-2 text-sm tracking-wide focus:outline-none focus:border-[var(--accent-gold)]"
-            >
-              <option value="">Select a size</option>
-              {sizesForColor.map(({ size, price }) => (
-                <option key={size} value={size}>
-                  {size} — ${price}
-                </option>
+            <div className="flex flex-wrap gap-2">
+              {sizesForColor.map(({ size, available }) => (
+                <div key={size} className="relative">
+                  <button
+                    onClick={() => handleSizeChange(size)}
+                    disabled={!available}
+                    className={`px-3 py-2 text-sm tracking-wide border transition-colors ${
+                      selectedSize === size
+                        ? "border-[var(--accent-gold)] text-[var(--accent-gold)]"
+                        : available
+                        ? "border-[var(--border)] text-[var(--muted)] hover:border-[var(--foreground)]"
+                        : "border-[var(--border)] text-[var(--muted)] opacity-40 cursor-not-allowed"
+                    }`}
+                  >
+                    {size}
+                  </button>
+                  {!available && (
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-full h-px bg-[var(--muted)] opacity-60 rotate-45 scale-150" />
+                      </div>
+                    </div>
+                  )}
+                </div>
               ))}
-            </select>
+            </div>
           </div>
         </>
       ) : (

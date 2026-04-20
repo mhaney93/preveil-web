@@ -73,10 +73,10 @@ export default function ProductClient({
 }) {
   const images = product.images ?? [];
   const availableVariants = variants.filter((v) => v.available);
-  const hasColorSize = availableVariants.some((v) => v.name.includes(" / "));
+  const hasColorSize = variants.some((v) => v.name.includes(" / "));
 
   // Determine size guide type — only for clothing with actual size variants
-  const hasSizes = availableVariants.some((v) => {
+  const hasSizes = variants.some((v) => {
     const part = v.name.includes(" / ") ? v.name.split(" / ")[1] : v.name;
     return ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"].includes(part);
   });
@@ -86,15 +86,17 @@ export default function ProductClient({
 
   const initialColor = useMemo(() => {
     if (!hasColorSize) return "";
-    const unique = [...new Set(availableVariants.map((v) => v.name.split(" / ")[0]))];
+    const allColors = [...new Set(variants.map((v) => v.name.split(" / ")[0]))];
     const toKey = (c: string) => c.toLowerCase().replace(/[\s/]+/g, "-");
-    const sorted = unique.sort((a, b) => {
+    const sorted = allColors.sort((a, b) => {
       const idxA = images.findIndex((img) => img.toLowerCase().includes(toKey(a)));
       const idxB = images.findIndex((img) => img.toLowerCase().includes(toKey(b)));
       return (idxA < 0 ? 999 : idxA) - (idxB < 0 ? 999 : idxB);
     });
-    return sorted[0] ?? "";
-  }, [availableVariants, hasColorSize, images]);
+    // Prefer the first color that has at least one available size
+    const availableColors = new Set(availableVariants.map((v) => v.name.split(" / ")[0]));
+    return sorted.find((c) => availableColors.has(c)) ?? sorted[0] ?? "";
+  }, [variants, availableVariants, hasColorSize, images]);
 
   const [selectedColor, setSelectedColor] = useState(initialColor);
   const [selectedImageIndex, setSelectedImageIndex] = useState(
@@ -104,8 +106,8 @@ export default function ProductClient({
 
   const allColors = useMemo(() => {
     if (!hasColorSize) return [] as string[];
-    return [...new Set(availableVariants.map((v) => v.name.split(" / ")[0]))];
-  }, [availableVariants, hasColorSize]);
+    return [...new Set(variants.map((v) => v.name.split(" / ")[0]))];
+  }, [variants, hasColorSize]);
 
   // Map each image index back to whichever color it represents
   const imageIndexToColor = useMemo(() => {
@@ -129,7 +131,7 @@ export default function ProductClient({
 
   const priceLabel = useMemo(() => {
     if (selectedVariantPrice !== null) return `$${selectedVariantPrice.toFixed(2)}`;
-    const prices = availableVariants.map((v) => v.price);
+    const prices = (availableVariants.length ? availableVariants : variants).map((v) => v.price);
     const min = Math.min(...prices);
     const max = Math.max(...prices);
     return min === max ? `$${min.toFixed(2)}` : `$${min.toFixed(2)} – $${max.toFixed(2)}`;

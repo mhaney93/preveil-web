@@ -148,28 +148,23 @@ export default function AddToCartButton({
     <div className="flex flex-col gap-4">
       {hasColorSize ? (
         <>
-          {/* Color pills — hidden when only one color */}
+          {/* Color dropdown — hidden when only one color */}
           {colors.length > 1 && (
             <div className="flex flex-col gap-2">
               <label className="text-sm tracking-widest uppercase text-[var(--muted)]">
-                Color — <span className="normal-case tracking-normal">{selectedColor}</span>
+                Color
               </label>
-              <div className="flex flex-wrap gap-2">
+              <select
+                value={selectedColor}
+                onChange={(e) => handleColorChange(e.target.value)}
+                className="bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] px-4 py-2 text-sm tracking-wide focus:outline-none focus:border-[var(--accent-gold)]"
+              >
                 {colors.map((color) => (
-                  <button
-                    key={color}
-                    type="button"
-                    onClick={() => handleColorChange(color)}
-                    className={`px-3 py-1 text-xs tracking-wide border transition-colors ${
-                      selectedColor === color
-                        ? "border-[var(--accent-gold)] text-[var(--accent-gold)]"
-                        : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--foreground)] hover:text-[var(--foreground)]"
-                    }`}
-                  >
+                  <option key={color} value={color}>
                     {color}
-                  </button>
+                  </option>
                 ))}
-              </div>
+              </select>
             </div>
           )}
 

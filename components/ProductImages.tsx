@@ -44,12 +44,12 @@ export default function ProductImages({ images, name, selectedIndex, onSelect }:
 
       {/* Thumbnails */}
       {images.length > 1 && (
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {images.map((img, i) => (
             <button
               key={i}
               onClick={() => handleSelect(i)}
-              className={`w-16 h-16 border overflow-hidden flex-shrink-0 transition-colors ${
+              className={`w-12 h-12 border overflow-hidden flex-shrink-0 transition-colors ${
                 active === i
                   ? "border-[var(--accent-gold)]"
                   : "border-[var(--border)] hover:border-[var(--foreground)]"

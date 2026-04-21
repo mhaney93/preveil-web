@@ -33,8 +33,8 @@ body {
 
 @keyframes veilDrape {
   0%    { clip-path: polygon(0 0, 0 0, 0 0, 0 0); }
-  20%   { clip-path: polygon(0 0, 8% 0, 8% 100%, 0 100%); }
-  38%   { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  13%   { clip-path: polygon(0 0, 8% 0, 8% 100%, 0 100%); }
+  43%   { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
   62%   { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
   76%   { clip-path: polygon(70% 0, 100% 0, 100% 100%, 25% 100%); }
   89%   { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); }

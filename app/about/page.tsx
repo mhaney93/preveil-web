@@ -43,6 +43,22 @@ export default function AboutPage() {
           Preveil is a gesture toward the world before it was drawn.
         </p>
         <p>
+          The veil is not only a civilizational event. Each of us builds our
+          own — stacking lenses over a lifetime: human, son, friend, the roles
+          and affiliations that accumulate into a self. Each layer is real, and
+          necessary; identity is the instrument by which we decode what is
+          relevant from the vast noise of everything. But the stack accumulates,
+          and the light through it dims. At its extreme, a person&apos;s entire
+          reality contracts around a single axis — everything else filtered out.
+          Preveil is not a call to strip the lenses away. It is a call to hold
+          them lightly enough that something still comes through. To remember
+          what is underneath the stack. The oldest philosophical traditions and
+          the newest findings in physics arrive, independently, at the same
+          place: beneath every pattern of excitation, there is one field.
+          Beneath every accumulated layer of identity, there is one awareness.
+          They are not two different things.
+        </p>
+        <p>
           <em>Re-enchantment</em> is not a retreat from reason — it is the
           refusal to let the map be mistaken for the territory. It is the
           recognition that wonder, belonging, mystery, and the sacred are not
@@ -54,8 +70,9 @@ export default function AboutPage() {
           the alternative of a world drained of meaning, and who is looking for
           others who feel it too. The name carries two meanings — to{" "}
           <em>prevail</em>, and <em>pre-veil</em>. We make goods for those
-          willing to be, as Shakespeare put it, God&apos;s spies. Witnesses to
-          something sacred in the ordinary.
+          willing to be, as Shakespeare put it, God&apos;s spies — not merely
+          witnesses to something sacred, but the field itself, aware of itself,
+          looking through particular eyes.
         </p>
       </div>
 

@@ -32,14 +32,14 @@ body {
 /* ─── Veil animation ─── */
 
 @keyframes veilDrape {
-  /* Cloth gathered at left edge */
+  /* Veil pinned at top, zero height — about to fall */
   0%    {
-    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     animation-timing-function: ease-in;
   }
-  /* Diagonal leading edge — left side leads, right side trails */
+  /* Falling — left side heavier, leads the drop */
   12%   {
-    clip-path: polygon(0 0, 65% 0, 5% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 10%, 0 45%);
     animation-timing-function: ease-out;
   }
   /* Fully draped */
@@ -52,17 +52,17 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     animation-timing-function: ease-in;
   }
-  /* Pulled to the right — left edge retreats, right stays */
+  /* Pulled to the right — top leads, bottom trails */
   76%   {
-    clip-path: polygon(80% 0, 100% 0, 100% 100%, 30% 100%);
+    clip-path: polygon(70% 0, 100% 0, 100% 100%, 25% 100%);
     animation-timing-function: ease-out;
   }
   /* Gone off right edge */
   89%   { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); }
-  /* Instant reset to left edge (both are zero-width, transition invisible) */
-  89.5% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+  /* Reset to top (both zero-height, transition invisible) */
+  89.5% { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
   /* Pause */
-  100%  { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+  100%  { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
 }
 
 .veil-drape {

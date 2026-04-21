@@ -32,16 +32,37 @@ body {
 /* ─── Veil animation ─── */
 
 @keyframes veilDrape {
-  /* Descend from top */
-  0%    { clip-path: inset(0 0 100% 0); }
-  35%   { clip-path: inset(0 0 0% 0); }
+  /* Cloth gathered at left edge */
+  0%    {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    animation-timing-function: ease-in;
+  }
+  /* Diagonal leading edge — left side leads, right side trails */
+  12%   {
+    clip-path: polygon(0 0, 45% 0, 15% 100%, 0 100%);
+    animation-timing-function: ease-out;
+  }
+  /* Fully draped */
+  35%   {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    animation-timing-function: linear;
+  }
   /* Hold */
-  60%   { clip-path: inset(0 0 0% 0); }
-  /* Lift back up */
-  85%   { clip-path: inset(100% 0 0 0); }
-  /* Instant invisible reset, then pause */
-  85.5% { clip-path: inset(0 0 100% 0); }
-  100%  { clip-path: inset(0 0 100% 0); }
+  62%   {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    animation-timing-function: ease-in;
+  }
+  /* Pulled to the right — left edge retreats, right stays */
+  76%   {
+    clip-path: polygon(45% 0, 100% 0, 100% 100%, 70% 100%);
+    animation-timing-function: ease-out;
+  }
+  /* Gone off right edge */
+  89%   { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); }
+  /* Instant reset to left edge (both are zero-width, transition invisible) */
+  89.5% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+  /* Pause */
+  100%  { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
 }
 
 .veil-drape {
@@ -55,7 +76,7 @@ body {
 .veil-gold {
   position: absolute;
   inset: 0;
-  background-color: rgba(200, 164, 90, 0.13);
+  background-color: rgba(200, 164, 90, 0.07);
 }
 
 .veil-grain {
@@ -64,7 +85,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
   background-size: 200px 200px;
   mix-blend-mode: overlay;
-  opacity: 0.55;
+  opacity: 0.35;
 }
 
 /* ─── Experience controls ─── */

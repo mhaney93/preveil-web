@@ -32,26 +32,11 @@ body {
 /* ─── Veil animation ─── */
 
 @keyframes veilDrape {
-  0%    {
-    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
-    animation-timing-function: ease-in-out;
-  }
-  25%   {
-    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-    animation-timing-function: ease-in-out;
-  }
-  38%   {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    animation-timing-function: linear;
-  }
-  62%   {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    animation-timing-function: ease-in-out;
-  }
-  76%   {
-    clip-path: polygon(70% 0, 100% 0, 100% 100%, 25% 100%);
-    animation-timing-function: ease-in-out;
-  }
+  0%    { clip-path: polygon(0 0, 0 0, 0 0, 0 0); }
+  25%   { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
+  38%   { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  62%   { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  76%   { clip-path: polygon(70% 0, 100% 0, 100% 100%, 25% 100%); }
   89%   { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); }
   89.5% { clip-path: polygon(0 0, 0 0, 0 0, 0 0); }
   100%  { clip-path: polygon(0 0, 0 0, 0 0, 0 0); }

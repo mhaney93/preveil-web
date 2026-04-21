@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createServerClient } from "@/lib/supabase/server";
+import HomepageExperience from "@/components/HomepageExperience";
 
 export const metadata: Metadata = {
   title: "Preveil — Re-enchant your world",
@@ -13,6 +14,8 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col">
+      <HomepageExperience />
+
       {/* Hero */}
       <section className="flex flex-col items-center justify-center text-center px-6 py-24 md:py-40 border-b border-[var(--border)]">
         <p className="text-sm tracking-[0.4em] uppercase text-[var(--accent-gold)] mb-6">

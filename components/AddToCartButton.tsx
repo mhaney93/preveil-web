@@ -22,6 +22,7 @@ export default function AddToCartButton({
   variants,
   controlledColor,
   sizeGuideType,
+  colorLabel = "Color",
   onColorChange,
   onVariantChange,
 }: {
@@ -29,6 +30,7 @@ export default function AddToCartButton({
   variants: Variant[];
   controlledColor?: string;
   sizeGuideType?: SizeGuideType;
+  colorLabel?: string;
   onColorChange?: (color: string) => void;
   onVariantChange?: (variant: Variant | null) => void;
 }) {
@@ -156,7 +158,7 @@ export default function AddToCartButton({
           {colors.length > 1 && (
             <div className="flex flex-col gap-2">
               <label className="text-sm tracking-widest uppercase text-[var(--muted)]">
-                Color
+                {colorLabel}
               </label>
               <select
                 value={selectedColor}

@@ -192,6 +192,12 @@ export default function ProductClient({
             variants={variants}
             controlledColor={selectedColor}
             sizeGuideType={sizeGuideType}
+            colorLabel={
+              allColors.length > 0 &&
+              allColors.every((c) => ["Black", "White"].includes(c))
+                ? "Trim Color"
+                : "Color"
+            }
             onColorChange={handleColorChange}
             onVariantChange={(v) => {
             setSelectedVariantPrice(v ? v.price : null);

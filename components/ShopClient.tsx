@@ -414,6 +414,8 @@ export default function ShopClient({ products }: { products: Product[] }) {
 
     if (activeGroupSubcategoryLabels) {
       const inGroup = inCategory.filter((p) => inSubs(p, activeGroupSubcategoryLabels));
+      // Single-subcategory groups (e.g. Jackets) show all products, not one per subcategory
+      if (activeGroupSubcategoryLabels.length === 1) return sortByPrice(inGroup);
       return onePerSubcategory(sortByPopularity(inGroup));
     }
 

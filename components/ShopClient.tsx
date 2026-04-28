@@ -43,7 +43,7 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
     {
       slug: "all-shirts",
       label: "Shirts",
-      subcategories: ["t-shirts", "polo-shirts", "tank-tops", "crop-tops", "3-4-sleeve-shirts", "long-sleeve"],
+      subcategories: ["t-shirts", "polo-shirts", "all-over-shirts", "tank-tops", "crop-tops", "3-4-sleeve-shirts", "long-sleeve"],
     },
     {
       slug: "dresses",
@@ -226,6 +226,7 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   "womens-clothing": [
     { slug: "t-shirts", label: "T-Shirts" },
     { slug: "polo-shirts", label: "Polo Shirts" },
+    { slug: "all-over-shirts", label: "All-Over Shirts" },
     { slug: "tank-tops", label: "Tank Tops" },
     { slug: "crop-tops", label: "Crop Tops" },
     { slug: "embroidered-shirts", label: "Embroidered Shirts" },

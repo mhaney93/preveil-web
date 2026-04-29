@@ -93,11 +93,6 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
       subcategories: ["hoodies", "sweatshirts"],
     },
     {
-      slug: "hats",
-      label: "Hats",
-      subcategories: ["hats"],
-    },
-    {
       slug: "leggings",
       label: "Leggings",
       subcategories: ["leggings"],
@@ -252,7 +247,6 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
     { slug: "long-sleeve", label: "Long Sleeve Shirts" },
     { slug: "hoodies", label: "Hoodies" },
     { slug: "sweatshirts", label: "Sweatshirts" },
-    { slug: "hats", label: "Hats" },
     { slug: "leggings", label: "Leggings" },
     { slug: "baby-bodysuits", label: "Baby Bodysuits" },
     { slug: "swimwear", label: "Swimwear" },

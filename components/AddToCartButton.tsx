@@ -85,17 +85,27 @@ export default function AddToCartButton({
     }
   }, [controlledColor]);
 
+  // All unique sizes across every color, so every scent shows the same size grid
+  // (missing sizes show as disabled rather than vanishing when switching scents)
+  const allSizes = useMemo(() => {
+    if (!hasColorSize) return [] as string[];
+    const unique = [...new Set(allVariantsSorted.map((v) => v.name.split(" / ")[1]))];
+    return unique.sort((a, b) => {
+      const ai = SIZE_ORDER.indexOf(a);
+      const bi = SIZE_ORDER.indexOf(b);
+      return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi);
+    });
+  }, [allVariantsSorted, hasColorSize]);
+
   const sizesForColor = useMemo(() => {
     if (!hasColorSize) return [];
-    return allVariantsSorted
-      .filter((v) => v.name.startsWith(selectedColor + " / "))
-      .map((v) => ({ size: v.name.split(" / ")[1], price: v.price, available: v.available }))
-      .sort((a, b) => {
-        const ai = SIZE_ORDER.indexOf(a.size);
-        const bi = SIZE_ORDER.indexOf(b.size);
-        return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi);
-      });
-  }, [allVariantsSorted, selectedColor, hasColorSize]);
+    return allSizes.map((size) => {
+      const variant = allVariantsSorted.find(
+        (v) => v.name === `${selectedColor} / ${size}`
+      );
+      return { size, price: variant?.price ?? 0, available: !!variant?.available };
+    });
+  }, [allVariantsSorted, allSizes, selectedColor, hasColorSize]);
 
   function handleColorChange(color: string) {
     setSelectedColor(color);

@@ -16,7 +16,7 @@ const CATEGORIES = [
 // Groups are the intermediate level between category and subcategory.
 // Single-subcategory groups (e.g. "Jackets") act as direct links — no subcategory row shown.
 // Hats has no groups and shows subcategories directly.
-const GROUPS: Record<string, { slug: string; label: string; subcategories: string[] }[]> = {
+const GROUPS: Record<string, { slug: string; label: string; subcategories: string[]; hideSubnav?: boolean }[]> = {
   "mens-clothing": [
     {
       slug: "all-shirts",
@@ -90,7 +90,8 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
     {
       slug: "all-hoodies-sweatshirts",
       label: "Hoodies & Sweatshirts",
-      subcategories: [],
+      subcategories: ["hoodies", "sweatshirts"],
+      hideSubnav: true,
     },
     {
       slug: "leggings",
@@ -414,6 +415,8 @@ export default function ShopClient({ products }: { products: Product[] }) {
 
     if (activeGroupSubcategoryLabels) {
       const inGroup = inCategory.filter((p) => inSubs(p, activeGroupSubcategoryLabels));
+      // Merged groups (hideSubnav) show all products as flat list
+      if (activeGroup?.hideSubnav) return sortByPrice(inGroup);
       // Single-subcategory groups (e.g. Jackets) show all products, not one per subcategory
       if (activeGroupSubcategoryLabels.length === 1) return sortByPrice(inGroup);
       return onePerSubcategory(sortByPopularity(inGroup));
@@ -482,7 +485,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
       )}
 
       {/* Subcategory filters — only shown when group has multiple subcategories, or category has no groups */}
-      {activeCategory && (!hasGroups || (activeGroup && activeGroup.subcategories.length > 1)) && visibleSubcategories.length > 0 && (
+      {activeCategory && (!hasGroups || (activeGroup && activeGroup.subcategories.length > 1 && !activeGroup.hideSubnav)) && visibleSubcategories.length > 0 && (
         <div className="flex overflow-x-auto gap-2 mb-4 [&>*]:shrink-0 justify-start sm:justify-center [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
           <Link
             href={

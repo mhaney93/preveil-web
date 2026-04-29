@@ -387,10 +387,18 @@ export default function ShopClient({ products }: { products: Product[] }) {
   const filtered = useMemo(() => {
     if (!activeCategory) return products.filter((p) => FEATURED_SLUGS.includes(p.slug));
 
-    const catSubLabels = new Set((SUBCATEGORIES[activeCategory.slug] ?? []).map((s) => s.label));
+    // Only use subcategory labels unique to this category for cross-category matching.
+    // Shared labels like "T-Shirts" appear in Men's, Women's, and Kids' — using them
+    // would bleed products across categories unintentionally.
+    const allSubEntries = Object.entries(SUBCATEGORIES);
+    const exclusiveCatSubLabels = new Set(
+      (SUBCATEGORIES[activeCategory.slug] ?? [])
+        .map((s) => s.label)
+        .filter((label) => allSubEntries.filter(([, subs]) => subs.some((s) => s.label === label)).length === 1)
+    );
     const inCategory = products.filter((p) =>
       p.category === activeCategory.label ||
-      p.subcategories?.some((s) => catSubLabels.has(s))
+      p.subcategories?.some((s) => exclusiveCatSubLabels.has(s))
     );
 
     const inSubs = (p: Product, labels: string[]) => {

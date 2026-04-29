@@ -23,6 +23,10 @@ interface Variant {
 }
 
 
+const SUBCATEGORY_COLOR_LABELS: Record<string, string> = {
+  "Sports Bras": "Piping Color",
+};
+
 const BOTTOM_SUBCATEGORIES = new Set([
   "Leggings",
   "Sweatpants & Joggers",
@@ -193,9 +197,9 @@ export default function ProductClient({
             controlledColor={selectedColor}
             sizeGuideType={sizeGuideType}
             colorLabel={
-              allColors.length > 0 &&
-              allColors.every((c) => ["Black", "White"].includes(c))
-                ? "Trim Color"
+              allColors.length > 0
+                ? (SUBCATEGORY_COLOR_LABELS[product.subcategory as string ?? ""] ??
+                    (allColors.every((c) => ["Black", "White"].includes(c)) ? "Trim Color" : "Color"))
                 : "Color"
             }
             onColorChange={handleColorChange}

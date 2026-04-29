@@ -110,11 +110,6 @@ const GROUPS: Record<string, { slug: string; label: string; subcategories: strin
   ],
   "accessories": [
     {
-      slug: "patches",
-      label: "Patches",
-      subcategories: ["patches"],
-    },
-    {
       slug: "pins",
       label: "Pins",
       subcategories: ["pins"],
@@ -261,7 +256,6 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
     { slug: "visors", label: "Visors" },
   ],
   "accessories": [
-    { slug: "patches", label: "Patches" },
     { slug: "pins", label: "Pins" },
     { slug: "tote-bags", label: "Tote Bags" },
     { slug: "duffle-bags", label: "Duffle Bags" },

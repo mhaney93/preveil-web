@@ -25,7 +25,7 @@ interface CartItem {
 
 export async function POST(req: NextRequest) {
   try {
-    const { items, shipping, userId, pointsToRedeem, shippingCost } = await req.json();
+    const { items, shipping, userId, pointsToRedeem, shippingCost, taxAmount } = await req.json();
 
     if (!items || items.length === 0) {
       return NextResponse.json({ error: "No items in cart" }, { status: 400 });
@@ -65,7 +65,8 @@ export async function POST(req: NextRequest) {
 
     const pointsDiscount = pointsToRedeem ? pointsToRedeem / 100 : 0;
     const shipping_cost = typeof shippingCost === "number" ? shippingCost : 0;
-    const total = Math.max(subtotal + shipping_cost - pointsDiscount, 0.5); // Stripe minimum $0.50
+    const tax_amount = typeof taxAmount === "number" ? taxAmount : 0;
+    const total = Math.max(subtotal + shipping_cost + tax_amount - pointsDiscount, 0.5); // Stripe minimum $0.50
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(total * 100),
@@ -77,6 +78,7 @@ export async function POST(req: NextRequest) {
         user_id: userId ?? "",
         points_redeemed: pointsToRedeem ? String(pointsToRedeem) : "0",
         shipping_cost: String(shipping_cost),
+        tax_amount: String(tax_amount),
       },
     });
 

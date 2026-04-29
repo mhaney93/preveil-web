@@ -117,6 +117,7 @@ export default function CheckoutPage() {
   const [priceChanged, setPriceChanged] = useState(false);
   const [shippingCost, setShippingCost] = useState<number | null>(null);
   const [shippingRateName, setShippingRateName] = useState<string>("");
+  const [taxAmount, setTaxAmount] = useState<number>(0);
 
   useEffect(() => {
     const storedCart: CartItem[] = JSON.parse(localStorage.getItem("cart") ?? "[]");
@@ -168,7 +169,7 @@ export default function CheckoutPage() {
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const pointsDiscount = redeemPoints ? availablePoints / 100 : 0;
-  const total = Math.max(subtotal + (shippingCost ?? 0) - pointsDiscount, 0);
+  const total = Math.max(subtotal + (shippingCost ?? 0) + taxAmount - pointsDiscount, 0);
 
   async function handleShippingSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -185,7 +186,7 @@ export default function CheckoutPage() {
     const rateRes = await fetch("/api/shipping-rates", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: cart, shipping }),
+      body: JSON.stringify({ items: cart, shipping, subtotal }),
     });
     const rateData = await rateRes.json();
     if (!rateRes.ok) {
@@ -193,8 +194,10 @@ export default function CheckoutPage() {
       return;
     }
     const fetchedShippingCost: number = rateData.rate;
+    const fetchedTaxAmount: number = rateData.tax ?? 0;
     setShippingCost(fetchedShippingCost);
     setShippingRateName(rateData.name ?? "Shipping");
+    setTaxAmount(fetchedTaxAmount);
 
     const res = await fetch("/api/checkout", {
       method: "POST",
@@ -205,6 +208,7 @@ export default function CheckoutPage() {
         userId,
         pointsToRedeem: redeemPoints ? availablePoints : 0,
         shippingCost: fetchedShippingCost,
+        taxAmount: fetchedTaxAmount,
       }),
     });
     const data = await res.json();
@@ -346,6 +350,13 @@ export default function CheckoutPage() {
               <div className="flex justify-between text-sm">
                 <span className="text-[var(--muted)]">Shipping</span>
                 <span className="text-[var(--muted)]">Calculated at checkout</span>
+              </div>
+            )}
+
+            {taxAmount > 0 && (
+              <div className="flex justify-between text-sm">
+                <span className="text-[var(--muted)]">Tax</span>
+                <span className="text-[var(--accent-gold)]">${taxAmount.toFixed(2)}</span>
               </div>
             )}
 

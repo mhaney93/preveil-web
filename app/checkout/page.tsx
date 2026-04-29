@@ -115,6 +115,8 @@ export default function CheckoutPage() {
   const [redeemPoints, setRedeemPoints] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
   const [priceChanged, setPriceChanged] = useState(false);
+  const [shippingCost, setShippingCost] = useState<number | null>(null);
+  const [shippingRateName, setShippingRateName] = useState<string>("");
 
   useEffect(() => {
     const storedCart: CartItem[] = JSON.parse(localStorage.getItem("cart") ?? "[]");
@@ -166,10 +168,11 @@ export default function CheckoutPage() {
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const pointsDiscount = redeemPoints ? availablePoints / 100 : 0;
-  const total = Math.max(subtotal - pointsDiscount, 0);
+  const total = Math.max(subtotal + (shippingCost ?? 0) - pointsDiscount, 0);
 
   async function handleShippingSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setCheckoutError(null);
 
     // Sync cart for abandoned cart detection
     fetch("/api/cart", {
@@ -177,6 +180,21 @@ export default function CheckoutPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, email: shipping.email, items: cart }),
     });
+
+    // Fetch live shipping rate from Printful
+    const rateRes = await fetch("/api/shipping-rates", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items: cart, shipping }),
+    });
+    const rateData = await rateRes.json();
+    if (!rateRes.ok) {
+      setCheckoutError(rateData.error ?? "Could not calculate shipping. Please try again.");
+      return;
+    }
+    const fetchedShippingCost: number = rateData.rate;
+    setShippingCost(fetchedShippingCost);
+    setShippingRateName(rateData.name ?? "Shipping");
 
     const res = await fetch("/api/checkout", {
       method: "POST",
@@ -186,6 +204,7 @@ export default function CheckoutPage() {
         shipping,
         userId,
         pointsToRedeem: redeemPoints ? availablePoints : 0,
+        shippingCost: fetchedShippingCost,
       }),
     });
     const data = await res.json();
@@ -313,6 +332,20 @@ export default function CheckoutPage() {
                     className="accent-[var(--accent-gold)] w-4 h-4"
                   />
                 </label>
+              </div>
+            )}
+
+            {shippingCost !== null && (
+              <div className="flex justify-between text-sm">
+                <span className="text-[var(--muted)]">{shippingRateName || "Shipping"}</span>
+                <span className="text-[var(--accent-gold)]">${shippingCost.toFixed(2)}</span>
+              </div>
+            )}
+
+            {shippingCost === null && step === "payment" && (
+              <div className="flex justify-between text-sm">
+                <span className="text-[var(--muted)]">Shipping</span>
+                <span className="text-[var(--muted)]">Calculated at checkout</span>
               </div>
             )}
 

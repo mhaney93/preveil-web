@@ -387,7 +387,11 @@ export default function ShopClient({ products }: { products: Product[] }) {
   const filtered = useMemo(() => {
     if (!activeCategory) return products.filter((p) => FEATURED_SLUGS.includes(p.slug));
 
-    const inCategory = products.filter((p) => p.category === activeCategory.label);
+    const catSubLabels = new Set((SUBCATEGORIES[activeCategory.slug] ?? []).map((s) => s.label));
+    const inCategory = products.filter((p) =>
+      p.category === activeCategory.label ||
+      p.subcategories?.some((s) => catSubLabels.has(s))
+    );
 
     const inSubs = (p: Product, labels: string[]) => {
       const subs = p.subcategories && p.subcategories.length > 0

@@ -252,7 +252,6 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
     { slug: "swimwear", label: "Swimwear" },
   ],
   "hats": [
-    { slug: "beanies", label: "Beanies" },
     { slug: "dad-hats", label: "Dad Hats / Baseball Caps" },
     { slug: "snapbacks", label: "Snapbacks" },
     { slug: "trucker-hats", label: "Trucker Hats" },

@@ -68,6 +68,17 @@ function getColorForImage(imageUrl: string, colors: string[]): string | null {
   return null;
 }
 
+// Match variant name (e.g. "S", "M", "L") against an image filename for flat-variant products.
+function getVariantForImage(imageUrl: string, variantNames: string[]): string | null {
+  const filename = imageUrl.split("/").pop()?.toLowerCase() ?? "";
+  const sorted = [...variantNames].sort((a, b) => b.length - a.length);
+  for (const name of sorted) {
+    const key = name.toLowerCase().replace(/[\s/]+/g, "-");
+    if (filename.includes(`-${key}-`) || filename.includes(`-${key}.`)) return name;
+  }
+  return null;
+}
+
 export default function ProductClient({
   product,
   variants,
@@ -107,6 +118,12 @@ export default function ProductClient({
     hasColorSize ? findImageForColor(images, initialColor) : 0
   );
   const [selectedVariantPrice, setSelectedVariantPrice] = useState<number | null>(null);
+  const [controlledVariantName, setControlledVariantName] = useState<string | null>(null);
+
+  const flatVariantNames = useMemo(() => {
+    if (hasColorSize) return [] as string[];
+    return variants.map((v) => v.name);
+  }, [variants, hasColorSize]);
 
   const allColors = useMemo(() => {
     if (!hasColorSize) return [] as string[];
@@ -143,8 +160,13 @@ export default function ProductClient({
 
   function handleImageSelect(i: number) {
     setSelectedImageIndex(i);
-    const color = imageIndexToColor[i];
-    if (color) setSelectedColor(color);
+    if (hasColorSize) {
+      const color = imageIndexToColor[i];
+      if (color) setSelectedColor(color);
+    } else {
+      const variantName = getVariantForImage(images[i], flatVariantNames);
+      if (variantName) setControlledVariantName(variantName);
+    }
   }
 
   function handleColorChange(color: string) {
@@ -195,6 +217,7 @@ export default function ProductClient({
             product={product}
             variants={variants}
             controlledColor={selectedColor}
+            controlledVariantName={controlledVariantName}
             sizeGuideType={sizeGuideType}
             colorLabel={
               allColors.length > 0
@@ -204,12 +227,12 @@ export default function ProductClient({
             }
             onColorChange={handleColorChange}
             onVariantChange={(v) => {
-            setSelectedVariantPrice(v ? v.price : null);
-            if (v && !hasColorSize) {
-              const idx = availableVariants.findIndex((av) => av.id === v.id);
-              if (idx >= 0 && idx < images.length) setSelectedImageIndex(idx);
-            }
-          }}
+              setSelectedVariantPrice(v ? v.price : null);
+              if (v && !hasColorSize) {
+                const idx = availableVariants.findIndex((av) => av.id === v.id);
+                if (idx >= 0 && idx < images.length) setSelectedImageIndex(idx);
+              }
+            }}
           />
         )}
       </div>

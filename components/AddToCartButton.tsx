@@ -21,6 +21,7 @@ export default function AddToCartButton({
   product,
   variants,
   controlledColor,
+  controlledVariantName,
   sizeGuideType,
   colorLabel = "Color",
   onColorChange,
@@ -29,6 +30,7 @@ export default function AddToCartButton({
   product: Product;
   variants: Variant[];
   controlledColor?: string;
+  controlledVariantName?: string | null;
   sizeGuideType?: SizeGuideType;
   colorLabel?: string;
   onColorChange?: (color: string) => void;
@@ -84,6 +86,16 @@ export default function AddToCartButton({
       setSelectedVariant(null);
     }
   }, [controlledColor]);
+
+  // Sync flat variant when parent changes it (e.g. clicking a size-specific image thumbnail)
+  useEffect(() => {
+    if (!controlledVariantName || hasColorSize) return;
+    const match = availableVariants.find((v) => v.name === controlledVariantName);
+    if (match && match.id !== selectedVariant?.id) {
+      setSelectedVariant(match);
+      onVariantChange?.(match);
+    }
+  }, [controlledVariantName]);
 
   // All unique sizes across every color, so every scent shows the same size grid
   // (missing sizes show as disabled rather than vanishing when switching scents)

@@ -24,5 +24,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(result, { status: 500 });
   }
 
-  return NextResponse.json(result);
+  return NextResponse.json({
+    orderId: result.orderId,
+    email: result.email,
+    name: result.name,
+    pointsEarned: result.pointsEarned,
+  });
 }

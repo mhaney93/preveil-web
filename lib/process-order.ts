@@ -12,7 +12,7 @@ function createAdminClient() {
   );
 }
 
-export async function processOrder(paymentIntent: Stripe.PaymentIntent): Promise<{ orderId: string } | { error: string }> {
+export async function processOrder(paymentIntent: Stripe.PaymentIntent): Promise<{ orderId: string; email: string; name: string; pointsEarned: number } | { error: string }> {
   const items = JSON.parse(paymentIntent.metadata.items ?? "[]");
   const shipping = JSON.parse(paymentIntent.metadata.shipping ?? "{}");
   const total = paymentIntent.amount / 100;
@@ -29,7 +29,14 @@ export async function processOrder(paymentIntent: Stripe.PaymentIntent): Promise
     .single();
 
   if (existing) {
-    return { orderId: existing.id };
+    const pointsDiscount = pointsRedeemed / 100;
+    const chargedTotal = Math.max(total - pointsDiscount, 0);
+    return {
+      orderId: existing.id,
+      email: shipping.email,
+      name: shipping.name,
+      pointsEarned: Math.floor(chargedTotal * 10),
+    };
   }
 
   // Create order
@@ -209,5 +216,5 @@ export async function processOrder(paymentIntent: Stripe.PaymentIntent): Promise
     }),
   });
 
-  return { orderId: order.id };
+  return { orderId: order.id, email: shipping.email, name: shipping.name, pointsEarned };
 }

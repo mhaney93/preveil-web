@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
       .map((item) => {
         const variant = variants?.find((v) => v.id === item.variantId);
         if (!variant?.pod_variant_id) return null;
-        return { sync_variant_id: variant.pod_variant_id, quantity: item.quantity };
+        return { sync_variant_id: parseInt(variant.pod_variant_id, 10), quantity: item.quantity };
       })
       .filter(Boolean);
 
@@ -62,7 +62,11 @@ export async function POST(req: NextRequest) {
 
     const shippingData = await shippingRes.json();
     if (shippingData.code !== 200 || !shippingData.result?.length) {
-      return NextResponse.json({ error: "Could not calculate shipping rate" }, { status: 400 });
+      const detail = typeof shippingData.result === "string"
+        ? shippingData.result
+        : (shippingData.error?.message ?? shippingData.message ?? "no rates returned");
+      console.error("Printful shipping error:", JSON.stringify(shippingData));
+      return NextResponse.json({ error: `Could not calculate shipping rate: ${detail}` }, { status: 400 });
     }
 
     const shippingRate = shippingData.result[0] as { id: string; name: string; rate: string };

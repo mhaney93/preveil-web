@@ -2,6 +2,20 @@
 
 import { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+
+const US_STATES = [
+  ["AL","Alabama"],["AK","Alaska"],["AZ","Arizona"],["AR","Arkansas"],["CA","California"],
+  ["CO","Colorado"],["CT","Connecticut"],["DE","Delaware"],["FL","Florida"],["GA","Georgia"],
+  ["HI","Hawaii"],["ID","Idaho"],["IL","Illinois"],["IN","Indiana"],["IA","Iowa"],
+  ["KS","Kansas"],["KY","Kentucky"],["LA","Louisiana"],["ME","Maine"],["MD","Maryland"],
+  ["MA","Massachusetts"],["MI","Michigan"],["MN","Minnesota"],["MS","Mississippi"],["MO","Missouri"],
+  ["MT","Montana"],["NE","Nebraska"],["NV","Nevada"],["NH","New Hampshire"],["NJ","New Jersey"],
+  ["NM","New Mexico"],["NY","New York"],["NC","North Carolina"],["ND","North Dakota"],["OH","Ohio"],
+  ["OK","Oklahoma"],["OR","Oregon"],["PA","Pennsylvania"],["RI","Rhode Island"],["SC","South Carolina"],
+  ["SD","South Dakota"],["TN","Tennessee"],["TX","Texas"],["UT","Utah"],["VT","Vermont"],
+  ["VA","Virginia"],["WA","Washington"],["WV","West Virginia"],["WI","Wisconsin"],["WY","Wyoming"],
+  ["DC","Washington D.C."],
+] as const;
 import {
   Elements,
   PaymentElement,
@@ -256,7 +270,12 @@ export default function CheckoutPage() {
                 <input placeholder="Address Line 2 (optional)" value={shipping.address2} onChange={(e) => setShipping({ ...shipping, address2: e.target.value })} className={inputClass} />
                 <div className="grid grid-cols-2 gap-4">
                   <input required placeholder="City" value={shipping.city} onChange={(e) => setShipping({ ...shipping, city: e.target.value })} className={inputClass} />
-                  <input required placeholder="State" value={shipping.state} onChange={(e) => setShipping({ ...shipping, state: e.target.value })} className={inputClass} />
+                  <select required value={shipping.state} onChange={(e) => setShipping({ ...shipping, state: e.target.value })} className={inputClass}>
+                    <option value="" disabled>State</option>
+                    {US_STATES.map(([code, name]) => (
+                      <option key={code} value={code}>{name}</option>
+                    ))}
+                  </select>
                 </div>
                 <input required placeholder="ZIP Code" value={shipping.zip} onChange={(e) => setShipping({ ...shipping, zip: e.target.value })} className={inputClass} />
                 {checkoutError && (

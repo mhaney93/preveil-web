@@ -42,8 +42,7 @@ export default function AboutPage() {
         <p>
           Re-enchantment is the refusal to accept that trade as final. Wonder,
           belonging, mystery, the sacred are permanent features of being human.
-          A culture that loses them doesn&apos;t become more rational. It
-          becomes less alive. Preveil was built for the person who senses the
+          Lose them and a culture grows hollow. Preveil was built for the person who senses the
           zeitgeist is getting something wrong, who can&apos;t settle for a
           world drained of meaning, and who is looking for others who feel it
           too. The name carries two things: to <em>prevail</em>, and{" "}

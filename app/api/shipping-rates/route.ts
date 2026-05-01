@@ -43,10 +43,7 @@ export async function POST(req: NextRequest) {
       syncItems.map(async ({ syncVariantId }) => {
         const res = await fetch(`https://api.printful.com/store/variants/${syncVariantId}`, { headers });
         const data = await res.json();
-        const id =
-          data?.result?.variant?.id ??
-          data?.result?.sync_variant?.variant_id ??
-          null;
+        const id = data?.result?.variant_id ?? null;
         return { syncVariantId, id: id as number | null, raw: JSON.stringify(data).slice(0, 300) };
       })
     );

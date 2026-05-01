@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { createServerClient } from "@/lib/supabase/server";
 import ShopClient from "@/components/ShopClient";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Shop",

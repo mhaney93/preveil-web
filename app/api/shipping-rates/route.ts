@@ -96,10 +96,12 @@ export async function POST(req: NextRequest) {
     const shippingRate = shippingData.result[0] as { id: string; name: string; rate: string };
     const shippingCost = parseFloat(shippingRate.rate);
 
-    // Tax is best-effort — if it fails we still proceed with $0 tax
+    // Tax is best-effort — if it fails we still proceed with $0 tax.
+    // We charge tax whenever Printful returns a rate > 0, even if they mark
+    // required: false (meaning they remit it — we still pass the cost to the customer).
     let taxAmount = 0;
     const taxData = await taxRes.json();
-    if (taxData.code === 200 && taxData.result?.required) {
+    if (taxData.code === 200 && taxData.result?.rate > 0) {
       const taxRate: number = taxData.result.rate;
       const taxableBase = taxData.result.shipping_taxable
         ? (subtotal ?? 0) + shippingCost

@@ -43,7 +43,12 @@ export async function POST(req: NextRequest) {
       syncItems.map(async ({ syncVariantId }) => {
         const res = await fetch(`https://api.printful.com/store/variants/${syncVariantId}`, { headers });
         const data = await res.json();
-        return (data?.result?.variant?.id ?? null) as number | null;
+        console.log(`Printful /store/variants/${syncVariantId}:`, JSON.stringify(data).slice(0, 500));
+        const id =
+          data?.result?.variant?.id ??
+          data?.result?.sync_variant?.variant_id ??
+          null;
+        return id as number | null;
       })
     );
 
@@ -56,8 +61,9 @@ export async function POST(req: NextRequest) {
       .filter(Boolean);
 
     if (printfulItems.length === 0) {
-      console.error("Could not resolve any catalog variant IDs. Sync IDs:", syncItems.map(i => i.syncVariantId));
-      return NextResponse.json({ error: "Could not resolve product variant IDs" }, { status: 400 });
+      return NextResponse.json({
+        error: `Could not resolve product variant IDs. Sync IDs tried: ${syncItems.map(i => i.syncVariantId).join(", ")}. Catalog IDs returned: ${catalogIds.join(", ")}`,
+      }, { status: 400 });
     }
 
     const recipient = {

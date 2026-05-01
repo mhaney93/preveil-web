@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
       .map((item) => {
         const variant = variants?.find((v) => v.id === item.variantId);
         if (!variant?.pod_variant_id) return null;
-        return { sync_variant_id: parseInt(variant.pod_variant_id, 10), quantity: item.quantity };
+        return { id: parseInt(variant.pod_variant_id, 10), quantity: item.quantity };
       })
       .filter(Boolean);
 

@@ -61,6 +61,7 @@ export default async function AccountPage() {
     const email = user.email;
     const admin = createAdminClient();
     await admin.auth.admin.deleteUser(user.id);
+    await supabase.auth.signOut();
     if (email) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       await resend.emails.send({

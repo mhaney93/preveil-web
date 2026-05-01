@@ -60,6 +60,7 @@ export default async function AccountPage() {
     if (!user) return;
     const email = user.email;
     const admin = createAdminClient();
+    await admin.from("orders").update({ user_id: null }).eq("user_id", user.id);
     const { error: deleteError } = await admin.auth.admin.deleteUser(user.id);
     if (deleteError) {
       console.error("deleteUser failed:", deleteError.message, deleteError);

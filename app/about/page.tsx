@@ -21,7 +21,7 @@ export default function AboutPage() {
       {/* Body */}
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-lg font-[family-name:var(--font-body)]">
         <p>
-          the world was charged with meaning that didn&apos;t need defending —
+          the world was charged with meaning that didn&apos;t need defending,
           only inhabiting. The meaning crisis, the loneliness epidemic, the
           sense that modern life offers everything except the thing that would
           make it worth living: this is what a civilization looks like when it
@@ -31,7 +31,7 @@ export default function AboutPage() {
         <p>
           Something shifted over the centuries when the Western tradition
           learned to explain the world by taking it apart. The method was
-          extraordinary — matter mastered, distances collapsed, lifespans
+          extraordinary: matter mastered, distances collapsed, lifespans
           doubled. But somewhere the method became the metaphysic. Description
           became explanation. The map became the territory. The world that had
           been storied, symbolic, alive, capable of meeting you, gave way to a
@@ -41,13 +41,13 @@ export default function AboutPage() {
         </p>
         <p>
           Re-enchantment is the refusal to accept that trade as final. Wonder,
-          belonging, mystery, the sacred — these are permanent features of
-          being human. A culture that loses them doesn&apos;t become more
-          rational. It becomes less alive. Preveil was built for the person who
-          senses the zeitgeist is getting something wrong, who can&apos;t
-          settle for a world drained of meaning, and who is looking for others
-          who feel it too. The name carries two things: to <em>prevail</em>,
-          and <em>pre-veil</em>. We make goods for those willing to be, as
+          belonging, mystery, the sacred are permanent features of being human.
+          A culture that loses them doesn&apos;t become more rational. It
+          becomes less alive. Preveil was built for the person who senses the
+          zeitgeist is getting something wrong, who can&apos;t settle for a
+          world drained of meaning, and who is looking for others who feel it
+          too. The name carries two things: to <em>prevail</em>, and{" "}
+          <em>pre-veil</em>. We make goods for those willing to be, as
           Shakespeare put it, God&apos;s spies.
         </p>
       </div>

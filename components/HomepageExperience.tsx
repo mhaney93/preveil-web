@@ -8,14 +8,7 @@ export default function HomepageExperience() {
 
   useEffect(() => {
     setMounted(true)
-    const saved = localStorage.getItem('preveil-veil')
-    if (saved !== null) setVeilEnabled(saved !== 'false')
   }, [])
-
-  useEffect(() => {
-    if (!mounted) return
-    localStorage.setItem('preveil-veil', String(veilEnabled))
-  }, [veilEnabled, mounted])
 
   if (!mounted) return null
 

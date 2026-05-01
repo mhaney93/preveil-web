@@ -39,30 +39,29 @@ export async function POST(req: NextRequest) {
     };
 
     // Resolve catalog variant_id for each sync variant
-    const catalogIds = await Promise.all(
+    const lookupResults = await Promise.all(
       syncItems.map(async ({ syncVariantId }) => {
         const res = await fetch(`https://api.printful.com/store/variants/${syncVariantId}`, { headers });
         const data = await res.json();
-        console.log(`Printful /store/variants/${syncVariantId}:`, JSON.stringify(data).slice(0, 500));
         const id =
           data?.result?.variant?.id ??
           data?.result?.sync_variant?.variant_id ??
           null;
-        return id as number | null;
+        return { syncVariantId, id: id as number | null, raw: JSON.stringify(data).slice(0, 300) };
       })
     );
 
-    const printfulItems = syncItems
-      .map((item, i) => {
-        const catalogId = catalogIds[i];
-        if (!catalogId) return null;
-        return { variant_id: catalogId, quantity: item.quantity };
+    const printfulItems = lookupResults
+      .map(({ id, syncVariantId: _ }) => {
+        if (!id) return null;
+        return { variant_id: id, quantity: syncItems.find(i => i.syncVariantId === _)!.quantity };
       })
       .filter(Boolean);
 
     if (printfulItems.length === 0) {
+      const detail = lookupResults.map(r => `${r.syncVariantId}: ${r.raw}`).join(" | ");
       return NextResponse.json({
-        error: `Could not resolve product variant IDs. Sync IDs tried: ${syncItems.map(i => i.syncVariantId).join(", ")}. Catalog IDs returned: ${catalogIds.join(", ")}`,
+        error: `Could not resolve variant IDs. Printful said: ${detail}`,
       }, { status: 400 });
     }
 

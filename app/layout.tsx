@@ -17,6 +17,7 @@ const body = EB_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://preveil.online'),
   title: {
     default: "Preveil",
     template: "%s | Preveil",
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: "Preveil",
     type: "website",
+    images: [{ url: '/icon.png' }],
   },
 };
 

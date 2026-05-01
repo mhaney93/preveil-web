@@ -21,8 +21,7 @@ export default function AboutPage() {
       {/* Body */}
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-lg font-[family-name:var(--font-body)]">
         <p>
-          the world was charged with meaning that didn&apos;t need defending,
-          only inhabiting. The meaning crisis, the loneliness epidemic, the
+          the world was charged with meaning that asked only to be inhabited. The meaning crisis, the loneliness epidemic, the
           sense that modern life offers everything except the thing that would
           make it worth living: this is what a civilization looks like when it
           has given something foundational away and hasn&apos;t yet reckoned

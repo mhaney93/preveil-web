@@ -1,5 +1,4 @@
 export const BASE_URL = "https://preveil.shop";
-const DISCORD_URL = "https://discord.gg/K4gjdFMD4P";
 
 const wrapper = (content: string) => `
 <!DOCTYPE html>
@@ -28,8 +27,7 @@ const wrapper = (content: string) => `
         <tr>
           <td style="background:#f5f0e8;padding:24px 40px;text-align:center;border-top:1px solid #e5ddd0;">
             <p style="margin:0;font-family:Georgia,serif;font-size:11px;color:#9a8f82;letter-spacing:0.2em;text-transform:uppercase;">
-              preveil.shop &nbsp;·&nbsp;
-              <a href="${DISCORD_URL}" style="color:#c8a45a;text-decoration:none;">Discord</a>
+              preveil.shop
             </p>
           </td>
         </tr>
@@ -64,9 +62,6 @@ export function welcomeEmail(availablePoints: number) {
     </p>
     ${goldButton(`${BASE_URL}/shop`, "Explore the Shop")}
     ${divider}
-    <p style="font-size:13px;line-height:1.9;color:#888;text-align:center;margin:0;">
-      Join the conversation on <a href="${DISCORD_URL}" style="color:#c8a45a;text-decoration:none;">Discord</a> — a space for those drawn to wonder, meaning, and the sacred.
-    </p>
   `;
 
   return wrapper(content);
@@ -141,9 +136,6 @@ export function postPurchaseEmail({
     <p style="font-size:13px;line-height:1.9;color:#888;text-align:center;margin:0;">
       Something wrong with your order? Reach us at <a href="mailto:preveil.llc@gmail.com" style="color:#c8a45a;text-decoration:none;">preveil.llc@gmail.com</a>
     </p>
-    <p style="font-size:13px;line-height:1.9;color:#888;text-align:center;margin:16px 0 0;">
-      Join the community on <a href="${DISCORD_URL}" style="color:#c8a45a;text-decoration:none;">Discord</a>
-    </p>
   `;
 
   return wrapper(content);
@@ -193,9 +185,6 @@ export function shippingNotificationEmail({
 
     <p style="font-size:13px;line-height:1.9;color:#888;text-align:center;margin:0;">
       Questions? Reach us at <a href="mailto:preveil.llc@gmail.com" style="color:#c8a45a;text-decoration:none;">preveil.llc@gmail.com</a>
-    </p>
-    <p style="font-size:13px;line-height:1.9;color:#888;text-align:center;margin:16px 0 0;">
-      Join the community on <a href="${DISCORD_URL}" style="color:#c8a45a;text-decoration:none;">Discord</a>
     </p>
   `;
 

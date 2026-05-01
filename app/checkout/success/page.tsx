@@ -175,14 +175,6 @@ function SuccessContent() {
             >
               Continue Shopping
             </Link>
-            <a
-              href="https://discord.gg/K4gjdFMD4P"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-10 py-3 border border-[var(--border)] text-[var(--muted)] text-sm tracking-widest uppercase hover:border-[var(--foreground)] hover:text-[var(--foreground)] transition-colors"
-            >
-              Join the Community
-            </a>
           </div>
         </>
       )}

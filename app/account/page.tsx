@@ -60,7 +60,11 @@ export default async function AccountPage() {
     if (!user) return;
     const email = user.email;
     const admin = createAdminClient();
-    await admin.auth.admin.deleteUser(user.id);
+    const { error: deleteError } = await admin.auth.admin.deleteUser(user.id);
+    if (deleteError) {
+      console.error("deleteUser failed:", deleteError.message, deleteError);
+      throw new Error("Failed to delete account: " + deleteError.message);
+    }
     await supabase.auth.signOut();
     if (email) {
       const resend = new Resend(process.env.RESEND_API_KEY);

@@ -20,15 +20,15 @@ export async function POST(req: NextRequest) {
       .select("id, pod_variant_id")
       .in("id", variantIds);
 
-    const printfulItems = (items as { variantId: string; quantity: number }[])
+    const syncItems = (items as { variantId: string; quantity: number }[])
       .map((item) => {
         const variant = variants?.find((v) => v.id === item.variantId);
         if (!variant?.pod_variant_id) return null;
-        return { id: parseInt(variant.pod_variant_id, 10), quantity: item.quantity };
+        return { syncVariantId: variant.pod_variant_id, quantity: item.quantity };
       })
-      .filter(Boolean);
+      .filter(Boolean) as { syncVariantId: string; quantity: number }[];
 
-    if (printfulItems.length === 0) {
+    if (syncItems.length === 0) {
       return NextResponse.json({ error: "No valid items" }, { status: 400 });
     }
 
@@ -37,6 +37,28 @@ export async function POST(req: NextRequest) {
       "Content-Type": "application/json",
       "X-PF-Store-Id": process.env.PRINTFUL_STORE_ID!,
     };
+
+    // Resolve catalog variant_id for each sync variant
+    const catalogIds = await Promise.all(
+      syncItems.map(async ({ syncVariantId }) => {
+        const res = await fetch(`https://api.printful.com/store/variants/${syncVariantId}`, { headers });
+        const data = await res.json();
+        return (data?.result?.variant?.id ?? null) as number | null;
+      })
+    );
+
+    const printfulItems = syncItems
+      .map((item, i) => {
+        const catalogId = catalogIds[i];
+        if (!catalogId) return null;
+        return { variant_id: catalogId, quantity: item.quantity };
+      })
+      .filter(Boolean);
+
+    if (printfulItems.length === 0) {
+      console.error("Could not resolve any catalog variant IDs. Sync IDs:", syncItems.map(i => i.syncVariantId));
+      return NextResponse.json({ error: "Could not resolve product variant IDs" }, { status: 400 });
+    }
 
     const recipient = {
       address1: shipping.address1,

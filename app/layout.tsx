@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: '/icon.png' }],
   },
+  other: {
+    "p:domain_verify": "4fe5dacf59675b33b7ca100424db9a52",
+  },
 };
 
 export default function RootLayout({

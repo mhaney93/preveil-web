@@ -48,7 +48,7 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 40;
-  animation: veilDrape 34s linear 3s infinite;
+  animation: veilDrape 34s linear 3s infinite backwards;
 }
 
 .veil-gold {

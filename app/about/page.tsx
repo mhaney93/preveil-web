@@ -42,10 +42,9 @@ export default function AboutPage() {
           admission. The brain was explained as hydraulic pump, then telegraph, then clockwork,
           then computer — each era borrowing the most impressive technology of its moment and
           declaring it the model of mind, none of them closing the gap between matter and
-          experience. What the models share is the assumption: one substance, matter, and
-          everything else is downstream of it. A world that had been storied, symbolic, and
-          alive — capable of meeting you — gave way to a world of neutral substrate where
-          meaning could only be projected onto things, never found within them.
+          experience. A world that had been storied, symbolic, and alive — capable of meeting
+          you — gave way to a world of neutral substrate where meaning could only be projected
+          onto things, never found within them.
         </p>
 
         <p>
@@ -102,15 +101,35 @@ export default function AboutPage() {
         </p>
 
         <p>
-          Preveil is not a return. The veil cannot be undrawn — nor should it be. What we
-          are after is not the world before the veil but what was dropped on the way through
-          it, carried forward into a synthesis that doesn&apos;t ask you to choose between
-          scientific literacy and genuine meaning. The veil in our name is translucent,
-          deliberately. Opaque would be fundamentalism: the wall, the secular world entirely
-          blocked out. Transparent would be the claim that science has seen through to the
-          real and the haunting is a mistake. Translucent is the honest position. Something
-          comes through. The light is real. The full picture is partially obscured —
-          enough to know something is being missed, not so little that you abandon reason to find it.
+          The veil has always been a threshold garment. Brides wear veils — not to conceal
+          something shameful but to mark the moment before the sacred is revealed. The
+          pre-veil state is the charged, oriented, longing state of the bride before the
+          lifting: something real is on the other side, and the whole shape of the thing is
+          the movement toward it. To be pre-veil is not to be ignorant. It is to know that
+          the unveiling is coming and to be alive to it — standing at the threshold, trembling
+          with what is about to occur.
+        </p>
+
+        <p>
+          The crisis of modern culture is not that we are pre-veil. It is that we have
+          forgotten the veil was ever there — forgotten that something is on the other side,
+          forgotten that the longing points anywhere real. We are not standing at the threshold.
+          We have left the building. The call Preveil makes is to return to the threshold: to
+          recover the bride&apos;s posture, the orientation, the sense that the haunting is
+          signal and not noise. Not to stay at the threshold indefinitely — the threshold is
+          not the destination. The goal is the unveiling: harmony with being, full participatory
+          union with what the ache was always pointing toward. But you cannot reach the unveiling
+          without first recovering the orientation. The threshold has to be found again before
+          it can be crossed.
+        </p>
+
+        <p>
+          The veil in our name is translucent, deliberately. Opaque would be fundamentalism:
+          the wall, the secular world entirely blocked out. Transparent would be the claim
+          that science has seen through to the real and the haunting is a mistake. Translucent
+          is the honest position — the bride&apos;s position. Something comes through. The
+          light is real. The full picture is partially obscured — enough to know something
+          is being missed, not so little that you abandon reason to find it.
         </p>
 
         <p>
@@ -127,17 +146,19 @@ export default function AboutPage() {
 
         <p>
           The name carries two things at once: <em>prevail</em> — to endure, to overcome — and{" "}
-          <em>pre-veil</em> — before the shift that convinced a civilization its perceptions were
-          the ceiling of the real. The logo carries the same structure: the translucent gold
-          veil draped over the letters is not hiding the name. It is revealing it through a
-          medium. Not a barrier. A transmission.
+          <em>pre-veil</em> — before the threshold was forgotten, before the bride left the
+          building. The logo carries the same structure: the translucent gold veil draped over
+          the letters is not hiding the name. It is revealing it through a medium. Not a barrier.
+          A transmission. The bride&apos;s veil is not a wall. It is the last thing between
+          the threshold and the unveiling.
         </p>
 
         <p>
           We make goods for the person who senses something haunting this world and wants to
           live in that awareness rather than argue it away. For the meaning-hungry and the
-          scientifically literate. For those who feel the threads thinning and want to
-          pull them taut again. For those willing to find their footing and leap.
+          scientifically literate. For those who feel the threads thinning and want to pull
+          them taut again. For those willing to find their footing, stand at the threshold,
+          and leap.
         </p>
 
         <p>

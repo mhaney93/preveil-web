@@ -51,7 +51,7 @@ export default function AboutPage() {
         <p>
           What was lost is not belief. We have more information than any civilization in history,
           and the meaning crisis has never been worse. What was lost is a <em>mode of knowing</em>.
-          Vervaeke identifies four: propositional (knowing <em>that</em>), procedural (knowing
+          Vervaeke identifies four: propositional (knowing <em>that</em>), procedural (knowing{" "}
           <em>how</em>), perspectival (knowing <em>what it is like</em>), participatory (knowing
           <em>by being in relationship with</em>). The dominant paradigm operates entirely at
           the propositional level — a stack of &ldquo;knowing that.&rdquo; No accumulation of

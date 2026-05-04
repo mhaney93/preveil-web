@@ -28,7 +28,7 @@ export default function AboutPage() {
           desire not quite like any other desire, because nothing in the physical world can
           satisfy it. His argument: if nothing here answers the ache, perhaps the ache is not
           a response to the physical world at all. It is a response to something pressing
-          through it. The haunting is the signal. Something is on the other side of the veil.
+          through it. <span className="text-[var(--accent-gold)] text-xl">The haunting is the signal.</span> Something is on the other side of the veil.
         </p>
 
         <p>
@@ -59,8 +59,8 @@ export default function AboutPage() {
           it is the wrong category of knowing for the territory it claims to explain. Hume&apos;s
           guillotine makes the same cut differently: from a stack of is-claims you cannot derive
           a single ought. The map, however detailed, cannot tell you where you should go.
-          The modern project didn&apos;t just change beliefs. It delegitimized three of the
-          four ways a human being can know anything.
+          The modern project didn&apos;t just change beliefs. <span className="text-[var(--accent-gold)] text-xl">It delegitimized three of the
+          four ways a human being can know anything.</span>
         </p>
 
         <p>
@@ -77,8 +77,8 @@ export default function AboutPage() {
           before any individual has a single conscious thought. When the modern project
           delegitimized the symbolic and the sacred, it didn&apos;t merely update a set of
           beliefs. All three channels were disrupted simultaneously. The wound is in the
-          weave at every level — which is why no amount of information can close it.
-          Re-enchantment is not a belief update. It is a reweaving.
+          weave at every level — which is why no amount of information can close it.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">Re-enchantment is not a belief update. It is a reweaving.</span>
         </p>
 
         <p>
@@ -97,7 +97,7 @@ export default function AboutPage() {
           an interface localizing a mathematical reality that was always there. Physics,
           ancient philosophy, and consciousness science are not analogies of each other.
           They are independent frameworks arriving at the same structural claim: pattern
-          and meaning are not projected onto a neutral substrate. They are features of the real.
+          and meaning are not projected onto a neutral substrate. <span className="text-[var(--accent-gold)] text-xl">They are features of the real.</span>
         </p>
 
         <p>
@@ -119,8 +119,8 @@ export default function AboutPage() {
           signal and not noise. Not to stay at the threshold indefinitely — the threshold is
           not the destination. The goal is the unveiling: harmony with being, full participatory
           union with what the ache was always pointing toward. But you cannot reach the unveiling
-          without first recovering the orientation. The threshold has to be found again before
-          it can be crossed.
+          without first recovering the orientation. <span className="text-[var(--accent-gold)] text-xl">The threshold has to be found again before
+          it can be crossed.</span>
         </p>
 
         <p>
@@ -148,8 +148,8 @@ export default function AboutPage() {
           The name carries two things at once: <em>prevail</em> — to endure, to overcome — and{" "}
           <em>pre-veil</em> — before the threshold was forgotten, before the bride left the
           building. The logo carries the same structure: the translucent gold veil draped over
-          the letters is not hiding the name. It is revealing it through a medium. Not a barrier.
-          A transmission. The bride&apos;s veil is not a wall. It is the last thing between
+          the letters is not hiding the name. It is revealing it through a medium.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">Not a barrier. A transmission.</span> The bride&apos;s veil is not a wall. It is the last thing between
           the threshold and the unveiling.
         </p>
 

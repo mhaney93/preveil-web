@@ -91,7 +91,12 @@ export default function AboutPage() {
           individuals as excitations within it, the veil of appearance (Maya) making the one
           look like many. Kastrup argues from inside analytic philosophy that consciousness
           is the one underlying reality and matter is the dashboard — the interface through
-          which universal mind becomes localized. Wigner noticed in 1960 that mathematics
+          which universal mind becomes localized. Schelling, working from inside German
+          philosophy in 1797, arrived at the same claim from a different direction: nature
+          is not dead matter governed by external laws but visible spirit — self-organizing,
+          purposive, alive. The apparent deadness of the material world is not a discovery.
+          It is a decision, made once and then inherited as common sense. Wigner noticed in
+          1960 that mathematics
           developed for purely abstract reasons describes physical reality with uncanny
           precision and called it a miracle. It is not a miracle if the physical world is
           an interface localizing a mathematical reality that was always there. Physics,
@@ -108,6 +113,19 @@ export default function AboutPage() {
           the movement toward it. To be pre-veil is not to be ignorant. It is to know that
           the unveiling is coming and to be alive to it — standing at the threshold, trembling
           with what is about to occur.
+        </p>
+
+        <p>
+          The philosophical veil was drawn over centuries, gradually enough that no
+          announcement was ever made. But there is a second veil, and it renews itself
+          daily: the veil of habit. Proust identified it. Familiarity closes perception.
+          The city you live in becomes a route. The person you love becomes a concept.
+          The world that was charged grows quiet — not because it went quiet, but because
+          you stopped listening. Art exists, Proust argued, to lift this veil: to restore
+          genuine seeing, to return you to the real texture of the thing before the mind
+          had named it and moved on. Re-enchantment is not only the repair of a
+          philosophical error made three centuries ago. It is a practice — the daily
+          refusal of the second veil.
         </p>
 
         <p>
@@ -166,8 +184,11 @@ export default function AboutPage() {
           what haunts the world. If the individual mind is a localized aperture of something
           larger — as physics, ancient philosophy, and cognitive science are each beginning to
           suggest — then the spy and the spymaster are the same thing seen from different angles.
-          The field knowing itself through a particular locus. The veil is translucent because
-          you are partly what is on both sides.
+          The field knowing itself through a particular locus. The longing never lands on any
+          object and satisfies — not because the signal is weak, but because its target is not
+          an object. It is pointing at the ground from which both the one who longs and the
+          thing longed-for arise together. The veil is translucent because you are partly what
+          is on both sides.
         </p>
 
       </div>
@@ -177,10 +198,10 @@ export default function AboutPage() {
 
       {/* Quote */}
       <blockquote className="font-[family-name:var(--font-heading)] text-2xl font-light italic text-[var(--foreground)] leading-relaxed mb-4">
-        &ldquo;We are God&apos;s spies.&rdquo;
+        &ldquo;The eye through which I see God is the same eye through which God sees me.&rdquo;
       </blockquote>
       <p className="text-sm text-[var(--muted)] tracking-widest uppercase">
-        — King Lear, Act V
+        — Meister Eckhart
       </p>
 
       {/* CTA */}

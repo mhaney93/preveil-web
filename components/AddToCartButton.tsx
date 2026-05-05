@@ -153,7 +153,15 @@ export default function AddToCartButton({
         name: product.name,
         variantName: selectedVariant.name,
         price: selectedVariant.price,
-        image: product.images?.[0] ?? null,
+        image: (() => {
+          const images = product.images ?? [];
+          const color = selectedVariant.name.includes(" / ")
+            ? selectedVariant.name.split(" / ")[0]
+            : selectedVariant.name;
+          const key = color.toLowerCase().replace(/[\s/]+/g, "-");
+          const match = images.find((img) => img.toLowerCase().includes(key));
+          return match ?? images[0] ?? null;
+        })(),
         quantity,
       });
     }

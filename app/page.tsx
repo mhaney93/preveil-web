@@ -63,14 +63,18 @@ export default async function Home() {
           Collections
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {["Apparel", "Home Goods", "Wall Art"].map((category) => (
+          {[
+            { label: "Men's Clothing", slug: "mens-clothing" },
+            { label: "Women's Clothing", slug: "womens-clothing" },
+            { label: "Accessories", slug: "accessories" },
+          ].map(({ label, slug }) => (
             <Link
-              key={category}
-              href={`/shop?category=${category.toLowerCase().replace(" ", "-")}`}
+              key={slug}
+              href={`/shop?category=${slug}`}
               className="group bg-[var(--card)] border border-[var(--border)] p-12 flex flex-col items-center justify-center text-center hover:border-[var(--accent-gold)] transition-colors"
             >
               <span className="font-[family-name:var(--font-heading)] text-2xl font-light tracking-widest text-[var(--foreground)] group-hover:text-[var(--accent-gold)] transition-colors uppercase">
-                {category}
+                {label}
               </span>
             </Link>
           ))}

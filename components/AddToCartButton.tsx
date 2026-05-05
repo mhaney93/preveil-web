@@ -82,8 +82,11 @@ export default function AddToCartButton({
   useEffect(() => {
     if (controlledColor && controlledColor !== selectedColor) {
       setSelectedColor(controlledColor);
-      setSelectedSize("");
-      setSelectedVariant(null);
+      const match = selectedSize
+        ? availableVariants.find((v) => v.name === `${controlledColor} / ${selectedSize}`) ?? null
+        : null;
+      setSelectedVariant(match);
+      onVariantChange?.(match);
     }
   }, [controlledColor]);
 
@@ -121,9 +124,12 @@ export default function AddToCartButton({
 
   function handleColorChange(color: string) {
     setSelectedColor(color);
-    setSelectedSize("");
-    setSelectedVariant(null);
+    const match = selectedSize
+      ? availableVariants.find((v) => v.name === `${color} / ${selectedSize}`) ?? null
+      : null;
+    setSelectedVariant(match);
     onColorChange?.(color);
+    onVariantChange?.(match);
   }
 
   function handleSizeChange(size: string) {

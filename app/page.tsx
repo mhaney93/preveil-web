@@ -25,7 +25,7 @@ export default async function Home() {
           Preveil
         </h1>
         <p className="max-w-md text-lg text-[var(--muted)] leading-relaxed mb-12">
-          Before the veil was drawn over the world, life was charged with wonder.
+          The world didn&apos;t lose its charge — we lost our ability to feel it.
           We make goods for those who remember.
         </p>
         <Link

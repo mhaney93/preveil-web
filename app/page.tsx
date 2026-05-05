@@ -83,9 +83,10 @@ export default async function Home() {
 
       {/* Brand statement */}
       <section className="border-t border-[var(--border)] px-6 py-24 text-center">
-        <blockquote className="max-w-2xl mx-auto font-[family-name:var(--font-heading)] text-2xl font-light italic text-[var(--muted)] leading-relaxed">
-          &ldquo;The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.&rdquo;
+        <blockquote className="max-w-2xl mx-auto font-[family-name:var(--font-heading)] text-2xl font-light italic text-[var(--muted)] leading-relaxed mb-4">
+          &ldquo;Nature is visible spirit; spirit is invisible nature.&rdquo;
         </blockquote>
+        <p className="text-sm text-[var(--muted)] tracking-widest uppercase">— Friedrich Schelling</p>
       </section>
     </div>
   );

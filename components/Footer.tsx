@@ -10,7 +10,7 @@ export default function Footer() {
             Preveil
           </p>
           <p className="text-sm text-[var(--muted)] leading-relaxed">
-            Goods for those who remember the enchantment of the world.
+            We make goods for those who remember.
           </p>
         </div>
 

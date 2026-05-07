@@ -19,7 +19,7 @@ export default function AboutPage() {
       </h1>
 
       {/* Body */}
-      <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-lg font-[family-name:var(--font-body)]">
+      <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-xl font-[family-name:var(--font-body)]">
 
         <p>
           by the longing stirred by something genuinely beautiful: the inconsolable homesickness

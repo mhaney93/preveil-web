@@ -22,7 +22,7 @@ export default function AboutPage() {
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-lg font-[family-name:var(--font-body)]">
 
         <p>
-          by the longing stirred by something genuinely beautiful — the inconsolable homesickness
+          by the longing stirred by something genuinely beautiful: the inconsolable homesickness
           for a place you&apos;ve never been. That ache is not a malfunction. C.S. Lewis called it{" "}
           <em>Sehnsucht</em>: desire unlike any other, because nothing in the physical world
           satisfies it. His argument: if nothing here answers the ache, perhaps the ache is not
@@ -32,9 +32,9 @@ export default function AboutPage() {
         </p>
 
         <p>
-          Over several centuries, Western thought drew a veil — so gradually that most people
+          Over several centuries, Western thought drew a veil, so gradually that most people
           could no longer see it as a philosophical position. What began as method became
-          metaphysics. A world that was storied, symbolic, alive — capable of meeting you —
+          metaphysics. A world that was storied, symbolic, alive, capable of meeting you,
           gave way to a world of neutral substrate where meaning could only be projected, never
           found. The world didn&apos;t lose its charge.{" "}
           <span className="text-[var(--accent-gold)] text-xl">We lost our grounding.</span>
@@ -42,7 +42,7 @@ export default function AboutPage() {
 
         <p>
           The response to this loss splits into two failure modes. The first: seal yourself off.
-          Contract around what you know, let nothing genuinely other reach you — the self
+          Contract around what you know, let nothing genuinely other reach you. The self
           confirms itself and nothing larger can enter. The second: dissolve the self entirely.
           Accept that humans are no different from any other matter, that the ache is noise not
           signal. Neither can be lived honestly. One closes the circuit. The other removes the
@@ -51,20 +51,20 @@ export default function AboutPage() {
         </p>
 
         <p>
-          Translucent: structured enough to be a genuine person — with real weight, real
-          vulnerability, real capacity to suffer — and permeable enough to be exceeded by
+          Translucent: structured enough to be a genuine person, with real weight, real
+          vulnerability, real capacity to suffer, and permeable enough to be exceeded by
           something larger. The suffering is not incidental. Full presence is the condition
           for genuine contact. This is the identity Preveil is pointing at: someone who has
-          chosen the ceiling-less over the collapsing — love, wonder, craft, vocation —
+          chosen the ceiling-less over the collapsing, love, wonder, craft, vocation,
           relationships that widen rather than narrow because the other is genuinely other.
         </p>
 
         <p>
           The veil has always been a threshold garment. Brides wear veils not to conceal
           something shameful but to mark the moment before the sacred is revealed. The crisis
-          is not that we stand at the threshold. It is that we have left the building —
-          forgotten the veil was there, forgotten something is on the other side. The call is
-          to return. Not to stay at the threshold — the threshold is not the destination. But{" "}
+          is not that we stand at the threshold. It is that we have left the building, forgotten
+          the veil was there, forgotten something is on the other side. The call is to return.
+          Not to stay at the threshold; the threshold is not the destination. But{" "}
           <span className="text-[var(--accent-gold)] text-xl">you cannot cross what you have forgotten exists.</span>
         </p>
 

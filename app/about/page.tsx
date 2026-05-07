@@ -15,15 +15,15 @@ export default function AboutPage() {
         Our Philosophy
       </p>
       <h1 className="font-[family-name:var(--font-heading)] text-5xl md:text-6xl font-light tracking-wide text-[var(--foreground)] mb-16 leading-tight">
-        The world is haunted.
+        The world is haunted
       </h1>
 
       {/* Body */}
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-lg font-[family-name:var(--font-body)]">
 
         <p>
-          The longing you feel before something genuinely beautiful — the inconsolable homesickness
-          for a place you&apos;ve never been — is not a malfunction. C.S. Lewis called it{" "}
+          by the longing stirred by something genuinely beautiful — the inconsolable homesickness
+          for a place you&apos;ve never been. That ache is not a malfunction. C.S. Lewis called it{" "}
           <em>Sehnsucht</em>: desire unlike any other, because nothing in the physical world
           satisfies it. His argument: if nothing here answers the ache, perhaps the ache is not
           a response to the physical world at all.{" "}

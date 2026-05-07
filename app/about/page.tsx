@@ -23,172 +23,60 @@ export default function AboutPage() {
 
         <p>
           The longing you feel before something genuinely beautiful — the inconsolable homesickness
-          for a place you have never been, the sense that meaning is almost within reach and then
-          gone — is not a malfunction of the psyche. C.S. Lewis called it <em>Sehnsucht</em>:
-          desire not quite like any other desire, because nothing in the physical world can
-          satisfy it. His argument: if nothing here answers the ache, perhaps the ache is not
-          a response to the physical world at all. It is a response to something pressing
-          through it. <span className="text-[var(--accent-gold)] text-xl">The haunting is the signal.</span> Something is on the other side of the veil.
+          for a place you&apos;ve never been — is not a malfunction. C.S. Lewis called it{" "}
+          <em>Sehnsucht</em>: desire unlike any other, because nothing in the physical world
+          satisfies it. His argument: if nothing here answers the ache, perhaps the ache is not
+          a response to the physical world at all.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">The haunting is the signal.</span>{" "}
+          Something is pressing through.
         </p>
 
         <p>
-          Over several centuries, Western thought drew the veil — so gradually that by the time
-          it was complete, most people could no longer see it as a philosophical position.
-          They took it for common sense. What began as method became metaphysics. The Scientific
-          Revolution discovered that breaking the world into its parts yielded extraordinary
-          power: matter mastered, distances collapsed, lifespans extended. Somewhere the
-          description was mistaken for the explanation. Newton himself admitted he could describe
-          gravity but not explain what it was. The tradition that bore his name forgot this
-          admission. The brain was explained as hydraulic pump, then telegraph, then clockwork,
-          then computer — each era borrowing the most impressive technology of its moment and
-          declaring it the model of mind, none of them closing the gap between matter and
-          experience. A world that had been storied, symbolic, and alive — capable of meeting
-          you — gave way to a world of neutral substrate where meaning could only be projected
-          onto things, never found within them.
+          Over several centuries, Western thought drew a veil — so gradually that most people
+          could no longer see it as a philosophical position. What began as method became
+          metaphysics. A world that was storied, symbolic, alive — capable of meeting you —
+          gave way to a world of neutral substrate where meaning could only be projected, never
+          found. The world didn&apos;t lose its charge.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">We lost our grounding.</span>
         </p>
 
         <p>
-          What was lost is not belief. We have more information than any civilization in history,
-          and the meaning crisis has never been worse. What was lost is a <em>mode of knowing</em>.
-          Vervaeke identifies four: propositional (knowing <em>that</em>), procedural (knowing{" "}
-          <em>how</em>), perspectival (knowing <em>what it is like</em>), and participatory (knowing{" "}
-          <em>by being in relationship with</em>). The dominant paradigm operates entirely at
-          the propositional level — a stack of &ldquo;knowing that.&rdquo; No accumulation of
-          propositions generates &ldquo;knowing what it is like&rdquo; or &ldquo;knowing by
-          participating&rdquo; — not because we haven&apos;t tried hard enough, but because
-          it is the wrong category of knowing for the territory it claims to explain. Hume&apos;s
-          guillotine makes the same cut differently: from a stack of is-claims you cannot derive
-          a single ought. The map, however detailed, cannot tell you where you should go.
-          The modern project didn&apos;t just change beliefs. <span className="text-[var(--accent-gold)] text-xl">It delegitimized three of the
-          four ways a human being can know anything.</span>
+          The response to this loss splits into two failure modes. The first: seal yourself off.
+          Contract around what you know, let nothing genuinely other reach you — the self
+          confirms itself and nothing larger can enter. The second: dissolve the self entirely.
+          Accept that humans are no different from any other matter, that the ache is noise not
+          signal. Neither can be lived honestly. One closes the circuit. The other removes the
+          conductor.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">The translucent path runs between them.</span>
         </p>
 
         <p>
-          Every generation inherits a weave — the accumulated embodied discoveries of everyone
-          who came before, carried forward through three channels simultaneously. Genetic:
-          behaviors that worked become structurally assimilated over evolutionary time, the
-          lesson becoming the body itself (the Baldwin Effect). Epigenetic: experiential patterns
-          leave heritable marks on gene expression across generations without changing the DNA.
-          Memetic: cultural and symbolic transmission of the patterns that mapped onto something
-          real — which is why the hero&apos;s journey has survived ten thousand years across
-          every culture that ever existed. Jung&apos;s collective unconscious is the psychological
-          name for what all three channels have built together: the entire inheritance of every
-          free lunch every ancestor ever found, encoded as archetypes into the human psyche
-          before any individual has a single conscious thought. When the modern project
-          delegitimized the symbolic and the sacred, it didn&apos;t merely update a set of
-          beliefs. All three channels were disrupted simultaneously. The wound is in the
-          weave at every level — which is why no amount of information can close it.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">Re-enchantment is not a belief update. It is a reweaving.</span>
+          Translucent: structured enough to be a genuine person — with real weight, real
+          vulnerability, real capacity to suffer — and permeable enough to be exceeded by
+          something larger. The suffering is not incidental. Full presence is the condition
+          for genuine contact. This is the identity Preveil is pointing at: someone who has
+          chosen the ceiling-less over the collapsing — love, wonder, craft, vocation —
+          relationships that widen rather than narrow because the other is genuinely other.
         </p>
 
         <p>
-          The re-enchantment argument is not idiosyncratic. It is where several independent
-          traditions arrive when pushed to their foundations. Quantum field theory holds that
-          what we call &ldquo;particles&rdquo; are not discrete objects but excitations in an
-          underlying continuous field — apparent discreteness is a property of how the field
-          has organized itself at a particular locus. Advaita Vedanta said the same thing
-          thirteen centuries before the Standard Model: one substrate (Brahman), apparent
-          individuals as excitations within it, the veil of appearance (Maya) making the one
-          look like many. Kastrup argues from inside analytic philosophy that consciousness
-          is the one underlying reality and matter is the dashboard — the interface through
-          which universal mind becomes localized. Schelling, working from inside German
-          philosophy in 1797, arrived at the same claim from a different direction: nature
-          is not dead matter governed by external laws but visible spirit — self-organizing,
-          purposive, alive. The apparent deadness of the material world is not a discovery.
-          It is a decision, made once and then inherited as common sense. Wigner noticed in
-          1960 that mathematics
-          developed for purely abstract reasons describes physical reality with uncanny
-          precision and called it a miracle. It is not a miracle if the physical world is
-          an interface localizing a mathematical reality that was always there. Physics,
-          ancient philosophy, and consciousness science are not analogies of each other.
-          They are independent frameworks arriving at the same structural claim: pattern
-          and meaning are not projected onto a neutral substrate. <span className="text-[var(--accent-gold)] text-xl">They are features of the real.</span>
+          The veil has always been a threshold garment. Brides wear veils not to conceal
+          something shameful but to mark the moment before the sacred is revealed. The crisis
+          is not that we stand at the threshold. It is that we have left the building —
+          forgotten the veil was there, forgotten something is on the other side. The call is
+          to return. Not to stay at the threshold — the threshold is not the destination. But{" "}
+          <span className="text-[var(--accent-gold)] text-xl">you cannot cross what you have forgotten exists.</span>
         </p>
 
         <p>
-          The veil has always been a threshold garment. Brides wear veils — not to conceal
-          something shameful but to mark the moment before the sacred is revealed. The
-          pre-veil state is the charged, oriented, longing state of the bride before the
-          lifting: something real is on the other side, and the whole shape of the thing is
-          the movement toward it. To be pre-veil is not to be ignorant. It is to know that
-          the unveiling is coming and to be alive to it — standing at the threshold, trembling
-          with what is about to occur.
+          The translucent gold veil draped over our name is not hiding it. It is revealing it
+          through a medium.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">Not a barrier. A transmission.</span>{" "}
+          The product is the declaration.
         </p>
 
         <p>
-          The philosophical veil was drawn over centuries, gradually enough that no
-          announcement was ever made. But there is a second veil, and it renews itself
-          daily: the veil of habit. Proust identified it. Familiarity closes perception.
-          The city you live in becomes a route. The person you love becomes a concept.
-          The world that was charged grows quiet — not because it went quiet, but because
-          you stopped listening. Art exists, Proust argued, to lift this veil: to restore
-          genuine seeing, to return you to the real texture of the thing before the mind
-          had named it and moved on. Re-enchantment is not only the repair of a
-          philosophical error made three centuries ago. It is a practice — the daily
-          refusal of the second veil.
-        </p>
-
-        <p>
-          The crisis of modern culture is not that we are pre-veil. It is that we have
-          forgotten the veil was ever there — forgotten that something is on the other side,
-          forgotten that the longing points anywhere real. We are not standing at the threshold.
-          We have left the building. The call Preveil makes is to return to the threshold: to
-          recover the bride&apos;s posture, the orientation, the sense that the haunting is
-          signal and not noise. Not to stay at the threshold indefinitely — the threshold is
-          not the destination. The goal is the unveiling: harmony with being, full participatory
-          union with what the ache was always pointing toward. But you cannot reach the unveiling
-          without first recovering the orientation. <span className="text-[var(--accent-gold)] text-xl">The threshold has to be found again before
-          it can be crossed.</span>
-        </p>
-
-        <p>
-          The veil in our name is translucent, deliberately. Opaque would be fundamentalism:
-          the wall, the secular world entirely blocked out. Transparent would be the claim
-          that science has seen through to the real and the haunting is a mistake. Translucent
-          is the honest position — the bride&apos;s position. Something comes through. The
-          light is real. The full picture is partially obscured — enough to know something
-          is being missed, not so little that you abandon reason to find it.
-        </p>
-
-        <p>
-          The argument is rigorous before it becomes participatory. You lean back on your
-          stabilizing foot before you leap. Cognitive science, evolutionary biology, philosophy
-          of mind, quantum physics, and the oldest philosophical traditions on the planet
-          are independently arriving at the same structural claim — and no accumulation of
-          propositions gets you all the way there. At some point the map runs out and the
-          territory requires something else: embodied, enacted, lived. Kierkegaard described
-          the crossing: one side, the gap, the other side — and the crossing is not a series
-          of smaller steps. What comes back from that crossing is richer than what you brought
-          in. Not because you abandoned reason, but because reason got you to the edge.
-        </p>
-
-        <p>
-          The name carries two things at once: <em>prevail</em> — to endure, to overcome — and{" "}
-          <em>pre-veil</em> — before the threshold was forgotten, before the bride left the
-          building. The logo carries the same structure: the translucent gold veil draped over
-          the letters is not hiding the name. It is revealing it through a medium.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">Not a barrier. A transmission.</span> The bride&apos;s veil is not a wall. It is the last thing between
-          the threshold and the unveiling.
-        </p>
-
-        <p>
-          We make goods for the person who senses something haunting this world and wants to
-          live in that awareness rather than argue it away. For the meaning-hungry and the
-          scientifically literate. For those who feel the threads thinning and want to pull
-          them taut again. For those willing to find their footing, stand at the threshold,
-          and leap.
-        </p>
-
-        <p>
-          The deeper reading of an old phrase is this: you are not an observer separate from
-          what haunts the world. If the individual mind is a localized aperture of something
-          larger — as physics, ancient philosophy, and cognitive science are each beginning to
-          suggest — then the spy and the spymaster are the same thing seen from different angles.
-          The field knowing itself through a particular locus. The longing never lands on any
-          object and satisfies — not because the signal is weak, but because its target is not
-          an object. It is pointing at the ground from which both the one who longs and the
-          thing longed-for arise together. The veil is translucent because you are partly what
-          is on both sides.
+          We make goods for those who remember.
         </p>
 
       </div>

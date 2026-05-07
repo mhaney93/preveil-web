@@ -25,7 +25,7 @@ export default async function Home() {
           Preveil
         </h1>
         <p className="max-w-md text-lg text-[var(--muted)] leading-relaxed mb-12">
-          The world didn&apos;t lose its charge — we lost our ability to feel it.
+          The world didn&apos;t lose its charge — we lost our grounding.
           We make goods for those who remember.
         </p>
         <Link
@@ -84,9 +84,9 @@ export default async function Home() {
       {/* Brand statement */}
       <section className="border-t border-[var(--border)] px-6 py-24 text-center">
         <blockquote className="max-w-2xl mx-auto font-[family-name:var(--font-heading)] text-2xl font-light italic text-[var(--muted)] leading-relaxed mb-4">
-          &ldquo;Nature is visible spirit; spirit is invisible nature.&rdquo;
+          &ldquo;The world is charged with the grandeur of God.&rdquo;
         </blockquote>
-        <p className="text-sm text-[var(--muted)] tracking-widest uppercase">— Friedrich Schelling</p>
+        <p className="text-sm text-[var(--muted)] tracking-widest uppercase">— Gerard Manley Hopkins</p>
       </section>
     </div>
   );

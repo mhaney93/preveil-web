@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Preveil is a brand for the scientifically literate and the meaning-hungry — those who sense the world is haunted by something real, and who want to live in that awareness rather than argue it away.",
+  description: "Preveil is built on one insight: you are always inside a veil. The materialist moment told you meaning was the illusion. We make goods for those who went back and checked.",
 };
 
 export default function AboutPage() {
@@ -15,64 +15,62 @@ export default function AboutPage() {
         Our Philosophy
       </p>
       <h1 className="font-[family-name:var(--font-heading)] text-5xl md:text-6xl font-light tracking-wide text-[var(--foreground)] mb-16 leading-tight">
-        The world is haunted
+        Before the veil closed
       </h1>
 
       {/* Body */}
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-xl font-[family-name:var(--font-body)]">
 
         <p>
-          by the longing stirred by something genuinely beautiful: the inconsolable homesickness
-          for a place you&apos;ve never been. That ache is not a malfunction. C.S. Lewis called it{" "}
-          <em>Sehnsucht</em>: desire unlike any other, because nothing in the physical world
-          satisfies it. His argument: if nothing here answers the ache, perhaps the ache is not
-          a response to the physical world at all.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">The haunting is the signal.</span>{" "}
-          Something is pressing through.
+          You are always inside a paradigm. Always looking through a lens. The question was never
+          whether you are wearing a veil — that was settled before you arrived. The question is
+          whether you chose it. Whether you know what it costs.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">Whether you can read what it forecloses.</span>
         </p>
 
         <p>
-          Over several centuries, Western thought drew a veil, so gradually that most people
-          could no longer see it as a philosophical position. What began as method became
-          metaphysics. A world that was storied, symbolic, alive, capable of meeting you,
-          gave way to a world of neutral substrate where meaning could only be projected, never
-          found. The world didn&apos;t lose its charge.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">We lost our grounding.</span>
+          Over several centuries, Western thought drew a specific veil — so gradually that most
+          people stopped being able to see it as a philosophical position at all. What began as
+          method became metaphysics. A world that was storied, symbolic, alive, capable of meeting
+          you gave way to a world of neutral substrate where meaning could only be projected, never
+          found. The ache — the inconsolable longing that nothing in the physical world satisfies —
+          was relabeled as noise. Malfunction. Sentimentality.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">The haunting was declared a ghost.</span>
         </p>
 
         <p>
-          The response to this loss splits into two failure modes. The first: seal yourself off.
-          Contract around what you know, let nothing genuinely other reach you. The self
-          confirms itself and nothing larger can enter. The second: dissolve the self entirely.
-          Accept that humans are no different from any other matter, that the ache is noise not
-          signal. Neither can be lived honestly. One closes the circuit. The other removes the
-          conductor.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">The translucent path runs between them.</span>
+          Without the awareness that you are inside a veil at all, the crisis does not resolve — it
+          oscillates. One paradigm collapses and the bell swings to the next: one ideology, then
+          its mirror, then the next container, then its mirror. Each new veil is worn just as
+          unconsciously as the last. The bell keeps swinging because there is no stable ground from
+          which to choose.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">Only subjection to the mechanism. Not consciousness of it.</span>
         </p>
 
         <p>
-          Translucent: structured enough to be a genuine person, with real weight, real
-          vulnerability, real capacity to suffer, and permeable enough to be exceeded by
-          something larger. The suffering is not incidental. Full presence is the condition
-          for genuine contact. This is the identity Preveil is pointing at: someone who has
-          chosen the ceiling-less over the collapsing, love, wonder, craft, vocation,
-          relationships that widen rather than narrow because the other is genuinely other.
+          Preveil is not a call to return to the past. It is a call to a posture: go back and
+          rescue the orientation that was lost — the knowledge that meaning is real, that the ache
+          is signal, that the world is capable of meeting you — so that you can choose your current
+          veil deliberately. You cannot choose consciously from inside a veil you believe is not a
+          veil. The rescue has to come first.
         </p>
 
         <p>
-          The veil has always been a threshold garment. Brides wear veils not to conceal
-          something shameful but to mark the moment before the sacred is revealed. The crisis
-          is not that we stand at the threshold. It is that we have left the building, forgotten
-          the veil was there, forgotten something is on the other side. The call is to return.
-          Not to stay at the threshold; the threshold is not the destination. But{" "}
-          <span className="text-[var(--accent-gold)] text-xl">you cannot cross what you have forgotten exists.</span>
+          The goal is not to remove the veil. That was never on offer. The goal is translucency:
+          structured enough to be a genuine person, with real weight, real vulnerability, real
+          capacity to suffer, and permeable enough to be exceeded by something larger. The two
+          failure modes on either side — sealing yourself off so nothing genuine can enter, or
+          dissolving the self until the ache is relabeled as noise — are both forms of unconscious
+          veil-wearing.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">The narrow path is the conscious one.</span>
         </p>
 
         <p>
           The translucent gold veil draped over our name is not hiding it. It is revealing it
           through a medium.{" "}
           <span className="text-[var(--accent-gold)] text-xl">Not a barrier. A transmission.</span>{" "}
-          The product is the declaration.
+          The goods are covered in veils — because there is no getting away from them. To wear
+          Preveil is to wear the symbol of the posture: the veil you chose, knowing what it is.
         </p>
 
         <p>

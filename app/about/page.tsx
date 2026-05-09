@@ -23,16 +23,11 @@ export default function AboutPage() {
 
         <p>
           meaning wasn&apos;t a question. The world was storied, symbolic, alive, capable of meeting
-          the longing you carried.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">That longing pointed somewhere real.</span>
-        </p>
-
-        <p>
-          Over several centuries, Western thought drew a specific veil, so gradually that most
-          people stopped being able to see it as a philosophical position at all. What began as
-          method became metaphysics. That world gave way to a world of neutral substrate where meaning could only be projected, never
-          found. The ache, the inconsolable longing that nothing in the physical world satisfies,
-          was relabeled as noise. Malfunction. Sentimentality.{" "}
+          the longing you carried. That longing pointed somewhere real. Over several centuries,
+          Western thought drew a specific veil, so gradually that most people stopped being able
+          to see it as a philosophical position at all. What began as method became metaphysics.
+          That world gave way to a world of neutral substrate where meaning could only be
+          projected, never found. That longing was relabeled as noise. Malfunction. Sentimentality.{" "}
           <span className="text-[var(--accent-gold)] text-xl">The haunting was declared a ghost.</span>
         </p>
 

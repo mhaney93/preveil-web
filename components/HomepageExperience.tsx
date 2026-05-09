@@ -1,28 +1,13 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function HomepageExperience() {
   const [mounted, setMounted] = useState(false)
   const [veilEnabled, setVeilEnabled] = useState(true)
-  const [scrolling, setScrolling] = useState(false)
-  const scrollTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     setMounted(true)
-  }, [])
-
-  useEffect(() => {
-    const onScroll = () => {
-      setScrolling(true)
-      if (scrollTimer.current) clearTimeout(scrollTimer.current)
-      scrollTimer.current = setTimeout(() => setScrolling(false), 1500)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      if (scrollTimer.current) clearTimeout(scrollTimer.current)
-    }
   }, [])
 
   if (!mounted) return null
@@ -30,7 +15,7 @@ export default function HomepageExperience() {
   return (
     <>
       {veilEnabled && (
-        <div aria-hidden="true" className={`veil-drape${scrolling ? ' veil-scrolling' : ''}`}>
+        <div aria-hidden="true" className="veil-drape">
           <div className="veil-gold" />
           <div className="veil-grain" />
         </div>

@@ -37,14 +37,22 @@
   --color-card: var(--card);
   --font-sans: var(--font-body);
   --font-display: var(--font-heading);
-  --text-caption:  var(--type-caption);
-  --text-label:    var(--type-label);
-  --text-body:     var(--type-body);
-  --text-subhead:  var(--type-subhead);
-  --text-h3:       var(--type-h3);
-  --text-h1-sm:    var(--type-h1-sm);
-  --text-h1-lg:    var(--type-h1-lg);
-  --text-hero:     var(--type-hero);
+  --text-caption:            var(--type-caption);
+  --text-caption--line-height:  1.5;
+  --text-label:              var(--type-label);
+  --text-label--line-height:    1.5;
+  --text-body:               var(--type-body);
+  --text-body--line-height:     1.5;
+  --text-subhead:            var(--type-subhead);
+  --text-subhead--line-height:  1.35;
+  --text-h3:                 var(--type-h3);
+  --text-h3--line-height:       1.2;
+  --text-h1-sm:              var(--type-h1-sm);
+  --text-h1-sm--line-height:    1.1;
+  --text-h1-lg:              var(--type-h1-lg);
+  --text-h1-lg--line-height:    1.05;
+  --text-hero:               var(--type-hero);
+  --text-hero--line-height:     1.0;
 }
 
 body {
@@ -88,6 +96,10 @@ body {
   background-size: 200px 200px;
   mix-blend-mode: overlay;
   opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .veil-drape { animation: none; }
 }
 
 /* ─── Experience controls ─── */

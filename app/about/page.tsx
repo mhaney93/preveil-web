@@ -15,7 +15,7 @@ export default function AboutPage() {
         Our Philosophy
       </p>
       <h1 className="font-[family-name:var(--font-heading)] text-5xl md:text-6xl font-light tracking-wide text-[var(--foreground)] mb-16 leading-tight">
-        Before the veil closed,
+        Before the veil was drawn,
       </h1>
 
       {/* Body */}

@@ -22,8 +22,7 @@ export default function AboutPage() {
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-xl font-[family-name:var(--font-body)]">
 
         <p>
-          meaning was felt, not named. Recognized, not mapped. The longing you
-          carried pointed somewhere real, and the culture built around that fact rather than arguing
+          meaning was felt, not named. Recognized, not mapped. The longing for it pointed somewhere real, and the culture built around that fact rather than arguing
           it away. Over several centuries,
           Western thought drew a specific veil, so gradually that most people stopped being able
           to see it as a philosophical position at all. What began as method became metaphysics.

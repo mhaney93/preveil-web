@@ -15,16 +15,18 @@ export default function AboutPage() {
         Our Philosophy
       </p>
       <h1 className="font-[family-name:var(--font-heading)] text-5xl md:text-6xl font-light tracking-wide text-[var(--foreground)] mb-16 leading-tight">
-        Before the veil closed
+        Before the veil closed,
       </h1>
 
       {/* Body */}
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-xl font-[family-name:var(--font-body)]">
 
         <p>
-          You are always inside a paradigm. Always looking through a lens. The question was never
-          whether you are wearing a veil — that was settled before you arrived. The question is
-          whether you chose it. Whether you know what it costs.{" "}
+          meaning wasn&apos;t a question. The world was storied, symbolic, alive — capable of meeting
+          you. The ache had a name and the name pointed somewhere real. You were always inside a
+          paradigm, always looking through a lens, but you knew it. The question was never whether
+          you are wearing a veil — that was settled. The question is whether you chose it. Whether
+          you know what it costs.{" "}
           <span className="text-[var(--accent-gold)] text-xl">Whether you can read what it forecloses.</span>
         </p>
 

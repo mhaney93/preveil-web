@@ -67,7 +67,7 @@ export default function CartPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
-      <h1 className="font-[family-name:var(--font-heading)] text-4xl font-light tracking-widest uppercase text-center mb-16 text-[var(--foreground)]">
+      <h1 className="font-[family-name:var(--font-heading)] text-h3 font-light tracking-widest uppercase text-center mb-16 text-[var(--foreground)]">
         Cart
       </h1>
 
@@ -103,7 +103,7 @@ export default function CartPage() {
 
               {/* Details */}
               <div className="flex-1">
-                <h2 className="font-[family-name:var(--font-heading)] text-xl font-light text-[var(--foreground)]">
+                <h2 className="font-[family-name:var(--font-heading)] text-body font-light text-[var(--foreground)]">
                   {item.name}
                 </h2>
                 <p className="text-sm tracking-widest uppercase text-[var(--muted)] mt-1">
@@ -149,7 +149,7 @@ export default function CartPage() {
               <span className="text-sm tracking-widest uppercase text-[var(--muted)]">
                 Total
               </span>
-              <span className="font-[family-name:var(--font-heading)] text-2xl font-light text-[var(--foreground)]">
+              <span className="font-[family-name:var(--font-heading)] text-subhead font-light text-[var(--foreground)]">
                 ${total.toFixed(2)}
               </span>
             </div>

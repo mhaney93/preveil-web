@@ -20,7 +20,7 @@ export default function DeleteAccountButton({ action }: { action: () => Promise<
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="absolute inset-0 bg-black/60" onClick={() => setOpen(false)} />
           <div className="relative bg-[var(--background)] border border-[var(--border)] p-10 max-w-sm w-full mx-6">
-            <h2 className="font-[family-name:var(--font-heading)] text-2xl font-light tracking-widest uppercase text-[var(--foreground)] mb-4">
+            <h2 className="font-[family-name:var(--font-heading)] text-subhead font-light tracking-widest uppercase text-[var(--foreground)] mb-4">
               Delete Account
             </h2>
             <p className="text-sm text-[var(--muted)] leading-relaxed mb-10">

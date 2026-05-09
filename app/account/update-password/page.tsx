@@ -29,7 +29,7 @@ export default function UpdatePasswordPage() {
 
   return (
     <div className="max-w-md mx-auto px-6 py-16">
-      <h1 className="font-[family-name:var(--font-heading)] text-4xl font-light tracking-widest uppercase text-center mb-16 text-[var(--foreground)]">
+      <h1 className="font-[family-name:var(--font-heading)] text-h3 font-light tracking-widest uppercase text-center mb-16 text-[var(--foreground)]">
         New Password
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">

@@ -27,7 +27,7 @@ export default async function AccountPage() {
   if (!user) {
     return (
       <div className="max-w-md mx-auto px-6 py-16">
-        <h1 className="font-[family-name:var(--font-heading)] text-4xl font-light tracking-widest uppercase text-center mb-16 text-[var(--foreground)]">
+        <h1 className="font-[family-name:var(--font-heading)] text-h3 font-light tracking-widest uppercase text-center mb-16 text-[var(--foreground)]">
           Account
         </h1>
         <AuthForm />
@@ -82,7 +82,7 @@ export default async function AccountPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
       <div className="flex items-center justify-between mb-16">
-        <h1 className="font-[family-name:var(--font-heading)] text-4xl font-light tracking-widest uppercase text-[var(--foreground)]">
+        <h1 className="font-[family-name:var(--font-heading)] text-h3 font-light tracking-widest uppercase text-[var(--foreground)]">
           Account
         </h1>
         <LogoutButton />
@@ -97,7 +97,7 @@ export default async function AccountPage() {
         </h2>
         <div className="flex items-end gap-6">
           <div>
-            <p className="font-[family-name:var(--font-heading)] text-4xl font-light text-[var(--accent-gold)]">
+            <p className="font-[family-name:var(--font-heading)] text-h3 font-light text-[var(--accent-gold)]">
               {availablePoints}
             </p>
             <p className="text-sm text-[var(--muted)] mt-1">
@@ -106,7 +106,7 @@ export default async function AccountPage() {
           </div>
           {pendingPoints > 0 && (
             <div>
-              <p className="font-[family-name:var(--font-heading)] text-2xl font-light text-[var(--muted)]">
+              <p className="font-[family-name:var(--font-heading)] text-subhead font-light text-[var(--muted)]">
                 +{pendingPoints}
               </p>
               <p className="text-sm text-[var(--muted)] mt-1">pending · available in 14 days</p>

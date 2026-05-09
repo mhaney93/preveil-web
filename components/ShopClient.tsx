@@ -564,7 +564,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
                   )}
               </div>
               <div className="p-6">
-                <h2 className="font-[family-name:var(--font-heading)] text-xl font-light tracking-wide text-[var(--foreground)] group-hover:text-[var(--accent-gold)] transition-colors">
+                <h2 className="font-[family-name:var(--font-heading)] text-body font-light tracking-wide text-[var(--foreground)] group-hover:text-[var(--accent-gold)] transition-colors">
                   {product.name}
                 </h2>
                 {product.subcategory && (

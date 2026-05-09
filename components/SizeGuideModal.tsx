@@ -48,7 +48,7 @@ export default function SizeGuideModal({
           ×
         </button>
 
-        <h2 className="font-[family-name:var(--font-heading)] text-xl tracking-widest uppercase text-[var(--foreground)] mb-2">
+        <h2 className="font-[family-name:var(--font-heading)] text-body tracking-widest uppercase text-[var(--foreground)] mb-2">
           Size Guide
         </h2>
 

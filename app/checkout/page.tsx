@@ -251,7 +251,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
-      <h1 className="font-[family-name:var(--font-heading)] text-4xl font-light tracking-widest uppercase text-center mb-16 text-[var(--foreground)]">
+      <h1 className="font-[family-name:var(--font-heading)] text-h3 font-light tracking-widest uppercase text-center mb-16 text-[var(--foreground)]">
         Checkout
       </h1>
 
@@ -390,7 +390,7 @@ export default function CheckoutPage() {
               <span className="text-sm tracking-widest uppercase text-[var(--muted)]">
                 Total
               </span>
-              <span className="font-[family-name:var(--font-heading)] text-2xl font-light text-[var(--foreground)]">
+              <span className="font-[family-name:var(--font-heading)] text-subhead font-light text-[var(--foreground)]">
                 ${total.toFixed(2)}
               </span>
             </div>

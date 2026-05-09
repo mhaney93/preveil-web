@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-[var(--border)] mt-auto">
       <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col items-center gap-6 text-center">
-        <p className="font-[family-name:var(--font-heading)] text-2xl font-light tracking-[0.3em] uppercase text-[var(--foreground)]">
+        <p className="font-[family-name:var(--font-heading)] text-subhead font-light tracking-[0.3em] uppercase text-[var(--foreground)]">
           Preveil
         </p>
         <p className="text-sm text-[var(--muted)]">

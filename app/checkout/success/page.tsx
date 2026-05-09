@@ -108,7 +108,7 @@ function SuccessContent() {
           <p className="text-[var(--accent-gold)] text-sm tracking-[0.4em] uppercase mb-6">
             Order Confirmed
           </p>
-          <h1 className="font-[family-name:var(--font-heading)] text-5xl font-light tracking-wide text-[var(--foreground)] mb-6">
+          <h1 className="font-[family-name:var(--font-heading)] text-h1-sm font-light tracking-wide text-[var(--foreground)] mb-6">
             Thank you
           </h1>
           <p className="text-[var(--muted)] leading-relaxed mb-12">
@@ -181,7 +181,7 @@ function SuccessContent() {
 
       {status === "error" && (
         <>
-          <h1 className="font-[family-name:var(--font-heading)] text-4xl font-light text-[var(--foreground)] mb-4">
+          <h1 className="font-[family-name:var(--font-heading)] text-h3 font-light text-[var(--foreground)] mb-4">
             Something went wrong
           </h1>
           <p className="text-[var(--muted)] mb-8">

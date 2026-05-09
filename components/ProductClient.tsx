@@ -201,7 +201,7 @@ export default function ProductClient({
             </p>
           )
         )}
-        <h1 className="font-[family-name:var(--font-heading)] text-4xl font-light tracking-wide text-[var(--foreground)] mb-4">
+        <h1 className="font-[family-name:var(--font-heading)] text-h3 font-light tracking-wide text-[var(--foreground)] mb-4">
           {product.name}
         </h1>
         <p className="text-[var(--accent-gold)] tracking-wide mb-6">

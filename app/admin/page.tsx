@@ -46,7 +46,7 @@ export default async function AdminPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
-      <h1 className="font-[family-name:var(--font-heading)] text-4xl font-light tracking-widest uppercase text-[var(--foreground)] mb-16">
+      <h1 className="font-[family-name:var(--font-heading)] text-h3 font-light tracking-widest uppercase text-[var(--foreground)] mb-16">
         Content Pool
       </h1>
 

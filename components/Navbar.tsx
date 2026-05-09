@@ -31,16 +31,16 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden sm:flex items-center gap-8">
-          <Link href="/shop" className="text-base tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <Link href="/shop" className="text-label tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Shop
           </Link>
-          <Link href="/about" className="text-base tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <Link href="/about" className="text-label tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             About
           </Link>
-          <a href="https://preveil.online" target="_blank" rel="noopener noreferrer" className="text-base tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <a href="https://preveil.online" target="_blank" rel="noopener noreferrer" className="text-label tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Knowledge Map
           </a>
-          <Link href="/account" className="text-base tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <Link href="/account" className="text-label tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Account
           </Link>
           <Link href="/cart" className="relative text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
@@ -92,16 +92,16 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <nav className="sm:hidden border-t border-[var(--border)] px-6 py-4 flex flex-col gap-4">
-          <Link href="/shop" onClick={() => setMenuOpen(false)} className="text-base tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <Link href="/shop" onClick={() => setMenuOpen(false)} className="text-label tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Shop
           </Link>
-          <Link href="/about" onClick={() => setMenuOpen(false)} className="text-base tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <Link href="/about" onClick={() => setMenuOpen(false)} className="text-label tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             About
           </Link>
-          <a href="https://preveil.online" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="text-base tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <a href="https://preveil.online" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="text-label tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Knowledge Map
           </a>
-          <Link href="/account" onClick={() => setMenuOpen(false)} className="text-base tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
+          <Link href="/account" onClick={() => setMenuOpen(false)} className="text-label tracking-widest uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors">
             Account
           </Link>
         </nav>

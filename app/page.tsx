@@ -25,7 +25,7 @@ export default async function Home() {
           Preveil
         </h1>
         <p className="max-w-md text-lg text-[var(--muted)] leading-relaxed mb-12">
-          Meaning was forgotten.
+          The magic was forgotten.
           We make goods for those who remember.
         </p>
         <Link

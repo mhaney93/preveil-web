@@ -30,8 +30,7 @@ export default function AboutPage() {
         <p>
           Over several centuries, Western thought drew a specific veil, so gradually that most
           people stopped being able to see it as a philosophical position at all. What began as
-          method became metaphysics. A world that was storied, symbolic, alive, capable of meeting
-          you gave way to a world of neutral substrate where meaning could only be projected, never
+          method became metaphysics. That world gave way to a world of neutral substrate where meaning could only be projected, never
           found. The ache, the inconsolable longing that nothing in the physical world satisfies,
           was relabeled as noise. Malfunction. Sentimentality.{" "}
           <span className="text-[var(--accent-gold)] text-xl">The haunting was declared a ghost.</span>

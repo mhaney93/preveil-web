@@ -23,11 +23,8 @@ export default function AboutPage() {
 
         <p>
           meaning wasn&apos;t a question. The world was storied, symbolic, alive, capable of meeting
-          the longing you carried. That longing pointed somewhere real. You were always inside a
-          paradigm, always looking through a lens, but you knew it. The question was never whether
-          you are wearing a veil. That was settled. The question is whether you chose it. Whether
-          you know what it costs.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">Whether you can read what it forecloses.</span>
+          the longing you carried.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">That longing pointed somewhere real.</span>
         </p>
 
         <p>

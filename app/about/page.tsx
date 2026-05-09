@@ -22,8 +22,9 @@ export default function AboutPage() {
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-xl font-[family-name:var(--font-body)]">
 
         <p>
-          meaning wasn&apos;t a question. The world was storied, symbolic, alive, capable of meeting
-          the longing you carried. That longing pointed somewhere real. Over several centuries,
+          meaning was felt before it was named. Recognized before it was mapped. The longing you
+          carried pointed somewhere real, and the culture built around that fact rather than arguing
+          it away. Over several centuries,
           Western thought drew a specific veil, so gradually that most people stopped being able
           to see it as a philosophical position at all. What began as method became metaphysics.
           That world gave way to a world of neutral substrate where meaning could only be

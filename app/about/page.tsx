@@ -27,7 +27,7 @@ export default function AboutPage() {
         </p>
 
         <p>
-          Gradually, the veil was redrawn. Around the fire, enacting stories — a first map of what
+          Then came the maps. Around the fire, enacting stories — a first attempt to name what
           could only be felt. Then the ancient epics, giving the map shape and memory. Then
           religion, organizing it into doctrine and institution. Each new veil felt like a clearer
           view of the thing itself.{" "}

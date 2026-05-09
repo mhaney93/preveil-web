@@ -32,12 +32,10 @@ export default function AboutPage() {
         </p>
 
         <p>
-          Without the awareness that you are inside a veil at all, the crisis does not resolve. It
-          oscillates. One paradigm collapses and the bell swings to the next: one ideology, then
-          its mirror, then the next container, then its mirror. Each new veil is worn just as
-          unconsciously as the last. The bell keeps swinging because there is no stable ground from
-          which to choose.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">Only subjection to the mechanism. Not consciousness of it.</span>
+          But the longing does not disappear when it is declared a ghost. It goes looking for
+          somewhere to land. Ideology, consumption, outrage, the relentless optimization of the
+          self — each promises to quiet it. None do.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">The signal is still running. It just no longer has a name.</span>
         </p>
 
         <p>

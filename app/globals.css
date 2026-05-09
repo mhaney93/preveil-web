@@ -64,15 +64,46 @@ body {
 /* ─── Veil animation ─── */
 
 @keyframes veilDrape {
-  /* drop in — bottom edge falls from top to bottom */
-  0%    { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
-  12%   { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-  /* hold */
-  55%   { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-  /* fall off — top edge falls from top to bottom */
-  70%   { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
-  70.5% { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
-  100%  { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
+  /* invisible */
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 0%, 86% 0%, 71% 0%, 57% 0%, 43% 0%, 29% 0%, 14% 0%, 0 0%);
+    animation-timing-function: ease-in;
+  }
+  /* drop in — wavy bottom falls to full */
+  12% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 86% 98%, 71% 103%, 57% 98%, 43% 103%, 29% 98%, 14% 103%, 0 100%);
+    animation-timing-function: ease-in-out;
+  }
+  /* sway 1 */
+  22% {
+    clip-path: polygon(0 0, 100% 0, 100% 101%, 86% 103%, 71% 98%, 57% 103%, 43% 98%, 29% 103%, 14% 98%, 0 101%);
+    animation-timing-function: ease-in-out;
+  }
+  /* sway 2 */
+  33% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 86% 98%, 71% 103%, 57% 98%, 43% 103%, 29% 98%, 14% 103%, 0 100%);
+    animation-timing-function: ease-in-out;
+  }
+  /* sway 3 */
+  44% {
+    clip-path: polygon(0 0, 100% 0, 100% 101%, 86% 103%, 71% 98%, 57% 103%, 43% 98%, 29% 103%, 14% 98%, 0 101%);
+    animation-timing-function: ease-in-out;
+  }
+  /* stable before lift */
+  55% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 86% 98%, 71% 103%, 57% 98%, 43% 103%, 29% 98%, 14% 103%, 0 100%);
+    animation-timing-function: ease-in;
+  }
+  /* lifted — wavy bottom rises back to top */
+  70% {
+    clip-path: polygon(0 0, 100% 0, 100% 0%, 86% 0%, 71% 0%, 57% 0%, 43% 0%, 29% 0%, 14% 0%, 0 0%);
+  }
+  70.5% {
+    clip-path: polygon(0 0, 100% 0, 100% 0%, 86% 0%, 71% 0%, 57% 0%, 43% 0%, 29% 0%, 14% 0%, 0 0%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 0%, 86% 0%, 71% 0%, 57% 0%, 43% 0%, 29% 0%, 14% 0%, 0 0%);
+  }
 }
 
 .veil-drape {

@@ -25,7 +25,7 @@ export default async function Home() {
           Preveil
         </h1>
         <p className="max-w-md text-lg text-[var(--muted)] leading-relaxed mb-12">
-          There&apos;s no getting behind the veil — only being conscious of which one you&apos;re inside.
+          Meaning was forgotten.
           We make goods for those who remember.
         </p>
         <Link

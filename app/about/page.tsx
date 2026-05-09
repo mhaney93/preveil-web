@@ -22,11 +22,23 @@ export default function AboutPage() {
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-xl font-[family-name:var(--font-body)]">
 
         <p>
-          meaning was felt, not named. Recognized, not mapped. The longing for it pointed somewhere real, and the world was organized around that recognition. Over several centuries,
-          Western thought drew a specific veil, so gradually that most people stopped being able
-          to see it as a philosophical position at all. What began as method became metaphysics.
-          That world gave way to a world of neutral substrate where meaning could only be
-          projected, never found. That longing was relabeled as noise. Malfunction. Sentimentality.{" "}
+          meaning was felt, not named. Recognized, not mapped. The longing for it pointed somewhere
+          real, and the world was organized around that recognition.
+        </p>
+
+        <p>
+          Gradually, the veil was redrawn. Around the fire, enacting stories — a first map of what
+          could only be felt. Then the ancient epics, giving the map shape and memory. Then
+          religion, organizing it into doctrine and institution. Each new veil felt like a clearer
+          view of the thing itself.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">Each was just another veil.</span>
+        </p>
+
+        <p>
+          Then science arrived and felt like the final unveiling: the primitive maps discarded,
+          reality seen at last. What began as method became metaphysics. That world gave way to a
+          world of neutral substrate where meaning could only be projected, never found. That
+          longing was relabeled as noise. Malfunction. Sentimentality.{" "}
           <span className="text-[var(--accent-gold)] text-xl">The haunting was declared a ghost.</span>
         </p>
 

@@ -23,7 +23,7 @@ export default function AboutPage() {
 
         <p>
           meaning wasn&apos;t a question. The world was storied, symbolic, alive, capable of meeting
-          you. The ache had a name and it pointed somewhere real. You were always inside a
+          the longing you carried. That longing pointed somewhere real. You were always inside a
           paradigm, always looking through a lens, but you knew it. The question was never whether
           you are wearing a veil. That was settled. The question is whether you chose it. Whether
           you know what it costs.{" "}

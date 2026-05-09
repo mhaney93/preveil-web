@@ -14,7 +14,7 @@ export default function AboutPage() {
       <p className="text-sm tracking-[0.4em] uppercase text-[var(--accent-gold)] mb-6">
         Our Philosophy
       </p>
-      <h1 className="font-[family-name:var(--font-heading)] text-5xl md:text-6xl font-light tracking-wide text-[var(--foreground)] mb-16 leading-tight">
+      <h1 className="font-[family-name:var(--font-heading)] text-h1-sm md:text-h1-lg font-light tracking-wide text-[var(--foreground)] mb-16 leading-tight">
         Before the veil was drawn,
       </h1>
 

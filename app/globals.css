@@ -5,22 +5,46 @@
   --background: #0c0a09;
   --foreground: #f0ead6;
   --accent-gold: #c8a45a;
-  --accent-burgundy: #7d2035;
   --muted: #807a75;
   --border: #3a3028;
   --card: #161210;
+
+  /* Type scale — ratio 1.333 (4:3), base 1.25rem (20px)
+     step-2:  0.703rem  ~11px  captions
+     step-1:  0.938rem  ~15px  labels, nav
+     step 0:  1.25rem   ~20px  body
+     step+1:  1.667rem  ~27px  subhead, quotes
+     step+2:  2.222rem  ~36px  h3, section headers
+     step+3:  2.963rem  ~47px  h1 mobile
+     step+4:  3.951rem  ~63px  h1 desktop
+     step+5:  5.268rem  ~84px  hero display              */
+  --type-caption:  0.703rem;
+  --type-label:    0.938rem;
+  --type-body:     1.25rem;
+  --type-subhead:  1.667rem;
+  --type-h3:       2.222rem;
+  --type-h1-sm:    2.963rem;
+  --type-h1-lg:    3.951rem;
+  --type-hero:     5.268rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-gold: var(--accent-gold);
-  --color-burgundy: var(--accent-burgundy);
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-card: var(--card);
   --font-sans: var(--font-body);
   --font-display: var(--font-heading);
+  --text-caption:  var(--type-caption);
+  --text-label:    var(--type-label);
+  --text-body:     var(--type-body);
+  --text-subhead:  var(--type-subhead);
+  --text-h3:       var(--type-h3);
+  --text-h1-sm:    var(--type-h1-sm);
+  --text-h1-lg:    var(--type-h1-lg);
+  --text-hero:     var(--type-hero);
 }
 
 body {

@@ -26,7 +26,7 @@ export default async function Home() {
         </h1>
         <p className="max-w-md text-lg text-[var(--muted)] leading-relaxed mb-12">
           The magic was forgotten.
-          We make goods for those who remember.
+          Re-enchant your world.
         </p>
         <Link
           href="/shop"

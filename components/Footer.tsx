@@ -8,7 +8,7 @@ export default function Footer() {
           Preveil
         </p>
         <p className="text-sm text-[var(--muted)]">
-          We make goods for those who remember.
+          Re-enchant your world.
         </p>
         <nav className="flex flex-wrap justify-center gap-x-8 gap-y-2">
           {[

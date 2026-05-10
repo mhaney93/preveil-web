@@ -24,9 +24,9 @@ export default function AboutPage() {
         <p>
           meaning was felt, not named. Recognized, not mapped. The longing for it pointed somewhere
           real, and the world was organized around that recognition. We were driven to map this
-          territory. Step by step, one paradigm sublating into the next: enacted story deepened into grand mythology,
-          which itself hardened into the explicit certainties of the
-          Enlightenment. We arrived at the materialist worldview. Each step carried echoes of the
+          territory. First with enacted story. Then, step by step, one paradigm sublating into the
+          next: grand mythology hardening into the explicit certainties of the Enlightenment. We
+          arrived at the materialist worldview. Each step carried echoes of the
           ones before it: the longing, the sense of something larger pressing in. The materialist
           lens thoroughly subsumed those echoes, naming them superstition — seemingly eclipsed,
           digested, and marginalized into silence. The haunting of the soul, the song without a

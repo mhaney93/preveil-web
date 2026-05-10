@@ -24,8 +24,10 @@ export default function AboutPage() {
         <p>
           meaning was felt, not named. Recognized, not mapped. The longing for it pointed somewhere
           real, and the world was organized around that recognition. We were driven to map this
-          territory. Gradually, one paradigm sublating into the next, we arrived at the materialist
-          worldview of the Enlightenment. Each felt like a clearer view of the thing itself.{" "}
+          territory. Gradually, one paradigm sublating into the next — enacted story deepening into
+          myth and epic, myth and epic hardening into the explicit certainties of the Enlightenment
+          — we arrived at the materialist worldview. Each felt like a clearer view of the thing
+          itself.{" "}
           <span className="text-[var(--accent-gold)] text-xl">Each was just another veil.</span>
         </p>
 

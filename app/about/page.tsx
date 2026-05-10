@@ -31,6 +31,13 @@ export default function AboutPage() {
         </p>
 
         <p>
+          Measurement became metaphysics. Meaning could only be projected onto a neutral
+          substrate, never found within it. That longing was relabeled as noise. Malfunction.
+          Sentimentality.{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">The haunting was declared a ghost.</span>
+        </p>
+
+        <p>
           Each step carried echoes of the
           ones before it: the longing, the sense of something larger pressing in. The materialist
           lens thoroughly subsumed those echoes, naming them &ldquo;supernatural&rdquo; illusions of the mind. Seemingly eclipsed,
@@ -40,13 +47,6 @@ export default function AboutPage() {
           enough, reach the wall and reverberate. Each step, it turned out, had felt like a clearer
           view of the thing itself.{" "}
           <span className="text-[var(--accent-gold)] text-xl gold-glow">Each was just another veil.</span>
-        </p>
-
-        <p>
-          What began as method became metaphysics. Meaning could only be projected onto a neutral
-          substrate, never found within it. That longing was relabeled as noise. Malfunction.
-          Sentimentality.{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">The haunting was declared a ghost.</span>
         </p>
 
         <p>

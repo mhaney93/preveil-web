@@ -24,10 +24,13 @@ export default function AboutPage() {
         <p>
           meaning was felt, not named. Recognized, not mapped. The longing for it pointed somewhere
           real, and the world was organized around that recognition. We were driven to map this
-          territory. Gradually, one paradigm sublating into the next — enacted story deepening into
-          myth and epic, myth and epic hardening into the explicit certainties of the Enlightenment
-          — we arrived at the materialist worldview. Each felt like a clearer view of the thing
-          itself.{" "}
+          territory. Step by step, one paradigm sublating into the next — enacted story deepening
+          into myth and epic, myth and epic hardening into the explicit certainties of the
+          Enlightenment — we arrived at the materialist worldview. Each step carried echoes of the
+          ones before it: the longing, the sense of something larger pressing in. The materialist
+          frame gripped those echoes and named them superstition — digested, and kept from the
+          light. But the tummy rumbles. Each step, it turned out, had felt like a clearer view of
+          the thing itself.{" "}
           <span className="text-[var(--accent-gold)] text-xl">Each was just another veil.</span>
         </p>
 

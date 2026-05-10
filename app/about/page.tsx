@@ -22,7 +22,7 @@ export default function AboutPage() {
       <div className="flex flex-col gap-8 text-[var(--muted)] leading-relaxed text-xl font-[family-name:var(--font-body)]">
 
         <p>
-          meaning was felt, not named. Recognized, not mapped. The longing for it pointed somewhere
+          meaning was felt, not named. Recognized, not mapped. The longing for its embodiment pointed somewhere
           real, and the world was organized around that recognition. We were driven to map this
           territory. First with enacted story. Then, step by step, one paradigm sublating into the
           next, grand mythology hardened into the explicit certainties of the Enlightenment. We

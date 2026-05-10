@@ -25,9 +25,9 @@ export default function AboutPage() {
           meaning was felt, not named. Recognized, not mapped. The longing for its embodiment pointed somewhere
           real, and the world was organized around that recognition. We were driven to map this
           territory. First with enacted story. Then, step by step, one paradigm sublating into the
-          next, grand mythology hardened into the cold mechanics of the Enlightenment. We
-          arrived at the materialist worldview.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">Nothing existed that could not, in principle, be weighed.</span>
+          next, grand mythology hardened into the cold mechanics of the Enlightenment.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">We arrived at the materialist worldview:</span>{" "}
+          nothing existed that could not, in principle, be weighed.
         </p>
 
         <p>

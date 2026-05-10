@@ -26,7 +26,12 @@ export default function AboutPage() {
           real, and the world was organized around that recognition. We were driven to map this
           territory. First with enacted story. Then, step by step, one paradigm sublating into the
           next, grand mythology hardened into the cold mechanics of the Enlightenment. We
-          arrived at the materialist worldview. Each step carried echoes of the
+          arrived at the materialist worldview.{" "}
+          <span className="text-[var(--accent-gold)] text-xl">Nothing existed that could not, in principle, be weighed.</span>
+        </p>
+
+        <p>
+          Each step carried echoes of the
           ones before it: the longing, the sense of something larger pressing in. The materialist
           lens thoroughly subsumed those echoes, naming them &ldquo;supernatural&rdquo; illusions of the mind. Seemingly eclipsed,
           digested, and marginalized into silence, the haunting of the soul, the song without a

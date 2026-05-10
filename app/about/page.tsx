@@ -26,7 +26,7 @@ export default function AboutPage() {
           real, and the world was organized around that recognition. We were driven to map this
           territory. First with enacted story. Then, step by step, one paradigm sublating into the
           next, grand mythology hardened into the cold mechanics of the Enlightenment.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">We arrived at the materialist worldview:</span>{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">We arrived at the materialist worldview:</span>{" "}
           nothing existed that could not, in principle, be weighed.
         </p>
 
@@ -39,21 +39,21 @@ export default function AboutPage() {
           inevitably crests above the horizon; the stomach rumbles; the echoes, having traveled far
           enough, reach the wall and reverberate. Each step, it turned out, had felt like a clearer
           view of the thing itself.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">Each was just another veil.</span>
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">Each was just another veil.</span>
         </p>
 
         <p>
           What began as method became metaphysics. Meaning could only be projected onto a neutral
           substrate, never found within it. That longing was relabeled as noise. Malfunction.
           Sentimentality.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">The haunting was declared a ghost.</span>
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">The haunting was declared a ghost.</span>
         </p>
 
         <p>
           But the longing does not disappear when it is declared a ghost. It goes looking for
           somewhere to land. Ideology, consumption, outrage, the relentless optimization of the
           self — each promises to quiet it. None do.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">The signal is still running. It just no longer has a name.</span>
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">The signal is still running. It just no longer has a name.</span>
         </p>
 
         <p>
@@ -70,13 +70,13 @@ export default function AboutPage() {
           capacity to suffer, and permeable enough to be exceeded by something larger. The two
           failure modes, sealing yourself off so nothing genuine can enter or dissolving the self
           until the ache is relabeled as noise, are both forms of unconscious veil-wearing.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">The narrow path is the conscious one.</span>
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">The narrow path is the conscious one.</span>
         </p>
 
         <p>
           The translucent gold veil draped over our name is not hiding it. It is revealing it
           through a medium.{" "}
-          <span className="text-[var(--accent-gold)] text-xl">Not a barrier. A transmission.</span>{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">Not a barrier. A transmission.</span>{" "}
           The goods are covered in veils, because there is no getting away from them. To wear
           Preveil is to wear the symbol of the posture: the veil you chose, knowing what it is.
         </p>

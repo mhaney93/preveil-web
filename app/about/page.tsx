@@ -25,7 +25,7 @@ export default function AboutPage() {
           meaning was felt, not named. Recognized, not mapped. The longing for it pointed somewhere
           real, and the world was organized around that recognition. We were driven to map this
           territory. First with enacted story. Then, step by step, one paradigm sublating into the
-          next: grand mythology hardening into the explicit certainties of the Enlightenment. We
+          next. Grand mythology hardened into the explicit certainties of the Enlightenment. We
           arrived at the materialist worldview. Each step carried echoes of the
           ones before it: the longing, the sense of something larger pressing in. The materialist
           lens thoroughly subsumed those echoes, naming them supernatural illusions of the mind — seemingly eclipsed,

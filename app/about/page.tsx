@@ -28,9 +28,12 @@ export default function AboutPage() {
           into myth and epic, which itself hardened into the explicit certainties of the
           Enlightenment — we arrived at the materialist worldview. Each step carried echoes of the
           ones before it: the longing, the sense of something larger pressing in. The materialist
-          frame gripped those echoes and named them superstition — digested, and kept from the
-          light. But the tummy rumbles. Each step, it turned out, had felt like a clearer view of
-          the thing itself.{" "}
+          lens thoroughly subsumed those echoes, naming them superstition — seemingly eclipsed,
+          digested, and marginalized into silence. The haunting of the soul, the song without a
+          voice, settled into what we now call the meaning crisis. Alas — the glimmer of light
+          inevitably crests above the horizon; the stomach rumbles; the echoes, having traveled far
+          enough, reach the wall and reverberate. Each step, it turned out, had felt like a clearer
+          view of the thing itself.{" "}
           <span className="text-[var(--accent-gold)] text-xl">Each was just another veil.</span>
         </p>
 

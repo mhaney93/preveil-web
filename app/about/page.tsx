@@ -30,10 +30,9 @@ export default function AboutPage() {
         </p>
 
         <p>
-          Then science arrived and felt like the final unveiling: the primitive maps discarded,
-          reality seen at last. What began as method became metaphysics. That world gave way to a
-          world of neutral substrate where meaning could only be projected, never found. That
-          longing was relabeled as noise. Malfunction. Sentimentality.{" "}
+          What began as method became metaphysics. Meaning could only be projected onto a neutral
+          substrate, never found within it. That longing was relabeled as noise. Malfunction.
+          Sentimentality.{" "}
           <span className="text-[var(--accent-gold)] text-xl">The haunting was declared a ghost.</span>
         </p>
 

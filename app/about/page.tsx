@@ -28,7 +28,7 @@ export default function AboutPage() {
           next: grand mythology hardening into the explicit certainties of the Enlightenment. We
           arrived at the materialist worldview. Each step carried echoes of the
           ones before it: the longing, the sense of something larger pressing in. The materialist
-          lens thoroughly subsumed those echoes, naming them supernatural — seemingly eclipsed,
+          lens thoroughly subsumed those echoes, naming them supernatural illusions of the mind — seemingly eclipsed,
           digested, and marginalized into silence. The haunting of the soul, the song without a
           voice, settled into what we now call the meaning crisis. Alas — the glimmer of light
           inevitably crests above the horizon; the stomach rumbles; the echoes, having traveled far

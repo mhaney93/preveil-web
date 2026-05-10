@@ -38,6 +38,13 @@ export default function AboutPage() {
         </p>
 
         <p>
+          But the longing does not disappear when it is declared a ghost. It goes looking for
+          somewhere to land. Ideology, consumption, outrage, the relentless optimization of the
+          self — each promises to quiet it. None do.{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">The signal is still running. It just no longer has a name.</span>
+        </p>
+
+        <p>
           Each step carried echoes of the
           ones before it: the longing, the sense of something larger pressing in. The materialist
           lens thoroughly subsumed those echoes, naming them &ldquo;supernatural&rdquo; illusions of the mind. Seemingly eclipsed,
@@ -47,13 +54,6 @@ export default function AboutPage() {
           enough, reach the wall and reverberate. Each step, it turned out, had felt like a clearer
           view of the thing itself.{" "}
           <span className="text-[var(--accent-gold)] text-xl gold-glow">Each was just another veil.</span>
-        </p>
-
-        <p>
-          But the longing does not disappear when it is declared a ghost. It goes looking for
-          somewhere to land. Ideology, consumption, outrage, the relentless optimization of the
-          self — each promises to quiet it. None do.{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">The signal is still running. It just no longer has a name.</span>
         </p>
 
         <p>

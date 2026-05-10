@@ -23,10 +23,9 @@ export default function AboutPage() {
 
         <p>
           meaning was felt, not named. Recognized, not mapped. The longing for it pointed somewhere
-          real, and the world was organized around that recognition. Then came the maps. Around the
-          fire, enacting stories — a first attempt to name what could only be felt. Then the ancient
-          epics, giving the map shape and memory. Then religion, organizing it into doctrine and
-          institution. Each new veil felt like a clearer view of the thing itself.{" "}
+          real, and the world was organized around that recognition. We were driven to map this
+          territory. Gradually, through paradigm-jolting shifts, we arrived at the materialist
+          worldview of the Enlightenment. Each felt like a clearer view of the thing itself.{" "}
           <span className="text-[var(--accent-gold)] text-xl">Each was just another veil.</span>
         </p>
 

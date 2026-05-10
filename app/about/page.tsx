@@ -38,7 +38,10 @@ export default function AboutPage() {
         </p>
 
         <p>
-          But the label didn't stick. It goes looking for
+          But the label didn't stick. The materialist lens thoroughly subsumed those echoes,
+          naming them &ldquo;supernatural&rdquo; illusions of the mind. Seemingly eclipsed,
+          digested, and marginalized into silence, the haunting of the soul, the song without a
+          voice, settled into what we now call the meaning crisis. It goes looking for
           somewhere to land. Ideology, consumption, outrage, the relentless optimization of the
           self — each promises to quiet it. None do.{" "}
           <span className="text-[var(--accent-gold)] text-xl gold-glow">The signal is still running. It just no longer has a name.</span>
@@ -46,10 +49,7 @@ export default function AboutPage() {
 
         <p>
           Each step carried echoes of the
-          ones before it: the longing, the sense of something larger pressing in. The materialist
-          lens thoroughly subsumed those echoes, naming them &ldquo;supernatural&rdquo; illusions of the mind. Seemingly eclipsed,
-          digested, and marginalized into silence, the haunting of the soul, the song without a
-          voice, settled into what we now call the meaning crisis. Alas — the glimmer of light
+          ones before it: the longing, the sense of something larger pressing in. Alas — the glimmer of light
           inevitably crests above the horizon; the stomach rumbles; the echoes, having traveled far
           enough, reach the wall and reverberate. Each step, it turned out, had felt like a clearer
           view of the thing itself.{" "}

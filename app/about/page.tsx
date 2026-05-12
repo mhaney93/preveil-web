@@ -48,15 +48,6 @@ export default function AboutPage() {
         </p>
 
         <p>
-          Each step carried echoes of the
-          ones before it: the longing, the sense of something larger pressing in. Alas — the glimmer of light
-          inevitably crests above the horizon; the stomach rumbles; the echoes, having traveled far
-          enough, reach the wall and reverberate. Each step, it turned out, had felt like a clearer
-          view of the thing itself.{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">Each was just another veil.</span>
-        </p>
-
-        <p>
           Preveil is not a call to return to the past. It is a call to a posture: go back and
           rescue what was lost. The knowledge that meaning is real, that the ache is signal, that
           the world is capable of meeting you. Recover that orientation first, and you can choose

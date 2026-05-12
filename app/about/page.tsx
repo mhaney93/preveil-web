@@ -38,7 +38,7 @@ export default function AboutPage() {
         </p>
 
         <p>
-          But naming it that doesn't make it so. The materialist lens thoroughly subsumed those echoes,
+          But renaming it didn't make it go away. The materialist lens thoroughly subsumed those echoes,
           naming them &ldquo;supernatural&rdquo; illusions of the mind. Seemingly eclipsed,
           digested, and marginalized into silence, the haunting of the soul, the song without a
           voice, settled into what we now call the meaning crisis. It goes looking for

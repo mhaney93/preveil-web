@@ -38,30 +38,32 @@ export default function AboutPage() {
         </p>
 
         <p>
-          But renaming it didn't make it go away. The materialist lens thoroughly subsumed those echoes,
-          naming them &ldquo;supernatural&rdquo; illusions of the mind. Seemingly eclipsed,
-          digested, and marginalized into silence, the haunting of the soul, the song without a
-          voice, settled into what we now call the meaning crisis. It goes looking for
-          somewhere to land. Ideology, consumption, outrage, the relentless optimization of the
-          self — each promises to quiet it. None do.{" "}
+          But renaming it didn't make it go away. The materialist lens subsumed meaning itself,
+          reclassifying it as a merely subjective illusion of the mind. Stripped of primary
+          reality, it had nowhere to live. But it didn't disappear. It settled into what we now
+          call the meaning crisis. It goes looking for somewhere to land. Ideology, consumption,
+          outrage, the relentless optimization of the self — each promises to quiet it. None do.{" "}
           <span className="text-[var(--accent-gold)] text-xl gold-glow">The signal is still running. It just no longer has a name.</span>
         </p>
 
         <p>
-          Preveil is not a call to return to the past. It is a call to a posture: go back and
-          rescue what was lost. The knowledge that meaning is real, that the ache is signal, that
-          the world is capable of meeting you. Recover that orientation first, and you can choose
-          your current veil deliberately. You cannot choose consciously from inside a veil you
-          believe is not a veil.
+          Think of each worldview as a veil folding over the last. Each one sees the same
+          territory through a different lens. But there is a trap buried in the fold: every new
+          map tends to define itself by what it refuses. Science didn't simply replace religion —
+          it positioned itself against it. The materialist veil made the negation of its
+          predecessor its cornerstone. And so the new map inherits the shape of what it rejected,
+          haunted by its own reaction.{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">Every veil carries the ghost of the one it replaced.</span>
         </p>
 
         <p>
-          The goal is not to remove the veil. That was never on offer. The goal is translucency:
-          structured enough to be a genuine person, with real weight, real vulnerability, real
-          capacity to suffer, and permeable enough to be exceeded by something larger. The two
-          failure modes, sealing yourself off so nothing genuine can enter or dissolving the self
-          until the ache is relabeled as noise, are both forms of unconscious veil-wearing.{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">The narrow path is the conscious one.</span>
+          The only exit is not another reaction. It is to strip the accumulated cultural software —
+          the inherited assumptions, the default negations — and meet meaning before it has been
+          named. Not a return to a prior veil. An approach to the territory as though it has not
+          yet been charted.{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">The next veil should have the spirit of something unmapped.</span>{" "}
+          That is what Preveil is for. You cannot choose your veil consciously from inside one
+          you believe is not a veil.
         </p>
 
         <p>

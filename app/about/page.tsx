@@ -27,7 +27,7 @@ export default function AboutPage() {
           territory. First with enacted story. Then, step by step, one paradigm sublating into the
           next, grand mythology hardened into the cold mechanics of the Enlightenment.{" "}
           <span className="text-[var(--accent-gold)] text-xl gold-glow">We arrived at the materialist worldview:</span>{" "}
-          nothing existed that could not, in principle, be weighed.
+          nothing existed that could not, in principle, be measured.
         </p>
 
         <p>

@@ -32,14 +32,14 @@ export default function AboutPage() {
 
         <p>
           Measurement became metaphysics. Meaning could only be projected onto a neutral
-          substrate, never found within it. That longing was relabeled as noise. Malfunction.
-          Sentimentality.{" "}
+          substrate, never found within it — reclassified as merely a subjective illusion of the
+          mind. That longing was relabeled as noise. Malfunction. Sentimentality.{" "}
           <span className="text-[var(--accent-gold)] text-xl gold-glow">The haunting was declared a ghost.</span>
         </p>
 
         <p>
-          But renaming it didn't make it go away. The materialist lens subsumed meaning itself,
-          reclassifying it as merely a subjective illusion of the mind. Seemingly eclipsed,
+          But renaming it didn't make it go away. The materialist lens subsumed meaning itself.
+          Seemingly eclipsed,
           digested, and dampened, the haunting of the soul, the song without a
           voice, settled into what we now call the meaning crisis. Its symptoms are everywhere —
           the loneliness epidemic, the collapse of shared narrative, the mental health crisis, the

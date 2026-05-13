@@ -50,16 +50,6 @@ export default function AboutPage() {
         </p>
 
         <p>
-          Think of each worldview as a veil folding over the last. Each one sees the same
-          territory through a different lens. But there is a trap buried in the fold: every new
-          map tends to define itself by what it refuses. Science didn't simply replace religion —
-          it positioned itself against it. The materialist veil made the negation of its
-          predecessor its cornerstone. And so the new map inherits the shape of what it rejected,
-          haunted by its own reaction.{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">Every veil carries the ghost of the one it replaced.</span>
-        </p>
-
-        <p>
           The only exit is not another reaction. It is to strip the accumulated cultural software —
           the inherited assumptions, the default negations — and meet meaning before it has been
           named. Not a return to a prior veil. An approach to the territory as though it has not

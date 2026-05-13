@@ -81,13 +81,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Brand statement */}
-      <section className="border-t border-[var(--border)] px-6 py-24 text-center">
-        <blockquote className="max-w-2xl mx-auto font-[family-name:var(--font-heading)] text-2xl font-light italic text-[var(--muted)] leading-relaxed mb-4">
-          &ldquo;The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.&rdquo;
-        </blockquote>
-        <p className="text-sm text-[var(--muted)] tracking-widest uppercase">— Marcel Proust</p>
-      </section>
     </div>
   );
 }

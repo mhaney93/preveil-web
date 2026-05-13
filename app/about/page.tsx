@@ -68,10 +68,10 @@ export default function AboutPage() {
 
       {/* Quote */}
       <blockquote className="font-[family-name:var(--font-heading)] text-2xl font-light italic text-[var(--foreground)] leading-relaxed mb-4">
-        &ldquo;The eye through which I see God is the same eye through which God sees me.&rdquo;
+        &ldquo;The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.&rdquo;
       </blockquote>
       <p className="text-sm text-[var(--muted)] tracking-widest uppercase">
-        — Meister Eckhart
+        — Marcel Proust
       </p>
 
       {/* CTA */}

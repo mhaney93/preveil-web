@@ -50,13 +50,16 @@ export default function AboutPage() {
         </p>
 
         <p>
-          The only exit is not another reaction. It is to strip the accumulated cultural software —
-          the inherited assumptions, the default negations — and meet meaning before it has been
-          named. Not a return to a prior veil. An approach to the territory as though it has not
-          yet been charted.{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">The next veil should have the spirit of something unmapped.</span>{" "}
-          That is what Preveil is for. You cannot choose your veil consciously from inside one
-          you believe is not a veil.
+          Each worldview is a veil folding over the last, each seeing the same territory through
+          a different lens. But there is a trap buried in the fold: every new map defines itself
+          by negating the one before it. The materialist veil made the rejection of its
+          predecessor its cornerstone, inheriting the shape of what it refused. Every veil
+          carries the ghost of the one it replaced. The only exit is not another reaction — it is
+          to strip the accumulated assumptions and meet meaning before it has been named. Not a
+          return to a prior veil. An approach to the territory as though it has not yet been
+          charted.{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">That is what Preveil is for.</span>{" "}
+          You cannot choose your veil consciously from inside one you believe is not a veil.
         </p>
 
         <p>

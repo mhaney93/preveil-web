@@ -38,18 +38,15 @@ export default function AboutPage() {
         </p>
 
         <p>
-          But renaming it didn't make it go away. The materialist lens subsumed meaning itself.
-          Seemingly eclipsed,
-          digested, and dampened, the haunting of the soul, the song without a
-          voice, settled into what we now call the meaning crisis. Its symptoms are everywhere —
-          the loneliness epidemic, the collapse of shared narrative, the mental health crisis, the
-          political fracture. Some call it the meta-crisis: a cluster of breakdowns with a single
-          root. Alas, the glimmer of light
-          inevitably crests above the horizon; the stomach rumbles; the echoes, having traveled
-          far enough, reach the wall and reverberate. Our sense of meaning goes looking for
-          somewhere to land. Ideology, consumption, outrage, the relentless optimization of the
-          self — each promises to quiet it. None do.{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">Forced into ill-fit containers, our quest for meaning loses its shape.</span>
+          But renaming it didn't make it go away. The materialist lens subsumed meaning itself,
+          leaving it eclipsed, digested, and dampened. And yet the glimmer of light inevitably
+          crests above the horizon; the stomach rumbles; the echoes, having traveled far enough,
+          reach the wall and reverberate. Our sense of meaning goes looking for somewhere to
+          land. Forced into ill-fit containers, our quest loses its shape. A song without a
+          voice. Enter the meaning crisis. Its symptoms are everywhere: the loneliness epidemic,
+          the collapse of shared narrative, the mental health crisis, the political fracture,
+          ideology, consumption, outrage, the relentless optimization of the self.{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">An expansive meta-crisis, a rotting at the root level.</span>
         </p>
 
         <p>

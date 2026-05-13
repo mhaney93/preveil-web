@@ -39,7 +39,7 @@ export default function AboutPage() {
 
         <p>
           But renaming it didn't make it go away. The materialist lens subsumed meaning itself,
-          reclassifying it as a merely subjective illusion of the mind. Seemingly eclipsed,
+          reclassifying it as merely a subjective illusion of the mind. Seemingly eclipsed,
           digested, and marginalized into silence, the haunting of the soul, the song without a
           voice, settled into what we now call the meaning crisis. Alas, the glimmer of light
           inevitably crests above the horizon; the stomach rumbles; the echoes, having traveled

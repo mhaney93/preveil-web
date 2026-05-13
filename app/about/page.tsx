@@ -55,16 +55,9 @@ export default function AboutPage() {
           predecessor its cornerstone, inheriting the shape of what it refused. The only exit is not another reaction, it is
           to strip the accumulated assumptions and meet meaning before it has been named. Not a
           return to a prior veil. An approach to the territory as though it has not yet been
-          charted.        </p>
-
-        <p>
-          The translucent gold veil draped over our name is not hiding it. It is revealing it
-          through a medium.{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">Not a barrier. A transmission.</span>{" "}
-          The goods are covered in veils, because there is no getting away from them. To wear
-          Preveil is to wear the symbol of the posture: the veil you chose, knowing what it is.
-          The name carries both movements —{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">the veil, and the act of prevailing through it.</span>
+          charted. The translucent gold veil over our name is not a barrier — it is a
+          transmission. To wear Preveil is to consciously choose your veil, knowing what it is.{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">The veil, and the act of prevailing through it.</span>
         </p>
 
       </div>

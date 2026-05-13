@@ -39,11 +39,12 @@ export default function AboutPage() {
 
         <p>
           But renaming it didn't make it go away. The materialist lens subsumed meaning itself,
-          reclassifying it as a merely subjective illusion of the mind. Stripped of primary
-          reality, it had nowhere to live. But it didn't disappear. It settled into what we now
-          call the meaning crisis. It goes looking for somewhere to land. Ideology, consumption,
-          outrage, the relentless optimization of the self — each promises to quiet it. None do.{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">The signal is still running. It just no longer has a name.</span>
+          reclassifying it as a merely subjective illusion of the mind. Seemingly eclipsed,
+          digested, and marginalized into silence, the haunting of the soul, the song without a
+          voice, settled into what we now call the meaning crisis. It goes looking for somewhere
+          to land. Ideology, consumption, outrage, the relentless optimization of the self — each
+          promises to quiet it. None do.{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">Forced into ill-fitted containers, it creeps into its worst expression.</span>
         </p>
 
         <p>

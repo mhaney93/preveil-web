@@ -56,8 +56,7 @@ export default function AboutPage() {
           predecessor its cornerstone, inheriting the shape of what it refused. The only exit from this cycle is not another reaction, it is
           to strip the accumulated assumptions and meet meaning before it has been named. Not a
           return to a prior veil, an approach to the territory as though it has not yet been
-          charted. To wear Preveil is to consciously choose your veil, knowing what it is.{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">The veil, and the act of prevailing through it.</span>
+          charted.
         </p>
 
       </div>

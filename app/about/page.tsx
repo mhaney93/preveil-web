@@ -44,8 +44,7 @@ export default function AboutPage() {
           reach the wall and reverberate. Our sense of meaning goes looking for somewhere to
           land. Forced into ill-fit containers, our quest loses its shape. A song without a
           voice. Enter the meaning crisis. Its symptoms are everywhere: the loneliness epidemic,
-          the collapse of shared narrative, the mental health crisis, the political fracture,
-          ideology, consumption, outrage, the relentless optimization of the self.{" "}
+          the collapse of shared narrative, the mental health crisis, the political fracture.{" "}
           <span className="text-[var(--accent-gold)] text-xl gold-glow">An expansive meta-crisis, a rotting at the root level.</span>
         </p>
 

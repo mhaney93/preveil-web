@@ -49,7 +49,7 @@ export default function AboutPage() {
         </p>
 
         <p>
-          Each step towards this paradigm was the unfolding of a veil, each seeing the same territory through
+          Each step towards this paradigm was the unfolding of a veil, each illuminating the same reality through
           a different lens. But there is a trap buried in the fold: every new map defines itself
           by negating the one before it. The materialist veil made the rejection of its
           predecessor its cornerstone, inheriting the shape of what it refused. The only exit is not another reaction — it is

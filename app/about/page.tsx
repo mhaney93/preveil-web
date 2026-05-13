@@ -56,7 +56,8 @@ export default function AboutPage() {
           predecessor its cornerstone, inheriting the shape of what it refused. The only exit from this cycle is not another reaction, it is
           to strip the accumulated assumptions and meet meaning before it has been named. Not a
           return to a prior veil, an approach to the territory as though it has not yet been
-          charted.
+          charted. Preveil stands for that orientation: approaching meaning not as something
+          already known, but as something still alive with discovery.
         </p>
 
       </div>

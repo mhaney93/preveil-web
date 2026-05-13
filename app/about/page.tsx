@@ -50,7 +50,8 @@ export default function AboutPage() {
         </p>
 
         <p>
-          Each worldview is a veil folding over the last, each seeing the same territory through
+          Each of those containers is itself a veil — the shape a culture gives to what it
+          cannot otherwise hold. Each worldview is a veil folding over the last, each seeing the same territory through
           a different lens. But there is a trap buried in the fold: every new map defines itself
           by negating the one before it. The materialist veil made the rejection of its
           predecessor its cornerstone, inheriting the shape of what it refused. The only exit is not another reaction — it is

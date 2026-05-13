@@ -55,8 +55,7 @@ export default function AboutPage() {
           predecessor its cornerstone, inheriting the shape of what it refused. The only exit is not another reaction, it is
           to strip the accumulated assumptions and meet meaning before it has been named. Not a
           return to a prior veil. An approach to the territory as though it has not yet been
-          charted. You cannot choose your veil consciously from inside one you believe is not a veil.
-        </p>
+          charted.        </p>
 
         <p>
           The translucent gold veil draped over our name is not hiding it. It is revealing it

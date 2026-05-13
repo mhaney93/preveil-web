@@ -68,10 +68,8 @@ export default function AboutPage() {
           <span className="text-[var(--accent-gold)] text-xl gold-glow">Not a barrier. A transmission.</span>{" "}
           The goods are covered in veils, because there is no getting away from them. To wear
           Preveil is to wear the symbol of the posture: the veil you chose, knowing what it is.
-        </p>
-
-        <p>
-          We make goods for those who remember.
+          The name carries both movements —{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">the veil, and the act of prevailing through it.</span>
         </p>
 
       </div>

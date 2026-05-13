@@ -43,7 +43,7 @@ export default function AboutPage() {
           digested, and marginalized into silence — the glimmer of light inevitably crests above
           the horizon; the stomach rumbles; the echoes, having traveled far enough, reach the
           wall and reverberate. The haunting of the soul, the song without a voice, settled into
-          what we now call the meaning crisis. It goes looking for somewhere to land. Ideology,
+          what we now call the meaning crisis. Our sense of meaning goes looking for somewhere to land. Ideology,
           consumption, outrage, the relentless optimization of the self — each promises to quiet
           it. None do.{" "}
           <span className="text-[var(--accent-gold)] text-xl gold-glow">Forced into ill-fitted containers, it creeps into its worst expression.</span>

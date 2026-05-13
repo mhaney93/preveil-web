@@ -46,7 +46,7 @@ export default function AboutPage() {
           far enough, reach the wall and reverberate. Our sense of meaning goes looking for
           somewhere to land. Ideology, consumption, outrage, the relentless optimization of the
           self — each promises to quiet it. None do.{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">Forced into ill-fit containers, it creeps into its worst expression.</span>
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">Forced into ill-fit containers, our quest for meaning loses its shape.</span>
         </p>
 
         <p>

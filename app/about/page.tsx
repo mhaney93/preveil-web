@@ -57,7 +57,8 @@ export default function AboutPage() {
           to strip the accumulated assumptions and meet meaning before it has been named. Not a
           return to a prior veil, an approach to the territory as though it has not yet been
           charted. Preveil stands for that orientation: approaching meaning not as something
-          already known, but as something still alive with discovery.
+          already known, but as something still{" "}
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">alive with discovery.</span>
         </p>
 
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-export type SizeGuideType = "tops" | "bottoms";
+export type SizeGuideType = "tops" | "bottoms" | "socks";
 
 const TOPS = [
   { size: "XS",  chest: '32–34"', cm: "81–86 cm" },
@@ -12,6 +12,12 @@ const TOPS = [
   { size: "3XL", chest: '50–52"', cm: "127–132 cm" },
   { size: "4XL", chest: '53–55"', cm: "135–140 cm" },
   { size: "5XL", chest: '56–58"', cm: "142–147 cm" },
+];
+
+const SOCKS = [
+  { size: "S", us: "Women 5–8 / Men 3.5–6.5", eu: "EU 35–39" },
+  { size: "M", us: "Women 8–11 / Men 6.5–9.5", eu: "EU 39–43" },
+  { size: "L", us: "Women 11–13 / Men 9.5–13", eu: "EU 43–46" },
 ];
 
 const BOTTOMS = [
@@ -52,7 +58,31 @@ export default function SizeGuideModal({
           Size Guide
         </h2>
 
-        {type === "tops" ? (
+        {type === "socks" ? (
+          <>
+            <p className="text-sm text-[var(--muted)] mb-6 leading-relaxed">
+              Select your size based on your shoe size.
+            </p>
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-[var(--border)]">
+                  <th className="text-left pb-3 text-[var(--muted)] tracking-widest uppercase text-xs font-normal w-16">Size</th>
+                  <th className="text-left pb-3 text-[var(--muted)] tracking-widest uppercase text-xs font-normal">US Shoe Size</th>
+                  <th className="text-left pb-3 text-[var(--muted)] tracking-widest uppercase text-xs font-normal">EU</th>
+                </tr>
+              </thead>
+              <tbody>
+                {SOCKS.map((row) => (
+                  <tr key={row.size} className="border-b border-[var(--border)]/30">
+                    <td className="py-2.5 text-[var(--foreground)] font-medium">{row.size}</td>
+                    <td className="py-2.5 text-[var(--foreground)]">{row.us}</td>
+                    <td className="py-2.5 text-[var(--muted)] text-xs">{row.eu}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        ) : type === "tops" ? (
           <>
             <p className="text-sm text-[var(--muted)] mb-6 leading-relaxed">
               Measure around the fullest part of your chest, keeping the tape flat and level under your arms.

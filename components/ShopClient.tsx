@@ -525,7 +525,8 @@ export default function ShopClient({ products }: { products: Product[] }) {
 
       {(() => {
         // Paginate only in "All" views (category or group level, no specific subcategory selected)
-        const isAllView = !!activeCategory && !activeSubcategory;
+        // Exception: sports-accessories shows all items at once
+        const isAllView = !!activeCategory && !activeSubcategory && groupSlug !== "sports-accessories";
         const displayed = isAllView ? filtered.slice(0, visibleCount) : filtered;
         const hasMore = isAllView && visibleCount < filtered.length;
 

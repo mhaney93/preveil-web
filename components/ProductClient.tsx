@@ -96,7 +96,9 @@ export default function ProductClient({
     return ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"].includes(part);
   });
   const sizeGuideType: SizeGuideType | undefined = hasSizes
-    ? BOTTOM_SUBCATEGORIES.has(product.subcategory ?? "") ? "bottoms" : "tops"
+    ? product.subcategory === "Socks" ? "socks"
+    : BOTTOM_SUBCATEGORIES.has(product.subcategory ?? "") ? "bottoms"
+    : "tops"
     : undefined;
 
   const initialColor = useMemo(() => {

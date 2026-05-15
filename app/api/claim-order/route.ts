@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
 
   const pointsRedeemed: number = order.points_redeemed ?? 0;
   const chargedTotal = Math.max((order.total as number) - pointsRedeemed / 100, 0);
-  const pointsEarned = Math.floor(chargedTotal * 10);
+  const pointsEarned = Math.floor(chargedTotal * 5);
 
   // Link the order and award points in parallel
   const availableAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();

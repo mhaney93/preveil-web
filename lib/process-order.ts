@@ -35,7 +35,7 @@ export async function processOrder(paymentIntent: Stripe.PaymentIntent): Promise
       orderId: existing.id,
       email: shipping.email,
       name: shipping.name,
-      pointsEarned: Math.floor(chargedTotal * 10),
+      pointsEarned: Math.floor(chargedTotal * 5),
     };
   }
 
@@ -194,7 +194,7 @@ export async function processOrder(paymentIntent: Stripe.PaymentIntent): Promise
 
   const pointsDiscount = pointsRedeemed / 100;
   const chargedTotal = Math.max(total - pointsDiscount, 0);
-  const pointsEarned = Math.floor(chargedTotal * 10);
+  const pointsEarned = Math.floor(chargedTotal * 5);
 
   const emailItems = items.map((item: { name: string; variantName: string; quantity: number; price: number }) => ({
     name: item.name,

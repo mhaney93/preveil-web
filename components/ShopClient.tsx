@@ -303,12 +303,8 @@ const SUBCATEGORIES: Record<string, { slug: string; label: string }[]> = {
   ],
 };
 
-// Slugs shown in the default "All" view. Update when adding products in new categories.
-const FEATURED_SLUGS = [
-  "preveil-hoodie",
-  "preveil-windbreaker",
-  "preveil-mug",
-];
+// Fallback slugs for the "All" view when fewer than 3 products have been sold.
+const FALLBACK_SLUGS = ["preveil-classic-tee", "preveil-hoodie", "preveil-backpack"];
 
 type Product = {
   id: string;
@@ -386,7 +382,11 @@ export default function ShopClient({ products }: { products: Product[] }) {
   // useMemo stabilises the random tiebreaker: order stays consistent within a view
   // but re-randomises when the user navigates to a different category/group/subcategory.
   const filtered = useMemo(() => {
-    if (!activeCategory) return products.filter((p) => FEATURED_SLUGS.includes(p.slug));
+    if (!activeCategory) {
+      const sold = products.filter((p) => (p.order_count ?? 0) > 0);
+      if (sold.length >= 3) return sold.slice(0, 3);
+      return products.filter((p) => FALLBACK_SLUGS.includes(p.slug));
+    }
 
     // Only use subcategory labels unique to this category for cross-category matching.
     // Shared labels like "T-Shirts" appear in Men's, Women's, and Kids' — using them

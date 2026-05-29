@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import Link, { useLinkStatus } from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, type ReactNode } from "react";
 
 const CATEGORIES = [
   { slug: "mens-clothing", label: "Men's Clothing" },
@@ -319,6 +319,26 @@ type Product = {
   product_variants?: { available: boolean }[] | null;
 };
 
+// Filter navigation (category/group/subcategory) changes the URL's search params
+// on the same /shop route, which re-runs the server component to refetch — but
+// that's not covered by loading.tsx (same-segment nav), so there's a lag with no
+// feedback. NavLink shows a small gold spinner on the clicked link while its
+// navigation is pending. prefetch={false} keeps the pending state observable
+// (a fully prefetched route would skip it).
+function NavSpinner() {
+  const { pending } = useLinkStatus();
+  return <span aria-hidden className={`nav-link-hint${pending ? " is-pending" : ""}`} />;
+}
+
+function NavLink({ href, className, children }: { href: string; className: string; children: ReactNode }) {
+  return (
+    <Link href={href} prefetch={false} className={className}>
+      {children}
+      <NavSpinner />
+    </Link>
+  );
+}
+
 export default function ShopClient({ products }: { products: Product[] }) {
   const searchParams = useSearchParams();
   const categorySlug = searchParams.get("category");
@@ -430,7 +450,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
     <>
       {/* Category filters */}
       <div className="flex flex-wrap justify-center gap-3 mb-6">
-        <Link
+        <NavLink
           href="/shop"
           className={`text-xs tracking-widest uppercase px-4 py-2 border transition-colors ${
             !activeCategory
@@ -439,9 +459,9 @@ export default function ShopClient({ products }: { products: Product[] }) {
           }`}
         >
           All
-        </Link>
+        </NavLink>
         {CATEGORIES.map((cat) => (
-          <Link
+          <NavLink
             key={cat.slug}
             href={`/shop?category=${cat.slug}`}
             className={`text-xs tracking-widest uppercase px-4 py-2 border transition-colors ${
@@ -451,14 +471,14 @@ export default function ShopClient({ products }: { products: Product[] }) {
             }`}
           >
             {cat.label}
-          </Link>
+          </NavLink>
         ))}
       </div>
 
       {/* Group filters (for categories that have groups) */}
       {activeCategory && hasGroups && (
         <div className="flex overflow-x-auto gap-2 mb-4 [&>*]:shrink-0 justify-start sm:justify-center [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
-          <Link
+          <NavLink
             href={`/shop?category=${activeCategory.slug}`}
             className={`text-xs tracking-widest uppercase px-3 py-1 transition-colors ${
               !activeGroup
@@ -467,9 +487,9 @@ export default function ShopClient({ products }: { products: Product[] }) {
             }`}
           >
             All
-          </Link>
+          </NavLink>
           {groupList.map((grp) => (
-            <Link
+            <NavLink
               key={grp.slug}
               href={`/shop?category=${activeCategory.slug}&group=${grp.slug}`}
               className={`text-xs tracking-widest uppercase px-3 py-1 transition-colors ${
@@ -479,7 +499,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
               }`}
             >
               {grp.label}
-            </Link>
+            </NavLink>
           ))}
         </div>
       )}
@@ -487,7 +507,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
       {/* Subcategory filters — only shown when group has multiple subcategories, or category has no groups */}
       {activeCategory && (!hasGroups || (activeGroup && activeGroup.subcategories.length > 1 && !activeGroup.hideSubnav)) && visibleSubcategories.length > 0 && (
         <div className="flex overflow-x-auto gap-2 mb-4 [&>*]:shrink-0 justify-start sm:justify-center [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
-          <Link
+          <NavLink
             href={
               activeGroup
                 ? `/shop?category=${activeCategory.slug}&group=${activeGroup.slug}`
@@ -500,9 +520,9 @@ export default function ShopClient({ products }: { products: Product[] }) {
             }`}
           >
             All
-          </Link>
+          </NavLink>
           {visibleSubcategories.map((sub) => (
-            <Link
+            <NavLink
               key={sub.slug}
               href={
                 activeGroup
@@ -516,7 +536,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
               }`}
             >
               {sub.label}
-            </Link>
+            </NavLink>
           ))}
         </div>
       )}

@@ -58,7 +58,9 @@ export default function AboutPage() {
           return to a prior veil, an approach to the territory as though it has not yet been
           charted. Preveil stands for that orientation: approaching meaning not as something
           already known, but as something still{" "}
-          <span className="text-[var(--accent-gold)] text-xl gold-glow">alive with discovery.</span>
+          <span className="text-[var(--accent-gold)] text-xl gold-glow">alive with discovery.</span>{" "}
+          Our goods carry that orientation into the everyday: each piece is a veil you put
+          on by choice, and a reminder to keep meeting the world with new eyes.
         </p>
 
       </div>

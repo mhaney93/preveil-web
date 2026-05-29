@@ -319,12 +319,16 @@ type Product = {
   product_variants?: { available: boolean }[] | null;
 };
 
-// Filter navigation (category/group/subcategory) changes the URL's search params
-// on the same /shop route, which re-runs the server component to refetch — but
-// that's not covered by loading.tsx (same-segment nav), so there's a lag with no
-// feedback. NavLink shows a small gold spinner on the clicked link while its
-// navigation is pending. prefetch={false} keeps the pending state observable
-// (a fully prefetched route would skip it).
+// All published products are loaded into this client component once, so filtering
+// by category/group/subcategory is purely in-memory. The filter links keep a real
+// href (good for SEO, "open in new tab", and the no-JS fallback), but on a plain
+// left-click we intercept and update the URL with window.history.pushState instead
+// of navigating — no server round-trip, so the grid re-filters instantly.
+// useSearchParams stays in sync with pushState via Next's History API integration.
+// Modified/middle clicks fall through to the href and navigate normally.
+//
+// NavSpinner (useLinkStatus) only lights up while a *real* navigation is pending —
+// i.e. the fallback path — so instant in-place filtering shows no spinner, by design.
 function NavSpinner() {
   const { pending } = useLinkStatus();
   return <span aria-hidden className={`nav-link-hint${pending ? " is-pending" : ""}`} />;
@@ -332,7 +336,18 @@ function NavSpinner() {
 
 function NavLink({ href, className, children }: { href: string; className: string; children: ReactNode }) {
   return (
-    <Link href={href} prefetch={false} className={className}>
+    <Link
+      href={href}
+      prefetch={false}
+      className={className}
+      onClick={(e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+        e.preventDefault();
+        if (href !== window.location.pathname + window.location.search) {
+          window.history.pushState(null, "", href);
+        }
+      }}
+    >
       {children}
       <NavSpinner />
     </Link>
